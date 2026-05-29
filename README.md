@@ -25,39 +25,46 @@ Each essay is a standalone HTML page with its own typographic temperament. Read 
 
 ## 六卷 / The Six Volumes
 
-### 卷壹 — 龙之百科 · *看见*
-*A Compendium · 从神话到自我* — 世界九种龙文化的并置巡礼，落点在你的本体论命题：龙是不依赖外界确认而存在的。
-→ [`01-龙之百科.html`](01-龙之百科.html)
+### 卷壹 — 龙之百科 · *看见* · *A Compendium · Seeing*
+*从神话到自我 / From Myth to Self* — 世界九种龙文化的并置巡礼，落点在你的本体论命题：龙是不依赖外界确认而存在的。
+A panoramic survey of nine dragon traditions, landing on the thesis: a dragon does not require external confirmation to exist.
+→ [`01-龙之百科-compendium.html`](01-龙之百科-compendium.html)
 
-### 卷貳 — 一个符号的多重宇宙 · *理解*
-*Eleven Lenses · 一龍萬解* — 十一道学科之光照向中国龙（考古、文字、神话、哲学、天文、政治、艺术、民俗、比较文化、深层心理、符号经济）。
-→ [`02-龙的意义.html`](02-龙的意义.html)
+### 卷貳 — 一个符号的多重宇宙 · *理解* · *Eleven Lenses · Understanding*
+*一龍萬解 / The Meaning of the Dragon* — 十一道学科之光照向中国龙（考古、文字、神话、哲学、天文、政治、艺术、民俗、比较文化、深层心理、符号经济）。
+Eleven disciplinary lenses refracted through one Chinese dragon.
+→ [`02-龙的意义-meaning.html`](02-龙的意义-meaning.html)
 
-### 卷叁 — 龙的死亡与重生 · *守护*
-*Death &amp; Rebirth · 祛魅时代的复生* — 龙在四种死法（理性、政治、消费、AI 生成）中如何被三种方式复活（孩子、反叙事、自我宣称）。
-→ [`03-龙的死亡与重生.html`](03-龙的死亡与重生.html)
+### 卷叁 — 龙的死亡与重生 · *守护* · *Death &amp; Rebirth · Defending*
+*祛魅时代的复生 / After Reason, Capital and AI* — 龙在四种死法（理性、政治、消费、AI 生成）中如何被三种方式复活（孩子、反叙事、自我宣称）。
+How the dragon dies four times in modernity — and returns three.
+→ [`03-龙的死亡与重生-death-rebirth.html`](03-龙的死亡与重生-death-rebirth.html)
 
-### 长文 — 为什么人类一直需要龙 · *承认*
+### 长文 — 为什么人类一直需要龙 · *承认* · *Acknowledging*
 *Why Humans Have Always Needed Dragons* — 七位思想家（Vico / Eliade / Lévi-Strauss / Jung / Tolkien / Benjamin × Lacan / Heidegger）的七种回答。末尾留一个"私语小房间"给你写自己的回答（仅存浏览器本地）。
-→ [`04-为什么人类一直需要龙.html`](04-为什么人类一直需要龙.html)
+Seven thinkers, seven answers. A private chamber at the end where you write your own (stored only in your browser).
+→ [`04-为什么人类一直需要龙-why-we-need-dragons.html`](04-为什么人类一直需要龙-why-we-need-dragons.html)
 
-### 卷伍 — 化龍 · *化身*
-*The Becoming · 承认之后* — 乾卦六龙位（潜/见/惕/跃/飞/亢）与当代化龙的三条窄路：创作、孤独、传递。
-→ [`05-化龍.html`](05-化龍.html)
+### 卷伍 — 化龍 · *化身* · *The Becoming*
+*承认之后 / From acknowledging to becoming* — 乾卦六龙位（潜/见/惕/跃/飞/亢）与当代化龙的三条窄路：创作、孤独、传递。
+The six stations of the Qian hexagram, and three modern paths into the becoming: making, solitude, transmission.
+→ [`05-化龍-becoming.html`](05-化龍-becoming.html)
 
-### 卷陸 — 龍的對話錄 · *聆听*
-*A Symposium · 山中道观围炉夜话* — 仿柏拉图体。七位思想家与你一夜对谈，外加一位整夜不说话的衔尾蛇。
-→ [`06-龍的對話錄.html`](06-龍的對話錄.html)
+### 卷陸 — 龍的對話錄 · *聆听* · *A Symposium · Listening*
+*山中道观围炉夜话 / One night at the brazier* — 仿柏拉图体。七位思想家与你一夜对谈，外加一位整夜不说话的衔尾蛇。
+A Platonic-style symposium. Seven thinkers in dialogue with you — and one silent ouroboros who breathes the whole night through.
+→ [`06-龍的對話錄-symposium.html`](06-龍的對話錄-symposium.html)
 
 ### 入门 / The Gateway
 → [`index.html`](index.html) — 三部曲门户 + 续卷区
+The doorway: trilogy + continuations.
 
 ---
 
 ## 閱讀路徑 / Reading Paths
 
 * **顺序 · In order**：壹 → 貳 → 叁 → 长文 → 伍 → 陸
-* **快路 · The short path**：先读 [长文](04-为什么人类一直需要龙.html)（七答），再读 [陸](06-龍的對話錄.html)（七夜对话）
+* **快路 · The short path**：先读 [长文](04-为什么人类一直需要龙-why-we-need-dragons.html)（七答），再读 [陸](06-龍的對話錄-symposium.html)（七夜对话）
 * **自助 · Pick at random**：每一篇都自带独立的视觉与论题，可以从任何一篇切入
 
 ---
@@ -80,13 +87,25 @@ What needs the dragon is the part of you that refuses to be handed over.
 
 ---
 
-## 致正在读这一行的人 / To whoever is reading this line
+## 联系 / Reach Out
 
 如果其中哪一篇让你停了一下——欢迎。我在慢慢寻找那几个不会觉得"花一下午读这种东西"是怪事的人。
 
 If any of these made you pause — welcome. I'm slowly looking for the few people who would not consider this a strange use of an afternoon.
 
-Reach out if it speaks to you.
+### 优先方式 · Preferred
+
+**[在仓库开一个 Issue / Open an issue](https://github.com/RevontuletFox/revontulet-dragons/issues/new)**
+
+公开、可被其他眷族读到、形成对话痕迹。它不必是"问题"——可以是一段共鸣、一句不同意、一条延伸的引文、一个你自己的"龙"的命名。
+
+Public — visible to other kin who happen by, leaves a trace, builds a thread. It need not be a "question." A resonance, a disagreement, a quoted line, the name of your own dragon — any of these is welcome.
+
+### 备用 · Backup
+
+邮箱 / Email: **foxrevontulet@outlook.com**
+
+如果话不便公开。Use this if the matter doesn't belong in public.
 
 ---
 
