@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龍 · 一个符号的多重宇宙｜The Meaning of the Dragon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+/* ====== Variables — Day Mode ====== */
+:root {
+  --ink:           #faf5ec;   /* page bg: warm cream */
+  --ink-deep:      #f2ebe0;   /* slightly deeper cream */
+  --ink-lift:      #e8e0d4;   /* hover bg */
+  --mist:          #ede7db;   /* alt section bg */
+  --paper:         #1a1006;   /* primary headings: deep ink-brown */
+  --bone:          #3a2a14;   /* secondary headings */
+  --vermillion:    #b53f2c;
+  --vermillion-2:  #c94535;
+  --vermillion-d:  #7d2a1c;
+  --gold:          #8a6828;   /* darker gold, readable on light */
+  --gold-2:        #9f7c38;
+  --gold-d:        #6a5020;
+  --bronze:        #c8b89a;   /* light decorative border */
+  --muted:         #c0b090;
+  --text:          #3c2e1c;   /* body text: warm dark brown */
+  --text-soft:     #6e5a42;   /* secondary text */
+  --text-deep:     #9a8472;   /* labels / muted */
+
+  --f-cn-brush:   'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --f-cn-script:  'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --f-cn:         'Noto Serif SC', 'Songti SC', serif;
+  --f-en-disp:    'Cormorant Garamond', serif;
+  --f-en:         'EB Garamond', Georgia, serif;
+  --f-num:        'Cinzel', serif;
+
+  --measure: 38rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ====== Reset ====== */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--f-cn);
+  font-weight:300;
+  line-height:1.85;
+  letter-spacing:.01em;
+  font-feature-settings:"palt";
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+
+/* ====== Warm paper texture (day mode) ====== */
+body::before{
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    radial-gradient(circle at 18% 8%,  rgba(181,63,44,.04),  transparent 35%),
+    radial-gradient(circle at 82% 75%, rgba(140,100,40,.05),  transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(250,245,236,.0),  transparent 60%);
+  pointer-events:none;
+  z-index:1;
+}
+body::after{
+  content:'';
+  position:fixed; inset:0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(140,100,40,.022) 0,
+      rgba(140,100,40,.022) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  pointer-events:none;
+  z-index:2;
+  mix-blend-mode:multiply;
+}
+
+/* ====== Side Index ====== */
+.side-index{
+  position:fixed;
+  left:1.5rem;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:50;
+  display:flex; flex-direction:column; gap:.85rem;
+  padding:1.4rem .8rem;
+  font-family:var(--f-num);
+  font-size:.72rem; letter-spacing:.18em;
+  color:var(--text-deep);
+  writing-mode:vertical-rl;
+}
+.side-index a{
+  color:var(--text-deep);
+  text-decoration:none;
+  transition:color .4s, transform .4s;
+}
+.side-index a:hover, .side-index a.active{
+  color:var(--gold);
+  transform:translateY(-2px);
+}
+.side-index .vert-label{
+  writing-mode:horizontal-tb;
+  font-family:var(--f-cn);
+  font-size:.7rem;
+  color:var(--gold-d);
+  letter-spacing:.4em;
+  margin-bottom:.4rem;
+  padding-bottom:.6rem;
+  border-bottom:1px solid rgba(140,100,40,.25);
+  text-align:center;
+}
+@media(max-width:900px){.side-index{display:none}}
+
+/* ====== Top mark ====== */
+.top-mark{
+  position:fixed;
+  top:1.4rem; right:1.6rem;
+  z-index:50;
+  display:flex; align-items:center; gap:.8rem;
+  font-family:var(--f-num);
+  font-size:.65rem; letter-spacing:.32em;
+  color:var(--text-deep);
+}
+.top-mark .seal-sm{
+  width:1.6rem; height:1.6rem;
+  background:var(--vermillion);
+  display:grid; place-items:center;
+  color:#faf5ec;
+  font-family:var(--f-cn-brush);
+  font-size:1rem;
+  box-shadow:0 0 0 1px var(--vermillion-d) inset, 0 1px 6px rgba(0,0,0,.18);
+}
+
+/* ====== HERO ====== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:6rem var(--gutter) 4rem;
+  overflow:hidden;
+  z-index:5;
+  background: linear-gradient(162deg, #faf5ec 0%, #f5eddf 45%, #ede5d4 100%);
+  border-bottom: 1px solid rgba(140,100,40,.14);
+}
+.hero-bg-char{
+  position:absolute;
+  right:-6vw; top:50%;
+  transform:translateY(-50%);
+  font-family:var(--f-cn-brush);
+  font-size:clamp(28rem, 65vw, 60rem);
+  line-height:.85;
+  color:transparent;
+  background:linear-gradient(140deg, rgba(160,110,40,.14), rgba(181,63,44,.08) 40%, rgba(160,110,40,.04) 80%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  pointer-events:none;
+  user-select:none;
+  z-index:-1;
+  filter:blur(.5px);
+  animation:breathe 18s ease-in-out infinite;
+}
+@keyframes breathe{
+  0%,100%{transform:translateY(-50%) scale(1)}
+  50%{transform:translateY(-50%) scale(1.03)}
+}
+
+.hero-tag{
+  font-family:var(--f-num);
+  font-size:.78rem;
+  letter-spacing:.45em;
+  color:var(--gold);
+  margin-bottom:2.2rem;
+  display:flex; align-items:center; gap:1rem;
+  opacity:0; animation:rise .9s .2s ease-out forwards;
+}
+.hero-tag::before{
+  content:''; display:block;
+  width:3.5rem; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold));
+}
+.hero h1{
+  font-family:var(--f-cn-brush);
+  font-weight:400;
+  font-size:clamp(5.5rem, 18vw, 16rem);
+  line-height:.9;
+  margin:0 0 .2em;
+  color:var(--paper);
+  letter-spacing:-.02em;
+  opacity:0; animation:rise 1.1s .5s ease-out forwards;
+}
+.hero-sub-cn{
+  font-family:var(--f-cn);
+  font-size:clamp(1.4rem, 2.6vw, 2.3rem);
+  font-weight:400;
+  color:var(--gold);
+  letter-spacing:.2em;
+  margin:0 0 1.6rem;
+  opacity:0; animation:rise 1.1s .8s ease-out forwards;
+}
+.hero-title-en{
+  font-family:var(--f-en-disp);
+  font-style:italic;
+  font-weight:300;
+  font-size:clamp(1.5rem, 2.8vw, 2.6rem);
+  letter-spacing:.04em;
+  color:var(--text-soft);
+  margin:0 0 3rem;
+  max-width:36rem;
+  line-height:1.25;
+  opacity:0; animation:rise 1.1s 1.05s ease-out forwards;
+}
+.hero-title-en em{color:var(--vermillion-2); font-style:italic}
+
+.hero-meta{
+  display:flex; gap:3rem;
+  font-family:var(--f-num);
+  font-size:.7rem; letter-spacing:.3em;
+  color:var(--text-deep);
+  margin-top:3.5rem;
+  flex-wrap:wrap;
+  opacity:0; animation:rise 1.1s 1.3s ease-out forwards;
+}
+.hero-meta div{display:flex; flex-direction:column; gap:.3rem}
+.hero-meta strong{color:var(--gold); font-weight:500}
+
+.scroll-cue{
+  position:absolute;
+  bottom:2.2rem; left:50%;
+  transform:translateX(-50%);
+  font-family:var(--f-num);
+  font-size:.65rem; letter-spacing:.4em;
+  color:var(--text-deep);
+  display:flex; align-items:center; gap:.6rem;
+  opacity:0; animation:rise 1s 1.6s ease-out forwards;
+}
+.scroll-cue::after{
+  content:''; display:block; width:1px; height:2.2rem;
+  background:linear-gradient(180deg, rgba(100,80,60,.5), transparent);
+  animation:descend 2.6s ease-in-out infinite;
+}
+@keyframes descend{
+  0%,100%{transform:scaleY(.6) translateY(-30%); opacity:.4}
+  50%{transform:scaleY(1) translateY(0); opacity:1}
+}
+
+@keyframes rise{
+  from{opacity:0; transform:translateY(20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* ====== Section base ====== */
+section{ position:relative; z-index:5; }
+
+.canvas{
+  max-width:78rem;
+  margin:0 auto;
+  padding:7rem var(--gutter);
+}
+
+/* ====== Prologue ====== */
+.prologue{
+  padding:8rem var(--gutter) 6rem;
+  max-width:64rem;
+  margin:0 auto;
+  position:relative;
+}
+.prologue::before{
+  content:'PROLOGUE';
+  position:absolute;
+  top:5rem; left:var(--gutter);
+  font-family:var(--f-num);
+  font-size:.7rem; letter-spacing:.4em;
+  color:var(--gold-d);
+}
+.prologue-cn-label{
+  font-family:var(--f-cn);
+  font-size:.85rem; letter-spacing:.4em;
+  color:var(--vermillion);
+  margin-bottom:1.5rem;
+  display:flex; align-items:center; gap:.8rem;
+}
+.prologue-cn-label::after{
+  content:''; flex:1; max-width:6rem; height:1px;
+  background:linear-gradient(90deg, var(--vermillion), transparent);
+}
+.prologue h2{
+  font-family:var(--f-cn);
+  font-weight:300;
+  font-size:clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height:1.3;
+  margin:.4em 0 1.5em;
+  color:var(--bone);
+  letter-spacing:.02em;
+  max-width:32em;
+}
+.prologue h2 em{
+  font-style:normal;
+  color:var(--vermillion-2);
+  font-family:var(--f-cn-brush);
+  font-size:1.2em;
+}
+.prologue-body{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:3rem;
+  margin-top:3rem;
+}
+.prologue-body p{
+  font-size:1.05rem;
+  color:var(--text);
+  margin:0 0 1.3em;
+}
+.prologue-body p:first-child::first-letter{
+  font-family:var(--f-cn-brush);
+  font-size:4.2em;
+  float:left;
+  line-height:.9;
+  padding:.1em .15em 0 0;
+  color:var(--vermillion);
+}
+@media(max-width:760px){
+  .prologue-body{grid-template-columns:1fr; gap:1rem}
+}
+
+/* ====== Disciplines overview ====== */
+.disciplines{
+  padding:7rem var(--gutter);
+  background:
+    linear-gradient(180deg, transparent, rgba(200,170,100,.08) 50%, transparent),
+    radial-gradient(ellipse at center, rgba(184,148,86,.07), transparent 60%);
+  margin:3rem 0;
+  position:relative;
+  border-top:1px solid rgba(140,100,40,.1);
+  border-bottom:1px solid rgba(140,100,40,.1);
+}
+.disciplines-inner{
+  max-width:78rem; margin:0 auto;
+}
+.section-eyebrow{
+  font-family:var(--f-num);
+  font-size:.7rem; letter-spacing:.45em;
+  color:var(--gold-d);
+  margin-bottom:.8rem;
+}
+.disciplines h2{
+  font-family:var(--f-cn);
+  font-weight:300;
+  font-size:clamp(2rem, 3.5vw, 2.9rem);
+  color:var(--bone);
+  margin:0 0 .4em;
+  letter-spacing:.04em;
+}
+.disciplines h2 .accent{ color:var(--vermillion); font-family:var(--f-cn-brush)}
+.disciplines .sub{
+  font-family:var(--f-en-disp);
+  font-style:italic;
+  font-size:1.3rem;
+  color:var(--text-soft);
+  margin:0 0 4rem;
+}
+.discipline-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(15rem, 1fr));
+  gap:1px;
+  background:rgba(140,100,40,.2);
+  border:1px solid rgba(140,100,40,.2);
+}
+.discipline-cell{
+  background:var(--ink);
+  padding:2rem 1.8rem 2.2rem;
+  position:relative;
+  transition:background .4s, transform .4s, box-shadow .4s;
+  cursor:default;
+}
+.discipline-cell:hover{
+  background:var(--ink-deep);
+  transform:translateY(-2px);
+  box-shadow:0 4px 20px rgba(100,70,20,.08);
+}
+.discipline-cell .dnum{
+  font-family:var(--f-num);
+  font-size:.7rem;
+  color:var(--gold-d);
+  letter-spacing:.3em;
+  margin-bottom:.6rem;
+}
+.discipline-cell h3{
+  font-family:var(--f-cn);
+  font-weight:500;
+  font-size:1.4rem;
+  color:var(--bone);
+  margin:0 0 .15em;
+  letter-spacing:.04em;
+}
+.discipline-cell .en{
+  font-family:var(--f-en-disp);
+  font-style:italic;
+  font-size:.95rem;
+  color:var(--gold);
+  margin-bottom:1rem;
+  letter-spacing:.04em;
+}
+.discipline-cell p{
+  font-size:.92rem;
+  color:var(--text-soft);
+  line-height:1.7;
+  margin:0;
+}
+
+/* ====== Cloud divider ====== */
+.cloud-divider{
+  display:flex; align-items:center; justify-content:center;
+  gap:2rem;
+  margin:5rem auto;
+  max-width:30rem;
+  color:var(--gold-d);
+  opacity:.55;
+}
+.cloud-divider::before, .cloud-divider::after{
+  content:''; flex:1; height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold-d), transparent);
+}
+.cloud-divider svg{ width:5rem; height:auto; opacity:.8 }
+
+/* ====== Chapter ====== */
+.chapter{
+  display:grid;
+  grid-template-columns:1fr 2.4fr;
+  gap:4rem;
+  max-width:78rem;
+  margin:0 auto;
+  padding:6rem var(--gutter);
+  position:relative;
+  scroll-margin-top:4rem;
+}
+.chapter-head{
+  position:sticky;
+  top:5rem;
+  align-self:start;
+  display:flex; flex-direction:column; gap:1rem;
+}
+.ch-numeral{
+  font-family:var(--f-num);
+  font-size:5rem; font-weight:500;
+  color:var(--vermillion);
+  line-height:1;
+  letter-spacing:.02em;
+}
+.ch-numeral-cn{
+  font-family:var(--f-cn);
+  font-size:1rem;
+  color:var(--gold-d);
+  letter-spacing:.45em;
+  margin-top:-.4rem;
+}
+.ch-title-cn{
+  font-family:var(--f-cn);
+  font-weight:500;
+  font-size:2.6rem;
+  color:var(--paper);
+  margin:1.5rem 0 .1em;
+  letter-spacing:.06em;
+}
+.ch-title-en{
+  font-family:var(--f-en-disp);
+  font-style:italic;
+  font-weight:400;
+  font-size:1.3rem;
+  color:var(--gold-2);
+  margin:0;
+  letter-spacing:.04em;
+}
+.ch-tagline{
+  font-family:var(--f-cn);
+  font-weight:300;
+  font-size:.95rem;
+  color:var(--text-soft);
+  margin:1rem 0 0;
+  padding-top:1rem;
+  border-top:1px solid rgba(140,100,40,.2);
+  max-width:14rem;
+  line-height:1.6;
+}
+
+.chapter-body{
+  font-size:1.05rem;
+  color:var(--text);
+}
+.chapter-body > *:first-child{ margin-top:0 }
+.chapter-body p{margin:0 0 1.4em}
+.chapter-body p strong{color:var(--bone); font-weight:500}
+.chapter-body p em{color:var(--gold); font-style:normal; padding:0 .1em}
+.chapter-body p.lede{
+  font-family:var(--f-cn);
+  font-size:1.25rem;
+  line-height:1.85;
+  color:var(--bone);
+  font-weight:400;
+  margin-bottom:2em;
+}
+.chapter-body .dropcap{
+  font-family:var(--f-cn-brush);
+  float:left;
+  font-size:5em;
+  line-height:.85;
+  padding:.05em .15em 0 0;
+  color:var(--vermillion);
+  font-weight:400;
+}
+
+/* lists */
+.chapter-body ul.classic{
+  list-style:none;
+  padding:0; margin:1.5em 0;
+  border-left:1px solid rgba(140,100,40,.3);
+}
+.chapter-body ul.classic li{
+  padding:.45em 0 .45em 1.5em;
+  position:relative;
+  color:var(--text);
+}
+.chapter-body ul.classic li::before{
+  content:''; position:absolute;
+  left:-3px; top:1.2em;
+  width:6px; height:6px;
+  background:var(--vermillion);
+  border-radius:50%;
+}
+.chapter-body ul.classic li b{
+  color:var(--gold-2);
+  font-family:var(--f-num);
+  font-weight:500;
+  letter-spacing:.1em;
+  font-size:.85em;
+  display:inline-block;
+  min-width:5.5rem;
+}
+
+/* pullquote */
+.pullquote{
+  margin:2.5em 0;
+  padding:1.5em 0 1.5em 2em;
+  border-left:3px solid var(--vermillion);
+  background: linear-gradient(90deg, rgba(181,63,44,.04), transparent 80%);
+  font-family:var(--f-cn);
+  font-weight:400;
+  font-size:1.4rem;
+  line-height:1.7;
+  color:var(--bone);
+  letter-spacing:.04em;
+  position:relative;
+}
+.pullquote cite{
+  display:block;
+  margin-top:1em;
+  font-family:var(--f-en-disp);
+  font-style:italic;
+  font-size:.95rem;
+  color:var(--gold);
+  letter-spacing:.05em;
+}
+
+/* margin note */
+.note{
+  display:block;
+  margin:1.8em 0;
+  padding:1.2em 1.4em;
+  background:rgba(140,100,40,.05);
+  border:1px solid rgba(140,100,40,.18);
+  border-left:3px solid var(--gold);
+  font-size:.92rem;
+  color:var(--text-soft);
+  font-family:var(--f-cn);
+}
+.note .note-label{
+  display:inline-block;
+  font-family:var(--f-num);
+  font-size:.62rem; letter-spacing:.35em;
+  color:var(--gold);
+  margin-right:.8em;
+  padding-right:.8em;
+  border-right:1px solid rgba(140,100,40,.3);
+}
+
+/* data row */
+.data-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(8rem, 1fr));
+  gap:1.5rem;
+  margin:2.2em 0;
+  padding:1.5em 0;
+  border-top:1px solid rgba(140,100,40,.22);
+  border-bottom:1px solid rgba(140,100,40,.22);
+}
+.data-row .cell{
+  display:flex; flex-direction:column;
+}
+.data-row .cell strong{
+  font-family:var(--f-num);
+  font-size:1.8rem;
+  color:var(--vermillion-2);
+  font-weight:500;
+  line-height:1;
+  margin-bottom:.4em;
+}
+.data-row .cell span{
+  font-size:.85rem;
+  color:var(--text-soft);
+  letter-spacing:.04em;
+}
+
+/* responsive chapter */
+@media(max-width:880px){
+  .chapter{
+    grid-template-columns:1fr;
+    gap:2rem;
+  }
+  .chapter-head{position:static}
+  .ch-numeral{font-size:3.6rem}
+  .ch-title-cn{font-size:2rem}
+}
+
+/* ====== Comparative table ====== */
+.compare-table{
+  margin:2.5em 0;
+  border-collapse:collapse;
+  width:100%;
+  font-size:.95rem;
+}
+.compare-table th, .compare-table td{
+  padding:1em 1.2em;
+  text-align:left;
+  vertical-align:top;
+  border-bottom:1px solid rgba(140,100,40,.15);
+}
+.compare-table th{
+  font-family:var(--f-num);
+  font-weight:500;
+  font-size:.72rem;
+  letter-spacing:.3em;
+  color:var(--gold-d);
+  text-transform:uppercase;
+  padding-bottom:.8em;
+  border-bottom:1px solid rgba(140,100,40,.35);
+}
+.compare-table td.label{
+  color:var(--bone);
+  font-weight:500;
+  width:8rem;
+}
+.compare-table tr:hover td{ background:rgba(140,100,40,.04) }
+
+/* ====== Epilogue ====== */
+.epilogue{
+  padding:9rem var(--gutter) 7rem;
+  text-align:center;
+  position:relative;
+  background:
+    linear-gradient(180deg, transparent, rgba(200,170,100,.08) 50%, transparent),
+    radial-gradient(ellipse at center top, rgba(181,63,44,.06), transparent 55%);
+  border-top:1px solid rgba(140,100,40,.12);
+}
+.epilogue .epi-mark{
+  display:inline-block;
+  font-family:var(--f-num);
+  font-size:.7rem; letter-spacing:.5em;
+  color:var(--gold-d);
+  margin-bottom:1.4rem;
+}
+.epilogue h2{
+  font-family:var(--f-cn);
+  font-weight:300;
+  font-size:clamp(2rem, 4vw, 3.2rem);
+  color:var(--bone);
+  margin:0 0 2em;
+  letter-spacing:.06em;
+}
+.epilogue h2 em{
+  font-family:var(--f-cn-brush);
+  font-style:normal;
+  color:var(--vermillion);
+  font-size:1.3em;
+}
+.epi-body{
+  max-width:36rem;
+  margin:0 auto;
+  font-size:1.1rem;
+  color:var(--text);
+  line-height:2;
+}
+.epi-body p{margin:0 0 1.3em}
+.epi-verse{
+  margin:3em auto;
+  padding:2em 0;
+  border-top:1px solid rgba(140,100,40,.25);
+  border-bottom:1px solid rgba(140,100,40,.25);
+  font-family:var(--f-cn-script);
+  font-size:1.3rem;
+  color:var(--gold);
+  line-height:2.4;
+  letter-spacing:.06em;
+}
+
+/* ====== Footer ====== */
+.colophon{
+  padding:3rem var(--gutter) 4rem;
+  border-top:1px solid rgba(140,100,40,.2);
+  display:flex; justify-content:space-between;
+  flex-wrap:wrap; gap:1.5rem;
+  font-family:var(--f-num);
+  font-size:.7rem; letter-spacing:.3em;
+  color:var(--text-deep);
+  max-width:78rem; margin:0 auto;
+}
+.colophon .seal-tag{
+  display:flex; align-items:center; gap:.8rem;
+}
+.colophon .seal-tag .seal-sm{
+  width:1.8rem; height:1.8rem;
+  background:var(--vermillion);
+  display:grid; place-items:center;
+  color:#faf5ec;
+  font-family:var(--f-cn-brush);
+  font-size:1.1rem;
+}
+
+/* ====== Reveal animation ====== */
+.reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.1s ease-out, transform 1.1s ease-out; }
+.reveal.in{ opacity:1; transform:translateY(0) }
+
+/* small screens */
+@media(max-width:600px){
+  .canvas, .chapter, .prologue, .disciplines, .epilogue{ padding-left:1.5rem; padding-right:1.5rem }
+  .hero{ padding-left:1.5rem; padding-right:1.5rem }
+  .hero-meta{ gap:1.5rem }
+  .top-mark{ right:1rem; font-size:.55rem; letter-spacing:.2em }
+  .top-mark span:first-child{ display:none }
+}
+</style>
+</head>
+<body>
+
+<!-- Side index -->
+<nav class="side-index" aria-label="目录">
+  <div class="vert-label">目<br>录</div>
+  <a href="#prologue" data-ch="0">序</a>
+  <a href="#disciplines">學</a>
+  <a href="#ch1" data-ch="1">I</a>
+  <a href="#ch2" data-ch="2">II</a>
+  <a href="#ch3" data-ch="3">III</a>
+  <a href="#ch4" data-ch="4">IV</a>
+  <a href="#ch5" data-ch="5">V</a>
+  <a href="#ch6" data-ch="6">VI</a>
+  <a href="#ch7" data-ch="7">VII</a>
+  <a href="#ch8" data-ch="8">VIII</a>
+  <a href="#ch9" data-ch="9">IX</a>
+  <a href="#ch10" data-ch="10">X</a>
+  <a href="#epilogue">終</a>
+</nav>
+
+<!-- Top mark -->
+<div class="top-mark">
+  <span>FIELD NOTES · MMXXVI</span>
+  <div class="seal-sm">龍</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg-char" aria-hidden="true">龍</div>
+  <div class="hero-tag">A Cross-Disciplinary Inquiry · 跨學科考察</div>
+  <h1>龍</h1>
+  <div class="hero-sub-cn">一个符号的多重宇宙</div>
+  <p class="hero-title-en">
+    The <em>Meaning</em> of the Dragon —<br>
+    eight thousand years of a single sign, refracted through eleven disciplines.
+  </p>
+  <div class="hero-meta">
+    <div><span>VOLUME</span><strong>I / I</strong></div>
+    <div><span>FIELDS COVERED</span><strong>11</strong></div>
+    <div><span>READING TIME</span><strong>22 MIN</strong></div>
+    <div><span>EDITION</span><strong>MMXXVI · 05</strong></div>
+  </div>
+  <div class="scroll-cue">SCROLL ／ 入境</div>
+</header>
+
+<!-- PROLOGUE -->
+<section class="prologue" id="prologue">
+  <div class="prologue-cn-label">序章 · 问题之龙</div>
+  <h2>龙不是动物。<br>它是中国人观察世界时<em>无意识</em>使用的一面镜子。</h2>
+  <div class="prologue-body reveal">
+    <div>
+      <p>追问"龙是什么"会立刻撞上一堵墙——因为它从未真正"是"什么。考古学家在内蒙古赤峰发掘出八千年前的红山C形玉龙，那时它还只是一团蜷曲的兽形；商代青铜器上的夔龙带着诡谲的独足；汉以后它被加冕为皇权独占；今天它在春节的灯笼里、在游戏皮肤里、在国家叙事的修辞里继续生长。</p>
+      <p>这条"龙"在不同的时空里被不同的人群用作不同的工具——有时是求雨的法器，有时是宇宙秩序的注解，有时是政治权威的徽章，有时是个人心理整合的原型，有时是文化经济的IP。</p>
+    </div>
+    <div>
+      <p>因此本文不打算回答"龙是什么"。<br>本文要追问的是——<strong>龙意味着什么</strong>？</p>
+      <p>这不是一个生物学问题，而是一个符号学问题。它需要被同时拉到考古学、文字学、神话学、哲学、天文学、政治学、艺术史、民俗学、心理学、比较文化学和符号经济学的桌面上，分别审视，然后再合拢观察。</p>
+      <p>下面这十一道光，会照出十一条"龙"。它们都是真的，也都只是部分。</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISCIPLINES OVERVIEW -->
+<section class="disciplines" id="disciplines">
+  <div class="disciplines-inner">
+    <div class="section-eyebrow">CONSTELLATION OF FIELDS · 学科星图</div>
+    <h2>十一道<span class="accent">光</span>，照向同一条龙</h2>
+    <p class="sub">Eleven disciplinary lenses, refracting one ancient sign.</p>
+
+    <div class="discipline-grid reveal">
+      <div class="discipline-cell">
+        <div class="dnum">I</div>
+        <h3>考古学</h3>
+        <div class="en">Archaeology</div>
+        <p>红山玉龙、二里头绿松石龙、商周青铜——龙形象的物质层位与演化谱系。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">II</div>
+        <h3>古文字学</h3>
+        <div class="en">Paleography</div>
+        <p>甲骨文与金文中"龍"字的形态溯源：闪电、巨蟒、神兽的视觉缝合。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">III</div>
+        <h3>神话宗教学</h3>
+        <div class="en">Mythology & Religion</div>
+        <p>应龙、烛龙、四海龙王、佛教Naga——龙在多元信仰体系中的功能分化。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">IV</div>
+        <h3>哲学</h3>
+        <div class="en">Philosophy</div>
+        <p>《易经》乾卦六龙、老子犹龙——龙作为"变易"本体的哲学符号。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">V</div>
+        <h3>天文学 / 历法</h3>
+        <div class="en">Astronomy & Calendar</div>
+        <p>苍龙七宿、二月二龙抬头：天文方位中具象化的星象之龙。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">VI</div>
+        <h3>政治学</h3>
+        <div class="en">Political Symbolism</div>
+        <p>从汉代"感龙而生"到明清五爪垄断——龙作为权威建构的图像史。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">VII</div>
+        <h3>艺术史 / 建筑学</h3>
+        <div class="en">Art & Architecture</div>
+        <p>"九似"合成、纹样朝代谱系、太和殿一万三千条龙的政治装饰学。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">VIII</div>
+        <h3>民俗学</h3>
+        <div class="en">Folklore</div>
+        <p>龙舟、舞龙、风水龙脉、龙生九子——日常生活中的龙能量布网。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">IX</div>
+        <h3>比较文化学</h3>
+        <div class="en">Comparative Cultures</div>
+        <p>Dragon、Naga、Quetzalcoatl、Loong：跨文明语境中的"龙"翻译政治。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">X</div>
+        <h3>分析心理学</h3>
+        <div class="en">Depth Psychology</div>
+        <p>荣格原型、屠龙叙事、"化龙"模型——龙作为无意识与转化的图像。</p>
+      </div>
+      <div class="discipline-cell">
+        <div class="dnum">XI</div>
+        <h3>符号 / 文化经济学</h3>
+        <div class="en">Semiotics & Cultural Economy</div>
+        <p>"龙的传人"的现代发明、龙年生育峰、龙形IP——符号资本的当代运作。</p>
+      </div>
+      <div class="discipline-cell" style="background:linear-gradient(135deg, rgba(181,63,44,.08), rgba(184,148,86,.04));">
+        <div class="dnum">∞</div>
+        <h3>结语</h3>
+        <div class="en">A Synthesis</div>
+        <p>十一种解读的合拢——为什么"龙"是中国文明最重要的元符号之一。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cloud-divider">
+  <svg viewBox="0 0 80 24" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M5 12c0-4 4-7 8-6s5 5 9 5 6-4 11-4 8 4 12 4 7-4 12-3 8 5 13 4"/>
+    <path d="M5 18c0-2 3-4 6-3s4 3 7 3 5-2 9-2 6 2 10 2 6-2 10-1 7 3 13 2"/>
+  </svg>
+</div>
+
+<!-- ============ CHAPTERS ============ -->
+
+<!-- Chapter I -->
+<article class="chapter" id="ch1">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">I</div>
+    <div class="ch-numeral-cn">壹</div>
+    <h2 class="ch-title-cn">考古遗痕</h2>
+    <h3 class="ch-title-en">Archaeological Strata</h3>
+    <p class="ch-tagline">物质地层中的八千年——龙形象不是被创造的，是被沉积出来的。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">如</span>果把中国地下八千年里出土的"龙"按年代铺平，会得到一条非常不安分的演化曲线——它不像一条河流，更像若干条溪流在不同时刻汇入同一条河床。</p>
+
+    <p><strong>红山文化C形玉龙</strong>（约公元前 4700—前 2900 年）出土于内蒙古赤峰翁牛特旗三星塔拉，被习称"中华第一龙"。它高 26 厘米，墨绿色岫岩玉，整体卷成 C 形，头部有长鬣，无足无翼。重要的是——它不像后世任何一条龙。这是一只<em>原龙</em>，一个尚未被语义彻底定义的形体。</p>
+
+    <p><strong>二里头遗址绿松石龙形器</strong>（约公元前 1750 年）发现于河南偃师，长达 70.2 厘米，由 2000 余片细小绿松石拼缀而成，出土时被放置在墓主胸腹之上。这是已知最早将龙作为<em>身份符号</em>使用的实物证据——它已经超越装饰，进入礼制。</p>
+
+    <div class="note">
+      <span class="note-label">REF</span>
+      许宏《二里头：华夏第一王都的考古叙事》指出，该龙形器很可能是早期"宗教—政治权力人物"的胸饰，标志中国进入"王朝考古"的视觉阶段。
+    </div>
+
+    <p>到了商周，<strong>夔龙纹</strong>（独足侧面）与<strong>蟠龙纹</strong>大量出现在青铜礼器上，但形象抽象、几何，常与饕餮、云雷纹相互嵌套。此时的龙还不是"主角"，它是一种<em>神性符号集群</em>的成员之一。</p>
+
+    <p>真正让"龙"获得完整生物学身份的，是汉代。马王堆 T 形帛画上的双龙穿璧、画像石上的青龙朱雀——龙从此有了我们熟悉的样子：长身、有足、有角、有须、可飞可潜。</p>
+
+    <div class="data-row">
+      <div class="cell"><strong>8000</strong><span>红山 C 形玉龙距今年代</span></div>
+      <div class="cell"><strong>70.2cm</strong><span>二里头绿松石龙长度</span></div>
+      <div class="cell"><strong>2000+</strong><span>构成绿松石龙的玉片</span></div>
+      <div class="cell"><strong>5</strong><span>形象演化主要朝代节点</span></div>
+    </div>
+
+    <div class="pullquote">
+      "龙的形象并非一次创造，而是多源汇流——它是新石器晚期至商周之间，黄河中下游与北方草原诸文化共同沉积出的视觉公约数。"
+      <cite>— 综合自李学勤、孙守道等关于早期龙形象的研究</cite>
+    </div>
+  </div>
+</article>
+
+<!-- Chapter II -->
+<article class="chapter" id="ch2">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">II</div>
+    <div class="ch-numeral-cn">貳</div>
+    <h2 class="ch-title-cn">字源迷雾</h2>
+    <h3 class="ch-title-en">The Glyph's Genealogy</h3>
+    <p class="ch-tagline">"龍"字本身就是一个微缩的符号学事件。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">甲</span>骨文中的"龍"字（约公元前 1300 年），头部带冠或角，身躯曲折下垂，张口巨眼。它不是任何一种现存动物的写真——它<em>看起来像</em>蛇，又像鳄，又像闪电，又像云气。</p>
+
+    <p>古文字学界对"龙"字的原型大致有三派意见——</p>
+    <ul class="classic">
+      <li><b>RAIN HYPOTHESIS</b>"闪电雷云说"：龙字曲折的身躯是闪电的拟形，头部的"辛"形是雷击形象。许慎《说文解字》："龙，鳞虫之长。能幽能明，能细能巨，能短能长。春分而登天，秋分而潜渊"——已经是天象描述。</li>
+      <li><b>SERPENT HYPOTHESIS</b>"巨蟒鳄鱼说"：龙的爬行特征、鳞片描写与长江流域的扬子鳄、巨蟒生态相符。闻一多在《伏羲考》中提出龙是<em>以蛇为主体、综合多种动物图腾的复合形象</em>。</li>
+      <li><b>TOTEM HYPOTHESIS</b>"图腾合成说"：龙是华夏部落联盟形成时的文化产物——每个加入联盟的部族图腾（鹿、鱼、鹰、虎……）被吸收进龙身。这一说法解释了为何龙具有"九似"的拼贴特征。</li>
+    </ul>
+
+    <p>无论哪一种为真，关键在于：<strong>"龙"从来不是对单一现实的命名，它从一开始就是一个抽象与综合的符号</strong>。它命名的不是某种动物，而是某一类<em>看不清但要紧</em>的存在——风雨、雷电、水脉、灵感、王权、变化。</p>
+
+    <div class="note">
+      <span class="note-label">附</span>
+      "龙"的繁体"龍"由"立、月、卜、三、巳"五部分组成。清代段玉裁《说文解字注》认为这种结构本质上是后世对甲骨文形象的"再阐释"——汉字一旦定型，反过来塑造人对原始事物的想象。
+    </div>
+  </div>
+</article>
+
+<!-- Chapter III -->
+<article class="chapter" id="ch3">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">III</div>
+    <div class="ch-numeral-cn">參</div>
+    <h2 class="ch-title-cn">神祇与方术</h2>
+    <h3 class="ch-title-en">Gods, Rain, Rituals</h3>
+    <p class="ch-tagline">求雨、镇水、护法、降福——龙在信仰体系中的功能版图。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">在</span>《山海经》的世界里，龙不是一种生物，是一批<em>分工明确的神祇</em>：应龙生双翼，曾助黄帝战蚩尤；烛龙居钟山，"视为昼，瞑为夜"；夔龙独足震雷；虬龙无角；蛟则擅水患。这是龙作为信仰对象最早期的样貌——多神、多功能、未统一。</p>
+
+    <p>道教兴起后将龙纳入护法体系。<strong>东方青龙</strong>与西方白虎、南方朱雀、北方玄武并称四象，对应五行中的<em>木</em>，象征春天、生发、东方之气。这是龙第一次被嵌入完整的宇宙图式。</p>
+
+    <p>佛教传入中国后，印度的 <em>Nāga</em>（多头眼镜蛇人形神祇）被译者借用"龙"字翻译。《法华经》中的八大龙王听佛说法，从此佛教神祇与本土水神信仰合流，出现了我们今天熟悉的<strong>四海龙王</strong>体系：</p>
+
+    <ul class="classic">
+      <li><b>EAST 東海</b>敖广，主春雨</li>
+      <li><b>SOUTH 南海</b>敖钦，主夏霖</li>
+      <li><b>WEST 西海</b>敖闰，主秋露</li>
+      <li><b>NORTH 北海</b>敖顺，主冬雪</li>
+    </ul>
+
+    <p>而在民间，龙最重要的<em>实用</em>身份是<strong>司雨之神</strong>。董仲舒《春秋繁露·求雨》详细记载了汉代官方求雨仪式：在不同方位设土龙、配色彩、择童男童女、举行"舞龙"——这才是端午、二月二等节庆龙形民俗的源头。龙是<em>人与上天之间的水汽中介</em>。</p>
+
+    <div class="pullquote">
+      春旱求雨，令县邑以水日，令民祷社稷山川，雨数日及之，无令一邑而独有水也。
+      <cite>— 董仲舒《春秋繁露·求雨第七十四》</cite>
+    </div>
+  </div>
+</article>
+
+<!-- Chapter IV -->
+<article class="chapter" id="ch4">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IV</div>
+    <div class="ch-numeral-cn">肆</div>
+    <h2 class="ch-title-cn">易理与道学</h2>
+    <h3 class="ch-title-en">Philosophy of Change</h3>
+    <p class="ch-tagline">龙在中国哲学中不是生物，是"变化"本身的图腾。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">《</span>易经》乾卦——中国哲学的开篇——六爻全部以龙为喻。这是一个关键事实：中国人最古老的"人生周期模型"用<em>龙</em>来标记每一阶段的处境。</p>
+
+    <ul class="classic">
+      <li><b>初九</b>潜龙勿用 — 蛰伏期，能力未显，不宜行动</li>
+      <li><b>九二</b>见龙在田 — 初露头角，开始被看见</li>
+      <li><b>九三</b>君子终日乾乾，夕惕若 — 警觉期，险</li>
+      <li><b>九四</b>或跃在渊 — 转折时刻，进退两可</li>
+      <li><b>九五</b>飞龙在天 — 巅峰，"九五之尊"由此而来</li>
+      <li><b>上九</b>亢龙有悔 — 过盛则衰，物极必反</li>
+    </ul>
+
+    <p>这六个阶段构成了一个完整的<em>时机哲学</em>——龙在此处不是动物，是<strong>处境的隐喻、机遇的化身、能与不能的辩证标尺</strong>。中国人讨论"识时务"，背后是这六条龙。</p>
+
+    <p>另一个标志性文献是《史记·老子韩非列传》。孔子见过老子之后回去对弟子说："鸟，吾知其能飞；鱼，吾知其能游；兽，吾知其能走。……至于龙，吾不能知，其乘风云而上天。<em>吾今日见老子，其犹龙邪！</em>"</p>
+
+    <p>这是一个极重要的隐喻指认——龙在此被等同于<strong>不可测度的最高智慧</strong>。它不是被供奉的对象，而是认识论的边界。能被命名、能被分类的东西都不是龙；龙是那个超越分类系统本身的存在。</p>
+
+    <div class="note">
+      <span class="note-label">辨</span>
+      庄子笔下另有一则关于龙的隐喻——朱泙漫学屠龙之技于支离益，三年技成而无龙可屠。"屠龙之技"在中国语境中成为<em>不实用的高深技艺</em>的代称——与西方"屠龙英雄"的褒义截然相反。这一语义反转本身就是文化心理结构的差异。
+    </div>
+
+    <p>从《易》到《庄》，龙在中国哲学中承担的不是任何具体物的角色，而是<em>变化、时机、超验</em>这三个抽象范畴的可视化身。</p>
+  </div>
+</article>
+
+<!-- Chapter V -->
+<article class="chapter" id="ch5">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">V</div>
+    <div class="ch-numeral-cn">伍</div>
+    <h2 class="ch-title-cn">天象与地脉</h2>
+    <h3 class="ch-title-en">Heaven Above, Earth Below</h3>
+    <p class="ch-tagline">天上有星象之龙，地下有山脉之龙，空中有气象之龙——龙是自然系统的拟人。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">把</span>头抬起来看星空——中国古天文学把东方七宿合称为<em>苍龙</em>。这条龙写在天上。</p>
+
+    <p>二十八宿中东方七宿——<strong>角、亢、氐、房、心、尾、箕</strong>——其连线形状被想象为一条横亘星空的龙身。<em>角</em>是龙角，<em>心</em>是龙心，<em>尾</em>是龙尾。这是中国天文学最具想象力的"星座命名"。</p>
+
+    <p>每年农历二月初，傍晚时分角宿从东方地平线升起——龙抬起了头。这就是"<strong>二月二龙抬头</strong>"民俗的天文学根据。把节庆和星象绑在一起，使天文知识下沉为身体记忆——这是中国传统知识传承的典型策略。</p>
+
+    <p>把眼光放回地面，<strong>风水学</strong>把山脉称为"龙脉"。郭璞《葬书》："气乘风则散，界水则止，古人聚之使不散，行之使有止，故谓之风水。"山为骨，水为脉，整片地貌被想象为一条<em>活的龙体</em>——龙在地理学中成为<strong>气流与生气流动的拟人化表达</strong>。</p>
+
+    <p>再看空中——龙卷风被叫作"<strong>龙吸水</strong>"。古人不知气压差，但把柱状旋转气流直接命名为龙的吸吮动作——这是一种<em>通过象征性命名理解未知现象</em>的认知方式。命名即理解的初阶。</p>
+
+    <div class="pullquote">
+      春分而登天，秋分而潜渊。
+      <cite>— 《说文解字·龙部》</cite>
+    </div>
+
+    <p>许慎这句话其实是天文学的浓缩——春分前后苍龙七宿升起，秋分前后落入地平线。<strong>龙的"飞与潜"，就是星象的升与沉</strong>。当我们说"飞龙在天"，说的本来就是天文，不是神话。</p>
+  </div>
+</article>
+
+<!-- Chapter VI -->
+<article class="chapter" id="ch6">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VI</div>
+    <div class="ch-numeral-cn">陸</div>
+    <h2 class="ch-title-cn">权力之印</h2>
+    <h3 class="ch-title-en">Sign of Sovereignty</h3>
+    <p class="ch-tagline">龙被加冕为皇权专属，前后用了一千五百年。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">汉</span>代以前，龙并不专属帝王。诸侯、贵族、巫师都可以使用龙形纹饰。但《史记·高祖本纪》记载刘邦"母感龙而生"的叙事，开启了"<em>真龙天子</em>"的政治神话。从此，龙开始向上聚拢。</p>
+
+    <p>到了元明清，龙被<strong>彻底垄断</strong>为皇权专属。明清的纹章礼制里，龙纹被严格分级：</p>
+
+    <table class="compare-table">
+      <thead><tr><th>等级</th><th>纹样</th><th>使用人</th><th>违例后果</th></tr></thead>
+      <tbody>
+        <tr><td class="label">皇帝</td><td>五爪正面金龙</td><td>仅皇帝</td><td>—</td></tr>
+        <tr><td class="label">亲王</td><td>四爪龙（部分时期）</td><td>皇室宗亲</td><td>降爵</td></tr>
+        <tr><td class="label">官员</td><td>"蟒"袍（三/四爪，非龙）</td><td>一至九品文武</td><td>逾制者死罪</td></tr>
+        <tr><td class="label">平民</td><td>不得使用</td><td>—</td><td>抄没</td></tr>
+      </tbody>
+    </table>
+
+    <p>这是一个值得注意的<em>符号经济学</em>事件：通过把一个早已存在的公共符号<strong>稀缺化、等级化</strong>，国家把图像变成了政治资本。"五爪"与"四爪"之差，差的是一条命。</p>
+
+    <p>故宫太和殿是这种意识形态的物质极致——梁柱、藻井、宝座、栏杆、地砖共藏有 <strong>13,844 条</strong>龙纹。在最重要的宝座上方，是一条悬挂的<em>轩辕镜</em>，由龙口衔住——非"真龙天子"坐于其下，传说镜将坠落。<strong>建筑成为意识形态的物质形式</strong>。</p>
+
+    <div class="data-row">
+      <div class="cell"><strong>13,844</strong><span>太和殿龙纹总数（据故宫博物院测算）</span></div>
+      <div class="cell"><strong>5</strong><span>皇帝专属龙爪数</span></div>
+      <div class="cell"><strong>12</strong><span>龙袍上的"十二章纹"</span></div>
+      <div class="cell"><strong>1644</strong><span>明清易代时龙作为政治符号的延续年</span></div>
+    </div>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      龙袍上的<em>十二章纹</em>（日、月、星辰、山、龙、华虫、宗彝、藻、火、粉米、黼、黻）将龙置于宇宙符号体系之中——皇帝因此不仅是政治领袖，更是宇宙秩序的代理人。这正是中国政治学独特的一面：<strong>合法性不来自选举，而来自宇宙符号的占有</strong>。
+    </div>
+  </div>
+</article>
+
+<!-- Chapter VII -->
+<article class="chapter" id="ch7">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VII</div>
+    <div class="ch-numeral-cn">柒</div>
+    <h2 class="ch-title-cn">九似与百艺</h2>
+    <h3 class="ch-title-en">Art, Architecture, Literature</h3>
+    <p class="ch-tagline">龙是一种被反复重写的视觉文本——朝代不同，重写方式不同。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">宋</span>代罗愿《尔雅翼》提出了著名的"九似"说，给后世画龙立下了视觉公式——</p>
+
+    <ul class="classic">
+      <li><b>角</b>似鹿</li>
+      <li><b>头</b>似驼</li>
+      <li><b>眼</b>似兔</li>
+      <li><b>项</b>似蛇</li>
+      <li><b>腹</b>似蜃</li>
+      <li><b>鳞</b>似鱼</li>
+      <li><b>爪</b>似鹰</li>
+      <li><b>掌</b>似虎</li>
+      <li><b>耳</b>似牛</li>
+    </ul>
+
+    <p>这是一个非常诚实的供述——<strong>龙是九种已知动物的视觉合成</strong>。它确认了龙的本体论身份：不是某种真实生物，而是<em>视觉拼贴的产物</em>，是一种文化合成图像。</p>
+
+    <p>历代龙纹各有时代精神：</p>
+    <ul class="classic">
+      <li><b>商周</b>狞厉神秘，几何抽象，与饕餮共栖</li>
+      <li><b>汉代</b>奔腾雄健，蛇身、修长、有飞动感</li>
+      <li><b>唐代</b>丰满圆润，雍容华贵，与佛教造像相呼应</li>
+      <li><b>宋代</b>清瘦灵秀，文人化，水墨韵味</li>
+      <li><b>明清</b>繁复威仪，金色装饰最盛，权力意味顶峰</li>
+    </ul>
+
+    <p>明代《升庵外集》记载"<strong>龙生九子</strong>"——龙的家族扩展为整套文化符号系统：囚牛好音乐（琴头）、睚眦好斗（兵器）、嘲风好险（屋脊）、蒲牢好鸣（钟纽）、狻猊好烟（香炉）、霸下好负重（碑座）、狴犴好讼（狱门）、负屃好文（碑首）、螭吻好吞（屋脊兽）。一条龙裂变为九种功能，从一个图腾发展成<em>整套建筑装饰语言</em>。</p>
+
+    <p>文学方面，从《楚辞·九歌》中的乘龙、唐传奇《柳毅传》中的龙女，到《西游记》四海龙王的喜剧化处理、《封神演义》中哪吒抽龙筋的反神圣化——<strong>文学中的龙既是神圣的，又可被戏谑、被反抗</strong>。这一弹性使龙文化没有走向僵硬。</p>
+
+    <div class="pullquote">
+      画龙点睛，破壁飞去。
+      <cite>— 唐·张彦远《历代名画记》载张僧繇画龙故事</cite>
+    </div>
+  </div>
+</article>
+
+<!-- Chapter VIII -->
+<article class="chapter" id="ch8">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VIII</div>
+    <div class="ch-numeral-cn">捌</div>
+    <h2 class="ch-title-cn">日常之龙</h2>
+    <h3 class="ch-title-en">Folklore & Everyday Life</h3>
+    <p class="ch-tagline">从屋脊到嘴边——龙是中国语言与节庆的高频背景音。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">脱</span>下皇袍、走出庙堂，龙在民间的样子要朴素得多——它出现在屋脊上、龙舟里、剃头店里、年画里，甚至每一个家庭希望孩子未来"成龙"的口头禅里。</p>
+
+    <p><strong>端午龙舟</strong>，本是楚地祭祀水神的远古仪式，后被附会为纪念屈原。它的核心其实不是竞速，而是<em>集体身体与龙共振的祭仪</em>——船是龙身，划桨手是龙的肌肉，鼓声是龙的心跳。</p>
+
+    <p><strong>正月十五舞龙</strong>、<strong>二月二剃头</strong>（"剃龙头"）、<strong>春节年画</strong>中的金龙——龙浸透了从年到月、从月到日的时间节奏。生肖中的<em>辰龙</em>是十二生肖里唯一的虚构生物，其余十一种都是真实动物——这一独特性使"龙年"在中国家庭决策中具有真实的权重。</p>
+
+    <div class="note">
+      <span class="note-label">据</span>
+      国家统计局历年数据显示，2000、2012、2024 等龙年，中国新生儿数量较前后年份出现显著上扬，部分年份增幅超过 5%。<em>一个文化符号能直接影响生育决策——这是符号经济学的极端样本</em>。
+    </div>
+
+    <p>语言层面，龙是中国成语和俗语的<em>高频出现者</em>：</p>
+    <ul class="classic">
+      <li><b>望子成龙</b>对下一代的最高期待</li>
+      <li><b>龙马精神</b>赞颂活力</li>
+      <li><b>龙凤呈祥</b>祝贺婚姻</li>
+      <li><b>画龙点睛</b>形容关键性细节</li>
+      <li><b>卧虎藏龙</b>形容隐藏的高手</li>
+      <li><b>群龙无首</b>形容失序状态</li>
+      <li><b>叶公好龙</b>讽刺表里不一</li>
+    </ul>
+
+    <p>这些成语共同构成了一张语义网络——龙在其中扮演<em>能量、潜质、卓越、神秘、关键</em>等多种角色。它是中国语言中最具弹性的隐喻之一。</p>
+  </div>
+</article>
+
+<!-- Chapter IX -->
+<article class="chapter" id="ch9">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IX</div>
+    <div class="ch-numeral-cn">玖</div>
+    <h2 class="ch-title-cn">镜中之龙</h2>
+    <h3 class="ch-title-en">A Cross-Cultural Mirror</h3>
+    <p class="ch-tagline">把中国龙放在世界神话学的台子上，会发生什么？</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">如</span>果在英文世界谈"中国龙"，几乎所有人脑中先浮起的是 <em>Dragon</em>——一只喷火、贪婪、守宝、终被英雄屠戮的西方爬虫。这是一个翻译事故，也是一个文化误读。</p>
+
+    <table class="compare-table">
+      <thead><tr><th>维度</th><th>东方龙</th><th>西方 Dragon</th></tr></thead>
+      <tbody>
+        <tr><td class="label">形象</td><td>蛇身、有须、无翼或可飞</td><td>蜥蜴体、双翼、喷火</td></tr>
+        <tr><td class="label">功能</td><td>司雨、施泽、镇水、护佑</td><td>守宝、吞噬、试炼英雄</td></tr>
+        <tr><td class="label">道德性</td><td>正神，吉祥</td><td>恶兽，邪</td></tr>
+        <tr><td class="label">结局</td><td>升天为神，凡人慕之</td><td>被英雄屠杀，象征文明胜野蛮</td></tr>
+        <tr><td class="label">与人关系</td><td>"龙的传人"——血脉</td><td>对立——征服对象</td></tr>
+      </tbody>
+    </table>
+
+    <p>两者除了"巨型有鳞生物"的视觉相似之外，<strong>几乎没有任何文化共性</strong>。把它们译为同一个词，是 19 世纪传教士翻译史上最具误导性的决定之一。</p>
+
+    <p>近年来出现了一种文化自觉——主张将中国龙译为 <em>Loong</em>（"龍"的另一种音译），以与 Dragon 区分。<em>2024 龙年央视春晚海外宣传、新华社英文报道</em>等场合开始系统使用 Loong。这是<strong>符号主权意识在全球化语境下的复苏</strong>——译名之争背后是文化自我表述权的归还。</p>
+
+    <p>而把视野拉得更宽——印度文化中的 <strong>Nāga</strong>（多头眼镜蛇人形神）、中美洲玛雅文明的 <strong>Quetzalcoatl</strong>（羽蛇神）、北欧神话中的 <strong>Jörmungandr</strong>（环绕世界的巨蛇）——这些"类龙生物"提示我们：<em>蛇形神祇与水、雨、宇宙循环的关联是一个跨文明的人类学常项</em>。中国龙不是孤例，但中国龙的<strong>正神化、政治化、日常化</strong>程度是独一无二的。</p>
+
+    <div class="pullquote">
+      龙之译名问题，从来不是语言学问题，是话语权问题。
+      <cite>— 21 世纪中国翻译学界对 "Loong vs Dragon" 之辩的核心共识</cite>
+    </div>
+  </div>
+</article>
+
+<!-- Chapter X -->
+<article class="chapter" id="ch10">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">X</div>
+    <div class="ch-numeral-cn">拾</div>
+    <h2 class="ch-title-cn">心灵深处</h2>
+    <h3 class="ch-title-en">The Dragon in the Psyche</h3>
+    <p class="ch-tagline">荣格遇上中国龙——为什么中国神话里很少有"屠龙英雄"？</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">卡</span>尔·荣格的分析心理学认为，<em>屠龙</em>是世界性英雄神话的核心母题。从希腊的珀尔修斯到日耳曼的西格弗里德，从圣乔治到贝奥武夫——英雄之旅总要面对一条龙，并杀死它。</p>
+
+    <p>在这个体系里，龙象征<strong>阴影（Shadow）、无意识、母性子宫</strong>——一切尚未被自我整合的内在他者。"屠龙"是心灵成熟的隐喻：你必须穿越未知，杀死你的恐惧，才能成为完整的自己。</p>
+
+    <p>但把这套模型套到中国神话上会立刻失效——<em>中国几乎没有"屠龙英雄"</em>。少数例外（如哪吒抽龙筋）也总以悲剧或反讽收场，不被讴歌。中国主流叙事中没有"圣乔治"型的人物。</p>
+
+    <p>取而代之的，是<strong>"化龙"模型</strong>——鲤鱼跃龙门、凡人成龙、修道得道而升天。在中国心理结构里，<em>龙不是需要被屠戮的他者，而是需要被成为的自我</em>。</p>
+
+    <div class="pullquote">
+      西方神话教人屠龙以成英雄；<br>
+      中国神话教人化龙以成圣贤。
+      <cite>— 关于中西心理原型差异的一种概括</cite>
+    </div>
+
+    <p>这一差异有深远的文化心理学意义——它暗示了<strong>两种处理无意识的方式</strong>：</p>
+    <ul class="classic">
+      <li><b>OPPOSITION</b>对抗模式（西方）：自我 vs 阴影，分裂后再整合，主体性强但内耗大</li>
+      <li><b>FUSION</b>融合模式（中国）：自我与"龙"同源，目标是合一而非战胜，主体性柔但耗散少</li>
+    </ul>
+
+    <p>所谓"龙的传人"的认同——"<em>我和龙是同源的</em>"——是这一融合模式的极致表达。这不仅是民族叙事，也是一种<strong>集体无意识层面的自我安放方式</strong>。</p>
+
+    <div class="note">
+      <span class="note-label">注</span>
+      这并不意味着中国文化中"没有阴影整合"，而是说阴影整合的<em>叙事策略</em>不同——它发生在"潜龙勿用"到"飞龙在天"的内部演化中，而不是在与外部怪兽的搏斗中。
+    </div>
+  </div>
+</article>
+
+<!-- Chapter XI -->
+<article class="chapter" id="ch11">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">XI</div>
+    <div class="ch-numeral-cn">拾壹</div>
+    <h2 class="ch-title-cn">当代回声</h2>
+    <h3 class="ch-title-en">Symbol Capital in the Present</h3>
+    <p class="ch-tagline">"龙的传人"是1978年的发明——一个古老符号的现代再装配。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">1978</span> 年，台湾音乐人侯德健写下《龙的传人》："古老的东方有一条龙，她的名字就叫中国；古老的东方有一群人，他们全都是龙的传人。"——这是<strong>"龙的传人"</strong>这一表述第一次大规模传播。</p>
+
+    <p>很多人以为"龙的传人"是几千年的古训。事实上，它是 20 世纪后期的<em>诗学发明</em>。在此之前，没有任何古代文献明确将整个中国人定义为"龙的后代"——古人有"炎黄子孙"，没有"龙的传人"。</p>
+
+    <p>这一现代发明何以成为不容置疑的常识？因为它精准地完成了三件事：</p>
+    <ul class="classic">
+      <li><b>1</b>把分散的"龙意象"统合为一个民族身份符号</li>
+      <li><b>2</b>把皇权专属的龙重新交还给"人民"</li>
+      <li><b>3</b>为冷战和改革开放时期的中国人提供了一个非政治、跨海峡的文化认同基础</li>
+    </ul>
+
+    <p>改革开放后，<strong>"巨龙腾飞"</strong>成为国家叙事的核心隐喻——经济崛起、文化复兴、奥运开幕式、北京冬奥会的吉祥物……龙形象从"前现代"的农业神祇，转身成为"后现代"的国族能量品牌。</p>
+
+    <p>文化产业层面，龙是当下最重要的<em>符号资产</em>之一——</p>
+    <div class="data-row">
+      <div class="cell"><strong>+5.2%</strong><span>典型龙年新生儿数较前后年份增幅（参考国家统计局历史数据）</span></div>
+      <div class="cell"><strong>13+</strong><span>近五年涉及"龙"形象的高票房动画（《哪吒》《长安三万里》《姜子牙》等）</span></div>
+      <div class="cell"><strong>2024</strong><span>"Loong"译名被官方机构系统采用的关键年</span></div>
+      <div class="cell"><strong>11亿+</strong><span>2024春晚海内外观看人次中"龙"为核心视觉</span></div>
+    </div>
+
+    <p>更有意思的是<strong>"新龙"的出现</strong>——B 站国风创作者、游戏（《黑神话：悟空》中的小白龙）、电竞战队图腾（LPL）、潮玩 IP……年轻一代正在<em>把龙从皇权符号、农耕符号，重新格式化为"东方酷"的视觉资产</em>。这是一个仍在进行中的语义重组。</p>
+
+    <div class="pullquote">
+      每一代人都需要重新定义龙——因为每一代人都需要重新定义自己。
+      <cite>— A working hypothesis</cite>
+    </div>
+  </div>
+</article>
+
+<div class="cloud-divider">
+  <svg viewBox="0 0 80 24" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M5 12c0-4 4-7 8-6s5 5 9 5 6-4 11-4 8 4 12 4 7-4 12-3 8 5 13 4"/>
+    <path d="M5 18c0-2 3-4 6-3s4 3 7 3 5-2 9-2 6 2 10 2 6-2 10-1 7 3 13 2"/>
+  </svg>
+</div>
+
+<!-- EPILOGUE -->
+<section class="epilogue" id="epilogue">
+  <div class="epi-mark">EPILOGUE · 終章</div>
+  <h2>何<em>以</em>为龙</h2>
+  <div class="epi-body reveal">
+    <p>龙不是动物。</p>
+    <p>它是八千年来中国人观察世界的多重镜像——<br>
+       是考古地层中的图腾，<br>
+       是哲学卦象中的时机，<br>
+       是天文方位中的春分，<br>
+       是政治符号中的权威，<br>
+       是民俗节庆中的喜悦，<br>
+       是文学想象中的精灵，<br>
+       是心理结构中的可能性，<br>
+       是当代叙事中的国族能量。</p>
+
+    <div class="epi-verse">
+      龍者，能幽能明，能細能巨，<br>
+      能短能長，能潛能飛。<br>
+      —— 是故，謂之龍。
+    </div>
+
+    <p>理解龙，就是理解中国人<strong>如何用一个符号同时统摄秩序、变化、神圣与日常</strong>。它不是某物，而是某种<em>把许多物重新黏合在一起的语法</em>。</p>
+    <p>它的意义不在它<em>是</em>什么——而在它<em>承载了什么、隐喻了什么、统合了什么</em>。</p>
+    <p style="margin-top:3em; color:var(--gold); font-family:var(--f-cn-brush); font-size:1.6rem; letter-spacing:.2em;">
+      一龍，萬解。
+    </p>
+  </div>
+</section>
+
+<!-- COLOPHON -->
+<footer class="colophon">
+  <div class="seal-tag">
+    <div class="seal-sm">龍</div>
+    <div>
+      <div>FIELD NOTES · No. I</div>
+      <div style="font-family:var(--f-cn); font-size:.65rem; color:var(--text-deep); margin-top:.2rem; letter-spacing:.2em;">龍 · 一个符号的多重宇宙</div>
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <div>CROSS-DISCIPLINARY INQUIRY</div>
+    <div style="margin-top:.3rem; color:var(--gold-d)">MMXXVI · EDITION 05</div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Side index active state
+const links = document.querySelectorAll('.side-index a');
+const targets = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const setActive = () => {
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let activeIdx = 0;
+  targets.forEach((t, i) => { if (t.offsetTop <= y) activeIdx = i; });
+  links.forEach((l, i) => l.classList.toggle('active', i === activeIdx));
+};
+window.addEventListener('scroll', setActive, { passive:true });
+setActive();
+
+// Subtle parallax on hero character
+const heroChar = document.querySelector('.hero-bg-char');
+if (heroChar) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroChar.style.transform = `translateY(calc(-50% + ${y * 0.15}px))`;
+    }
+  }, { passive:true });
+}
+</script>
+
+</body>
+</html>

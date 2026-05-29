@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龍學三部曲 · A Trilogy of Dragons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void:        #08060a;
+  --bg:          #0a0810;
+  --bg-2:        #15101c;
+  --bg-warm:     #1a1208;
+  --ink:         #faf5ec;
+  --ink-soft:    #d4c8b0;
+  --ink-deep:    #8a7d6a;
+
+  --gold:        #c9a961;
+  --gold-bright: #f3c969;
+  --gold-deep:   #8a7440;
+
+  --crimson:     #8b2c2c;
+  --crimson-2:   #b53f2c;
+  --ember:       #d97144;
+  --ember-bright:#f5a35b;
+  --jade:        #466b5a;
+  --indigo:      #3b3460;
+
+  --f-cn-brush:  'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --f-cn-script: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --f-cn:        'Noto Serif SC', 'Songti SC', serif;
+  --f-en-disp:   'Cormorant Garamond', serif;
+  --f-en:        'EB Garamond', Georgia, serif;
+  --f-num:       'Cinzel', serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-cn);
+  font-weight: 300;
+  line-height: 1.85;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,   rgba(217,113,68,0.10), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(47,42,74,0.30),   transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(232,213,184,0.012) 0,
+      rgba(232,213,184,0.012) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === 巨大背景"龍"字 === */
+.bg-char {
+  position: fixed;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--f-cn-brush);
+  font-size: clamp(36rem, 80vw, 80rem);
+  line-height: .85;
+  color: transparent;
+  background: linear-gradient(180deg,
+    rgba(245,201,105,0.06) 0%,
+    rgba(217,113,68,0.04) 60%,
+    rgba(139,44,44,0.03) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  filter: blur(.5px);
+  animation: breathe 22s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: .9; }
+  50%      { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+/* === 容器 === */
+.page {
+  position: relative;
+  z-index: 5;
+  max-width: 86rem;
+  margin: 0 auto;
+  padding: 8rem clamp(1.5rem, 5vw, 4rem) 6rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === 顶 === */
+.gate-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+.gate-head .left {
+  max-width: 38rem;
+}
+.gate-head .eyebrow {
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .5em;
+  color: var(--gold);
+  margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.gate-head .eyebrow::before {
+  content: ''; display: block;
+  width: 3.2rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.gate-title-cn {
+  font-family: var(--f-cn-brush);
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: .04em;
+  text-shadow: 0 0 30px rgba(245,201,105,0.25);
+}
+.gate-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  color: var(--gold-bright);
+  margin-top: .8rem;
+  letter-spacing: .04em;
+}
+.gate-subtitle {
+  font-family: var(--f-cn);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-top: 1.6rem;
+  max-width: 36rem;
+  line-height: 1.85;
+}
+
+.gate-head .seal {
+  width: 5rem; height: 5rem;
+  background: var(--crimson);
+  display: grid; place-items: center;
+  color: var(--ink);
+  font-family: var(--f-cn-brush);
+  font-size: 3rem;
+  box-shadow:
+    0 0 0 2px rgba(139,44,44,.6) inset,
+    0 0 40px rgba(217,113,68,0.35);
+  flex-shrink: 0;
+}
+
+/* === 三册 === */
+.volumes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin: 2rem 0 5rem;
+}
+.vol {
+  position: relative;
+  display: block;
+  padding: 2.6rem 2rem 2.2rem;
+  border: 1px solid rgba(245,201,105,0.18);
+  background: linear-gradient(180deg, rgba(245,201,105,0.04), transparent 50%);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .55s cubic-bezier(.2,.7,.3,1),
+              border-color .4s,
+              box-shadow .4s,
+              background .4s;
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+}
+.vol:hover {
+  transform: translateY(-8px);
+  border-color: var(--gold-bright);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(245,201,105,0.4),
+    0 0 40px rgba(245,201,105,0.12);
+  background: linear-gradient(180deg, rgba(245,201,105,0.08), transparent 60%);
+}
+
+.vol .vol-num {
+  font-family: var(--f-num);
+  font-size: .68rem;
+  letter-spacing: .5em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.vol .vol-num span:last-child {
+  color: var(--ink-deep);
+  font-size: .62rem;
+}
+.vol .vol-glyph {
+  font-family: var(--f-cn-brush);
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--gold-bright);
+  letter-spacing: .04em;
+  margin: .2rem 0 .6rem;
+  text-shadow: 0 0 22px rgba(245,201,105,0.3);
+  transition: color .4s;
+}
+.vol .vol-glyph-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ember);
+  margin-bottom: 1.4rem;
+}
+.vol .vol-title-cn {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.55rem;
+  color: var(--ink);
+  letter-spacing: .04em;
+  margin-bottom: .4rem;
+  line-height: 1.3;
+}
+.vol .vol-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.2rem;
+}
+.vol .vol-desc {
+  font-size: .93rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+.vol .vol-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: var(--f-num);
+  font-size: .62rem;
+  letter-spacing: .25em;
+  color: var(--ink-deep);
+  padding-top: 1rem;
+  border-top: 1px solid rgba(245,201,105,0.12);
+}
+.vol .vol-meta .read-cue {
+  color: var(--ember);
+  display: flex; align-items: center; gap: .4rem;
+}
+.vol .vol-meta .read-cue::after {
+  content: '→';
+  transition: transform .4s;
+}
+.vol:hover .vol-meta .read-cue::after {
+  transform: translateX(6px);
+}
+
+/* 三册各自调色 */
+.vol.v1 .vol-glyph    { color: var(--gold-bright); }
+.vol.v1 { border-color: rgba(245,201,105,0.22); }
+.vol.v2 .vol-glyph    { color: #e8b56a; }
+.vol.v2 { border-color: rgba(232,181,106,0.22); }
+.vol.v3 .vol-glyph    { color: var(--ember-bright); }
+.vol.v3 { border-color: rgba(217,113,68,0.26); }
+
+@media (max-width: 880px) {
+  .volumes { grid-template-columns: 1fr; }
+  .vol { min-height: auto; }
+}
+
+/* === 阅读路径建议 === */
+.path {
+  margin-top: 1rem;
+  padding: 2.4rem 0;
+  border-top: 1px solid rgba(245,201,105,0.15);
+  border-bottom: 1px solid rgba(245,201,105,0.15);
+}
+.path-label {
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .45em;
+  color: var(--gold);
+  margin-bottom: 1.6rem;
+}
+.path h3 {
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+  letter-spacing: .04em;
+}
+.path-flow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+  font-size: .95rem;
+  color: var(--ink-soft);
+}
+.path-flow .node {
+  padding: 1rem 1.2rem;
+  background: rgba(245,201,105,0.04);
+  border-left: 2px solid var(--gold);
+  font-family: var(--f-cn);
+}
+.path-flow .node b {
+  display: block;
+  font-weight: 500;
+  color: var(--gold-bright);
+  margin-bottom: .25rem;
+  font-family: var(--f-cn);
+  letter-spacing: .08em;
+}
+.path-flow .arrow {
+  color: var(--ember);
+  font-family: var(--f-num);
+  font-size: 1.2rem;
+}
+@media (max-width: 720px) {
+  .path-flow {
+    grid-template-columns: 1fr;
+  }
+  .path-flow .arrow { text-align: center; padding: .3rem 0; }
+}
+
+/* === thesis === */
+.thesis {
+  margin: 5rem auto 4rem;
+  max-width: 52rem;
+  padding: 3rem 3rem;
+  background:
+    radial-gradient(ellipse at top left, rgba(217,113,68,0.08), transparent 60%),
+    rgba(15,11,20,0.5);
+  border: 1px solid rgba(217,113,68,0.22);
+  position: relative;
+}
+.thesis::before {
+  content: '◆ 三部曲的核心命题 ◆';
+  position: absolute;
+  top: -.7rem; left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 1.2rem;
+  font-family: var(--f-num);
+  font-size: .65rem;
+  letter-spacing: .4em;
+  color: var(--ember);
+}
+.thesis-text {
+  font-family: var(--f-cn-script);
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
+  color: var(--ink);
+  line-height: 2.1;
+  text-align: center;
+  letter-spacing: .06em;
+}
+.thesis-text em {
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  color: var(--ember-bright);
+  padding: 0 .15em;
+}
+
+/* === footer === */
+.gate-foot {
+  margin-top: auto;
+  padding-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--f-num);
+  font-size: .7rem;
+  letter-spacing: .3em;
+  color: var(--ink-deep);
+}
+.gate-foot a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(212,200,176,.3);
+}
+.gate-foot a:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+
+/* === 续卷 === */
+.continuations { margin: 4rem 0 2rem; }
+.cont-label {
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .45em;
+  color: var(--ember);
+  margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.cont-label::before {
+  content: ''; display: block;
+  width: 3rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember));
+}
+.cont-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+.cont {
+  display: block;
+  padding: 1.8rem 2rem;
+  border: 1px solid rgba(217,113,68,0.20);
+  background: linear-gradient(135deg, rgba(217,113,68,0.05), transparent 60%);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .4s, border-color .4s, box-shadow .4s, background .4s;
+}
+.cont:hover {
+  transform: translateY(-4px);
+  border-color: var(--ember-bright);
+  background: linear-gradient(135deg, rgba(217,113,68,0.10), transparent 70%);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 24px rgba(217,113,68,0.15);
+}
+.cont-num {
+  font-family: var(--f-num);
+  font-size: .64rem;
+  letter-spacing: .45em;
+  color: var(--ember);
+  margin-bottom: .7rem;
+}
+.cont-title {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: var(--ink);
+  letter-spacing: .04em;
+  margin-bottom: .3rem;
+}
+.cont-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--ember-bright);
+  margin-bottom: 1rem;
+}
+.cont-desc {
+  font-size: .9rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+@media (max-width: 720px) { .cont-grid { grid-template-columns: 1fr; } }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s, transform 1s; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="bg-char" aria-hidden="true">龍</div>
+
+<main class="page">
+
+  <header class="gate-head">
+    <div class="left">
+      <div class="eyebrow">A TRILOGY · MMXXVI</div>
+      <h1 class="gate-title-cn">龍學三部曲</h1>
+      <div class="gate-title-en">A Trilogy of Dragons —<br>see, understand, defend.</div>
+      <p class="gate-subtitle">
+        三册书，三种姿态——卷一<em style="color:var(--gold-bright);font-style:normal;">看见</em>世界上的龙，卷二<em style="color:var(--gold-bright);font-style:normal;">理解</em>中国的龙，卷三<em style="color:var(--ember-bright);font-style:normal;">守护</em>那条不死之龙。从神话到符号，再到死亡与复生——围绕一个核心命题。
+      </p>
+    </div>
+    <div class="seal" aria-hidden="true">龍</div>
+  </header>
+
+  <!-- 三册 -->
+  <section class="volumes" aria-label="三册">
+
+    <a class="vol v1" href="01-龙之百科.html">
+      <div class="vol-num"><span>VOLUME I</span><span>· 卷壹</span></div>
+      <div class="vol-glyph">壹</div>
+      <div class="vol-glyph-en">A Compendium</div>
+      <div class="vol-title-cn">龙之百科</div>
+      <div class="vol-title-en">From Myth to Self</div>
+      <p class="vol-desc">
+        九种龙文化的世界巡礼——东方与西方、文学与艺术、游戏与影视、Dragonkin 与哲学。落点：在所有"龙叙事"之后，留下一句你自己的命题——龙是不依赖外界确认而存在的。
+      </p>
+      <div class="vol-meta">
+        <span>9 SECTIONS · 神話·哲學</span>
+        <span class="read-cue">入卷壹</span>
+      </div>
+    </a>
+
+    <a class="vol v2" href="02-龙的意义.html">
+      <div class="vol-num"><span>VOLUME II</span><span>· 卷貳</span></div>
+      <div class="vol-glyph">貳</div>
+      <div class="vol-glyph-en">Eleven Lenses</div>
+      <div class="vol-title-cn">一个符号的多重宇宙</div>
+      <div class="vol-title-en">The Meaning of the Dragon</div>
+      <p class="vol-desc">
+        十一道学科之光照向同一条中国龙——考古、文字、神话、哲学、天文、政治、艺术、民俗、比较文化、深层心理、符号经济。八千年的沉积，一龍萬解。
+      </p>
+      <div class="vol-meta">
+        <span>11 FIELDS · 跨学科考察</span>
+        <span class="read-cue">入卷貳</span>
+      </div>
+    </a>
+
+    <a class="vol v3" href="03-龙的死亡与重生.html">
+      <div class="vol-num"><span>VOLUME III</span><span>· 卷叁</span></div>
+      <div class="vol-glyph">叁</div>
+      <div class="vol-glyph-en">Death &amp; Rebirth</div>
+      <div class="vol-title-cn">龙的死亡与重生</div>
+      <div class="vol-title-en">After Reason, Capital and AI</div>
+      <p class="vol-desc">
+        在祛魅、政治、消费、拟像、Midjourney 的四重死亡之后，龙在三个地方复活——孩子的想象、宫崎骏的反叙事、Dragonkin 的自我宣称。终章回扣到那条不死的衔尾蛇。
+      </p>
+      <div class="vol-meta">
+        <span>9 CHAPTERS · 3 ACTS</span>
+        <span class="read-cue">入卷叁</span>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- 续卷 -->
+  <section class="continuations" aria-label="续卷">
+    <div class="cont-label">CONTINUATIONS · 續卷</div>
+    <div class="cont-grid">
+      <a class="cont" href="04-为什么人类一直需要龙.html">
+        <div class="cont-num">长文 · ESSAY</div>
+        <div class="cont-title">為什麼人類一直需要龍</div>
+        <div class="cont-en">Why Humans Have Always Needed Dragons</div>
+        <div class="cont-desc">穿透三部曲的哲学长文——七位思想家七种回答。私语小房间留给你。</div>
+      </a>
+      <a class="cont" href="05-化龍.html">
+        <div class="cont-num">卷伍 · VOL.V</div>
+        <div class="cont-title">化&nbsp;龍 · The Becoming</div>
+        <div class="cont-en">From acknowledging to becoming</div>
+        <div class="cont-desc">乾卦六龙位 + 当代化龙三条窄路。承认之后的下一步。</div>
+      </a>
+      <a class="cont" href="06-龍的對話錄.html">
+        <div class="cont-num">卷陸 · VOL.VI</div>
+        <div class="cont-title">龍的對話錄 · A Symposium</div>
+        <div class="cont-en">Seven thinkers, one reader, one silent witness</div>
+        <div class="cont-desc">柏拉图体——一夜山中道观围炉夜话。Vico/Eliade/Lévi-Strauss/Jung/Tolkien/Benjamin×Lacan/Heidegger 与你交锋。沉默的衔尾蛇整夜在呼吸。</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 阅读路径 -->
+  <section class="path reveal">
+    <div class="path-label">READING PATH · 閱讀路徑</div>
+    <h3>建议依序而读——每一卷都为下一卷打下地基。</h3>
+    <div class="path-flow">
+      <div class="node"><b>卷壹 · 看见</b>看世界上的龙长什么样、做过什么。</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>卷貳 · 理解</b>理解中国龙作为一种"符号语法"。</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>卷叁 · 守护</b>认出那条不能被任何死法杀死的龙。</div>
+    </div>
+  </section>
+
+  <!-- 核心论题 -->
+  <section class="thesis reveal">
+    <p class="thesis-text">
+      被讲述的龙，<em>會死</em>。<br>
+      不講述自己的龍，<em>不死</em>。<br>
+      龙的本质，不是它被画成什么样——<br>
+      而是它能在所有死法之后，<em>仍是它自己</em>。
+    </p>
+  </section>
+
+  <!-- 底 -->
+  <footer class="gate-foot">
+    <div>
+      A TRILOGY OF DRAGONS · COMPILED MMXXVI
+    </div>
+    <div>
+      <a href="01-龙之百科.html">壹</a> ·
+      <a href="02-龙的意义.html">貳</a> ·
+      <a href="03-龙的死亡与重生.html">叁</a> ·
+      <a href="04-为什么人类一直需要龙.html">長文</a> ·
+      <a href="05-化龍.html">伍</a> ·
+      <a href="06-龍的對話錄.html">陸</a>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

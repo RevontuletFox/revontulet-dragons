@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>為什麼人類一直需要龍｜Why Humans Have Always Needed Dragons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   "為什麼人類一直需要龍"
+   黎明—紫金美学：暗夜将尽，曙光未现
+   配套三部曲，但站在三部曲之上的位置
+   =========================================================== */
+
+:root {
+  /* —— 黎明前的紫与金 —— */
+  --void:        #08060f;
+  --bg:          #110d1c;
+  --bg-2:        #1a1428;
+  --bg-3:        #221a32;
+  --bg-mist:     #281f3a;
+
+  --ink:         #f5ecdb;
+  --ink-soft:    #d4c2a6;
+  --ink-deep:    #948776;
+  --ink-mute:    #5a5266;
+
+  --rose:        #d96b8e;       /* 黎明玫瑰 */
+  --rose-deep:   #8b3a55;
+  --rose-soft:   #f5a7be;
+
+  --violet:      #7a5a9f;       /* 暮紫 */
+  --violet-d:    #4a3567;
+  --violet-soft: #b39cd6;
+
+  --gold:        #d4af6a;       /* 微金 */
+  --gold-bright: #ffd180;       /* 曙光金 */
+  --gold-deep:   #8a6a30;
+
+  --jade:        #4e7a6b;       /* 微青 */
+  --indigo-d:    #2a2438;
+
+  --line:        rgba(212,175,106,0.15);
+  --line-rose:   rgba(217,107,142,0.22);
+  --line-violet: rgba(122,90,159,0.30);
+
+  --f-cn-brush:  'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --f-cn-script: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --f-cn:        'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
+  --f-en-disp:   'Cormorant Garamond', serif;
+  --f-en:        'EB Garamond', Georgia, serif;
+  --f-num:       'Cinzel', serif;
+
+  --measure: 38rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-cn);
+  font-weight: 300;
+  line-height: 1.9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 全局气氛 */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 70% at 80% 0%,  rgba(255,209,128,0.10), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 10% 100%, rgba(122,90,159,0.30),  transparent 60%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(217,107,142,0.04), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: repeating-linear-gradient(
+    37deg,
+    rgba(245,236,219,0.015) 0,
+    rgba(245,236,219,0.015) 1px,
+    transparent 1px, transparent 7px
+  );
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* 缓慢漂浮的"星" */
+.stars {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--gold-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 4px var(--gold-bright);
+  opacity: 0;
+  animation: twinkle 8s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; }
+  20%      { opacity: .35; }
+  50%      { opacity: .9; }
+  80%      { opacity: .35; }
+}
+
+a {
+  color: var(--gold-bright);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,209,128,0.36);
+  transition: color .3s, border-color .3s;
+}
+a:hover { color: var(--rose-soft); border-bottom-color: var(--rose-soft); }
+img, svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   侧边索引
+   ============================================================ */
+.side-index {
+  position: fixed;
+  left: 1.5rem; top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex; flex-direction: column; gap: .8rem;
+  padding: 1.4rem .8rem;
+  font-family: var(--f-num);
+  font-size: .72rem; letter-spacing: .18em;
+  color: var(--ink-deep);
+}
+.side-index .vert-label {
+  font-family: var(--f-cn);
+  font-size: .7rem;
+  color: var(--rose);
+  letter-spacing: .4em;
+  padding-bottom: .6rem;
+  margin-bottom: .4rem;
+  border-bottom: 1px solid var(--line-rose);
+  text-align: center;
+}
+.side-index a {
+  color: var(--ink-deep);
+  border: none;
+  text-align: center;
+  transition: color .3s, transform .3s;
+}
+.side-index a:hover, .side-index a.active {
+  color: var(--gold-bright);
+  transform: translateX(2px);
+}
+@media (max-width: 980px) { .side-index { display: none; } }
+
+/* 右上 */
+.top-mark {
+  position: fixed;
+  top: 1.4rem; right: 1.6rem;
+  z-index: 50;
+  display: flex; align-items: center; gap: .9rem;
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .32em;
+  color: var(--ink-deep);
+}
+.top-mark .seal {
+  width: 1.8rem; height: 1.8rem;
+  background: var(--rose-deep);
+  display: grid; place-items: center;
+  color: var(--ink);
+  font-family: var(--f-cn-brush);
+  font-size: 1.05rem;
+  box-shadow:
+    0 0 0 1px rgba(217,107,142,.6) inset,
+    0 0 18px rgba(217,107,142,0.4);
+}
+.top-mark .nav-links {
+  display: flex; gap: .9rem;
+  font-family: var(--f-cn);
+  font-size: .72rem;
+  letter-spacing: .25em;
+}
+.top-mark .nav-links a {
+  color: var(--ink-deep);
+  border: none;
+}
+.top-mark .nav-links a:hover { color: var(--gold-bright); }
+@media (max-width: 720px) { .top-mark .nav-links { display: none; } }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem var(--gutter) 4rem;
+  overflow: hidden;
+  z-index: 5;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 80%, rgba(122,90,159,0.35), transparent 70%),
+    radial-gradient(ellipse 80% 70% at 80% 0%, rgba(255,209,128,0.12), transparent 60%);
+  border-bottom: 1px solid var(--line-rose);
+}
+
+.hero-bg-char {
+  position: absolute;
+  right: -5vw; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--f-cn-brush);
+  font-size: clamp(30rem, 65vw, 64rem);
+  line-height: .85;
+  color: transparent;
+  background: linear-gradient(160deg,
+    rgba(255,209,128,0.10) 0%,
+    rgba(217,107,142,0.06) 50%,
+    rgba(122,90,159,0.05) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  filter: blur(.6px);
+  animation: dawn-breath 22s ease-in-out infinite;
+}
+@keyframes dawn-breath {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50%      { transform: translateY(-50%) scale(1.04); }
+}
+
+.hero-eyebrow {
+  font-family: var(--f-num);
+  font-size: .76rem;
+  letter-spacing: .45em;
+  color: var(--rose);
+  margin-bottom: 2.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; animation: rise 1s .15s ease-out forwards;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 3.5rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose));
+}
+
+.hero h1 {
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+  line-height: 1.15;
+  margin: 0 0 .25em;
+  color: var(--ink);
+  letter-spacing: .04em;
+  max-width: 24em;
+  opacity: 0;
+  animation: rise 1.2s .35s ease-out forwards;
+}
+.hero h1 em {
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  color: var(--gold-bright);
+  font-size: 1.1em;
+}
+
+.hero-sub-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.6vw, 2.3rem);
+  letter-spacing: .04em;
+  color: var(--rose-soft);
+  margin: 1.6rem 0 2.8rem;
+  max-width: 38rem;
+  line-height: 1.3;
+  opacity: 0; animation: rise 1.2s .7s ease-out forwards;
+}
+.hero-sub-en em { color: var(--gold-bright); font-style: italic; }
+
+.hero-thesis {
+  max-width: 40rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--f-cn);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 2;
+  opacity: 0; animation: rise 1.2s 1s ease-out forwards;
+}
+.hero-thesis em { color: var(--gold-bright); font-style: normal; }
+
+.hero-meta {
+  display: flex; gap: 3rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--ink-deep);
+  margin-top: 3.5rem;
+  flex-wrap: wrap;
+  opacity: 0; animation: rise 1.2s 1.3s ease-out forwards;
+}
+.hero-meta div { display: flex; flex-direction: column; gap: .3rem; }
+.hero-meta strong { color: var(--gold-bright); font-weight: 500; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .4em;
+  color: var(--ink-deep);
+  display: flex; align-items: center; gap: .6rem;
+  opacity: 0; animation: rise 1s 1.6s ease-out forwards;
+}
+.scroll-cue::after {
+  content: ''; display: block; width: 1px; height: 2.2rem;
+  background: linear-gradient(180deg, var(--rose), transparent);
+  animation: descend 2.6s ease-in-out infinite;
+}
+@keyframes descend {
+  0%, 100% { transform: scaleY(.6) translateY(-30%); opacity: .35; }
+  50%      { transform: scaleY(1)  translateY(0);   opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   PROLOGUE
+   ============================================================ */
+section { position: relative; z-index: 5; }
+
+.prologue {
+  padding: 9rem var(--gutter) 6rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  position: relative;
+}
+.prologue::before {
+  content: 'OVERTURE · 序';
+  position: absolute;
+  top: 5.5rem; left: var(--gutter);
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .4em;
+  color: var(--rose);
+}
+
+.prologue-label {
+  font-family: var(--f-cn);
+  font-size: .85rem; letter-spacing: .4em;
+  color: var(--rose);
+  margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.prologue-label::after {
+  content: ''; flex: 1; max-width: 6rem; height: 1px;
+  background: linear-gradient(90deg, var(--rose), transparent);
+}
+
+.prologue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4.3vw, 3.6rem);
+  line-height: 1.3;
+  margin: .4em 0 1.5em;
+  color: var(--ink);
+  letter-spacing: .02em;
+  max-width: 32em;
+}
+.prologue h2 em {
+  font-style: normal;
+  color: var(--gold-bright);
+  font-family: var(--f-cn-brush);
+  font-size: 1.2em;
+}
+
+.prologue-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+.prologue-body p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 0 0 1.3em;
+}
+.prologue-body p:first-child::first-letter {
+  font-family: var(--f-cn-brush);
+  font-size: 4.2em;
+  float: left;
+  line-height: .9;
+  padding: .1em .15em 0 0;
+  color: var(--gold-bright);
+}
+@media (max-width: 760px) { .prologue-body { grid-template-columns: 1fr; gap: 1rem; } }
+
+/* ============================================================
+   QUESTION CARD —— 每章前的"问题卡"
+   ============================================================ */
+.question-card {
+  max-width: 56rem;
+  margin: 6rem auto 0;
+  padding: 2.6rem 3rem;
+  background:
+    linear-gradient(135deg, rgba(122,90,159,0.18) 0%, rgba(217,107,142,0.10) 100%),
+    rgba(17,13,28,0.7);
+  border: 1px solid var(--line-violet);
+  border-radius: 4px;
+  position: relative;
+}
+.question-card::before {
+  content: 'QUESTION · 問';
+  position: absolute;
+  top: -.6rem; left: 2rem;
+  background: var(--bg);
+  padding: 0 .9rem;
+  font-family: var(--f-num);
+  font-size: .62rem;
+  letter-spacing: .4em;
+  color: var(--rose);
+}
+.question-card .q-num {
+  font-family: var(--f-num);
+  font-size: .8rem;
+  letter-spacing: .35em;
+  color: var(--gold);
+  margin-bottom: .9rem;
+}
+.question-card .q-text {
+  font-family: var(--f-cn);
+  font-size: clamp(1.3rem, 2.3vw, 1.8rem);
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: .03em;
+}
+.question-card .q-text em {
+  color: var(--gold-bright);
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  font-size: 1.15em;
+  padding: 0 .1em;
+}
+.question-card .q-answerer {
+  margin-top: 1.4rem;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--rose-soft);
+}
+
+/* ============================================================
+   CHAPTER
+   ============================================================ */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 4rem;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 5rem var(--gutter);
+  position: relative;
+  scroll-margin-top: 4rem;
+}
+.chapter-head {
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.ch-numeral {
+  font-family: var(--f-num);
+  font-size: 5rem; font-weight: 500;
+  color: var(--rose);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-shadow: 0 0 22px rgba(217,107,142,0.35);
+}
+.ch-numeral-cn {
+  font-family: var(--f-cn);
+  font-size: 1rem;
+  color: var(--ink-deep);
+  letter-spacing: .45em;
+  margin-top: -.4rem;
+}
+.ch-title-cn {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 2.4rem;
+  color: var(--ink);
+  margin: 1.5rem 0 .1em;
+  letter-spacing: .06em;
+  line-height: 1.25;
+}
+.ch-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--gold-bright);
+  margin: 0;
+  letter-spacing: .04em;
+}
+.ch-thinker {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: .92rem;
+  color: var(--ink-soft);
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-rose);
+  max-width: 14rem;
+  line-height: 1.6;
+}
+.ch-thinker b {
+  color: var(--rose);
+  display: block;
+  font-weight: 500;
+  margin-bottom: .25rem;
+  font-family: var(--f-num);
+  font-size: .85rem;
+  letter-spacing: .15em;
+}
+
+.chapter-body {
+  font-size: 1.06rem;
+  color: var(--ink);
+}
+.chapter-body > *:first-child { margin-top: 0; }
+.chapter-body p { margin: 0 0 1.4em; }
+.chapter-body p strong { color: var(--rose-soft); font-weight: 500; }
+.chapter-body p em { color: var(--gold-bright); font-style: normal; padding: 0 .1em; }
+.chapter-body p.lede {
+  font-family: var(--f-cn);
+  font-size: 1.22rem;
+  line-height: 1.85;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+.chapter-body .dropcap {
+  font-family: var(--f-cn-brush);
+  float: left;
+  font-size: 5em;
+  line-height: .85;
+  padding: .05em .15em 0 0;
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+
+/* lists */
+.chapter-body ul.classic {
+  list-style: none;
+  padding: 0; margin: 1.5em 0;
+  border-left: 1px solid var(--line-rose);
+}
+.chapter-body ul.classic li {
+  padding: .55em 0 .55em 1.5em;
+  position: relative;
+  color: var(--ink);
+}
+.chapter-body ul.classic li::before {
+  content: ''; position: absolute;
+  left: -3.5px; top: 1.25em;
+  width: 6px; height: 6px;
+  background: var(--rose);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--rose);
+}
+.chapter-body ul.classic li b {
+  color: var(--gold-bright);
+  font-family: var(--f-num);
+  font-weight: 500;
+  letter-spacing: .1em;
+  font-size: .85em;
+  display: inline-block;
+  min-width: 6rem;
+}
+
+/* pullquote */
+.pullquote {
+  margin: 2.5em 0;
+  padding: 1.5em 0 1.5em 2em;
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(90deg, rgba(212,175,106,0.08), transparent 80%);
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.75;
+  color: var(--ink);
+  letter-spacing: .04em;
+  position: relative;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1em;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--rose-soft);
+  letter-spacing: .05em;
+}
+
+/* note */
+.note {
+  display: block;
+  margin: 1.8em 0;
+  padding: 1.2em 1.4em;
+  background: rgba(122,90,159,0.08);
+  border: 1px solid var(--line-violet);
+  border-left: 3px solid var(--violet-soft);
+  font-size: .94rem;
+  color: var(--ink-soft);
+  font-family: var(--f-cn);
+}
+.note .note-label {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .62rem; letter-spacing: .35em;
+  color: var(--violet-soft);
+  margin-right: .8em;
+  padding-right: .8em;
+  border-right: 1px solid var(--line-violet);
+}
+
+/* two-col */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5em 0;
+}
+.two-col .col {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  border-radius: 3px;
+}
+.two-col .col.left  { border-color: var(--violet-d); background: linear-gradient(180deg, rgba(74,53,103,0.18), var(--bg-2)); }
+.two-col .col.right { border-color: var(--rose-deep); background: linear-gradient(180deg, rgba(139,58,85,0.18), var(--bg-2)); }
+.two-col .col h4 {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 .8em;
+  letter-spacing: .1em;
+}
+.two-col .col.left h4 { color: var(--violet-soft); }
+.two-col .col.right h4 { color: var(--rose-soft); }
+.two-col .col p { margin: 0 0 .8em; color: var(--ink-soft); font-size: .96rem; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+@media (max-width: 880px) {
+  .chapter { grid-template-columns: 1fr; gap: 2rem; }
+  .chapter-head { position: static; }
+  .ch-numeral { font-size: 3.6rem; }
+  .ch-title-cn { font-size: 2rem; }
+}
+
+/* ============================================================
+   INTERLUDE
+   ============================================================ */
+.interlude {
+  text-align: center;
+  padding: 7rem var(--gutter);
+  background:
+    radial-gradient(ellipse at center, rgba(122,90,159,0.20), transparent 60%);
+  position: relative;
+}
+.interlude::before, .interlude::after {
+  content: '◇';
+  display: block;
+  color: var(--rose);
+  font-size: .8rem;
+  letter-spacing: 1rem;
+  margin: 0 auto 2.5rem;
+  opacity: .55;
+}
+.interlude::after { margin: 2.5rem auto 0; }
+.interlude p {
+  font-family: var(--f-cn-script);
+  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+  color: var(--ink);
+  line-height: 2;
+  max-width: 38rem;
+  margin: 0 auto;
+  letter-spacing: .06em;
+}
+.interlude cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--rose-soft);
+}
+
+/* ============================================================
+   PERSONAL CHAMBER —— 互动小房间
+   ============================================================ */
+.chamber {
+  max-width: 56rem;
+  margin: 6rem auto;
+  padding: 3rem 3rem;
+  background:
+    radial-gradient(ellipse at top left, rgba(217,107,142,0.10), transparent 60%),
+    rgba(15,11,24,0.5);
+  border: 1px solid var(--line-rose);
+  position: relative;
+}
+.chamber::before {
+  content: 'PERSONAL · 私語';
+  position: absolute;
+  top: -.7rem; left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 1rem;
+  font-family: var(--f-num);
+  font-size: .62rem;
+  letter-spacing: .4em;
+  color: var(--rose);
+}
+.chamber h3 {
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  color: var(--ink);
+  margin: 0 0 1rem;
+  letter-spacing: .04em;
+}
+.chamber p {
+  font-size: 1.02rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.2rem;
+}
+.chamber em { color: var(--gold-bright); font-style: normal; }
+.chamber-input {
+  width: 100%;
+  margin-top: .8rem;
+  padding: 1rem 1.2rem;
+  background: rgba(17,13,28,0.6);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--f-cn);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  letter-spacing: .02em;
+  min-height: 6rem;
+  resize: vertical;
+  transition: border-color .3s, background .3s;
+}
+.chamber-input:focus {
+  outline: none;
+  border-color: var(--gold-bright);
+  background: rgba(17,13,28,0.85);
+}
+.chamber-actions {
+  display: flex; gap: 1rem; align-items: center;
+  margin-top: 1rem;
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .25em;
+  color: var(--ink-deep);
+}
+.chamber-actions button {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold-bright);
+  padding: .55rem 1.4rem;
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .3em;
+  cursor: pointer;
+  transition: background .3s, color .3s;
+}
+.chamber-actions button:hover {
+  background: var(--gold-bright);
+  color: var(--bg);
+}
+.chamber-output {
+  margin-top: 1.4rem;
+  padding: 1.2rem 1.4rem;
+  background: rgba(255,209,128,0.05);
+  border-left: 3px solid var(--gold-bright);
+  font-family: var(--f-cn-script);
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 1.9;
+  letter-spacing: .04em;
+  display: none;
+}
+.chamber-output.shown { display: block; animation: fade-in .8s ease-out; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   EPILOGUE
+   ============================================================ */
+.epilogue {
+  padding: 10rem var(--gutter) 8rem;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center top, rgba(255,209,128,0.15), transparent 55%),
+    radial-gradient(ellipse at center bottom, rgba(122,90,159,0.20), transparent 60%);
+  border-top: 1px solid var(--line-rose);
+}
+.epilogue .epi-mark {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .5em;
+  color: var(--rose);
+  margin-bottom: 1.4rem;
+}
+.epilogue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--ink);
+  margin: 0 0 2em;
+  letter-spacing: .06em;
+}
+.epilogue h2 em {
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  color: var(--gold-bright);
+  font-size: 1.3em;
+}
+.epi-body {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 2;
+}
+.epi-body p { margin: 0 0 1.3em; }
+.epi-body p strong { color: var(--gold-bright); }
+.epi-verse {
+  margin: 3em auto;
+  padding: 2em 0;
+  border-top: 1px solid var(--line-rose);
+  border-bottom: 1px solid var(--line-rose);
+  font-family: var(--f-cn-script);
+  font-size: 1.35rem;
+  color: var(--rose-soft);
+  line-height: 2.4;
+  letter-spacing: .08em;
+}
+.epi-final {
+  margin-top: 3em;
+  font-family: var(--f-cn-brush);
+  font-size: 2rem;
+  color: var(--gold-bright);
+  letter-spacing: .25em;
+  text-shadow: 0 0 24px rgba(255,209,128,0.45);
+}
+
+/* colophon */
+.colophon {
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--ink-deep);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+.colophon .seal-tag { display: flex; align-items: center; gap: .8rem; }
+.colophon .seal-tag .seal-sm {
+  width: 1.9rem; height: 1.9rem;
+  background: var(--rose-deep);
+  display: grid; place-items: center;
+  color: var(--ink);
+  font-family: var(--f-cn-brush);
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px rgba(217,107,142,0.4);
+}
+.colophon a { color: var(--ink-soft); border: none; }
+.colophon a:hover { color: var(--gold-bright); }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s ease-out, transform 1.1s ease-out; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .chapter, .prologue, .interlude, .epilogue, .chamber, .question-card { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero-meta { gap: 1.5rem; }
+  .top-mark { right: 1rem; font-size: .55rem; letter-spacing: .2em; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 星 ===== -->
+<div class="stars" aria-hidden="true" id="stars"></div>
+
+<!-- ===== 侧索引 ===== -->
+<nav class="side-index" aria-label="目录">
+  <div class="vert-label">七<br>解</div>
+  <a href="#overture">序</a>
+  <a href="#ch1">I</a>
+  <a href="#ch2">II</a>
+  <a href="#ch3">III</a>
+  <a href="#ch4">IV</a>
+  <a href="#ch5">V</a>
+  <a href="#ch6">VI</a>
+  <a href="#ch7">VII</a>
+  <a href="#chamber">私</a>
+  <a href="#epilogue">終</a>
+</nav>
+
+<!-- ===== 右上 ===== -->
+<div class="top-mark">
+  <span>ESSAY · MMXXVI</span>
+  <div class="nav-links">
+    <a href="01-龙之百科.html">壹</a>
+    <a href="02-龙的意义.html">貳</a>
+    <a href="03-龙的死亡与重生.html">叁</a>
+    <a href="05-化龍.html">伍</a>
+    <a href="06-龍的對話錄.html">陸</a>
+    <a href="index.html">門</a>
+  </div>
+  <div class="seal">龍</div>
+</div>
+
+<!-- ===========================================================
+     HERO
+     =========================================================== -->
+<header class="hero">
+  <div class="hero-bg-char" aria-hidden="true">龍</div>
+  <div class="hero-eyebrow">A PHILOSOPHICAL ESSAY · 哲思長文</div>
+  <h1>為什麼<em>人類</em><br>一直<em>需要</em>龍？</h1>
+  <p class="hero-sub-en">
+    Why Humans Have Always <em>Needed</em> Dragons —<br>
+    seven answers from seven thinkers,<br>
+    and one answer that only <em>you</em> can give.
+  </p>
+  <p class="hero-thesis">
+    龙不是被<em>发现</em>的——它是被<em>需要</em>的。<br>
+    人类需要造出一个从未存在的东西，并对它崇拜或恐惧——这件事比"龙是什么"更值得追问。<br>
+    本文不再讨论龙是什么。本文追问：<em>"需要龙的，是人类心智里的哪一块？"</em>
+  </p>
+  <div class="hero-meta">
+    <div><span>FORMAT</span><strong>ESSAY · 哲思</strong></div>
+    <div><span>SECTIONS</span><strong>7 + 序終</strong></div>
+    <div><span>READING TIME</span><strong>~24 MIN</strong></div>
+    <div><span>EDITION</span><strong>MMXXVI · 05</strong></div>
+  </div>
+  <div class="scroll-cue">SCROLL ／ 入篇</div>
+</header>
+
+<!-- ===========================================================
+     OVERTURE
+     =========================================================== -->
+<section class="prologue" id="overture">
+  <div class="prologue-label">序章 · 一个倒过来的问题</div>
+  <h2>过去八千年，没有任何一种"不存在的东西"，<br>被人类<em>这么需要</em>地<em>反复制造</em>过。</h2>
+  <div class="prologue-body reveal">
+    <div>
+      <p>"龙存在吗？" 这个问题，在卷一里已经被问得很彻底了。从动物学到萨根的车库，所有答案都指向同一个方向——<em>它不在外面</em>。</p>
+      <p>但有一件事一直没有被正面追问。如果龙不在外面，<strong>它为什么会出现</strong>？为什么从红山到 Beowulf 到 Midjourney，每隔几代人就有人重新画一条龙、写一条龙、相信一条龙、害怕一条龙——这一行为本身是怎么回事？</p>
+      <p>更难堪的是——它不止"出现"，它<em>没有一次缺席</em>。八千年来，没有一片有人类长期居住的土地上，是没有龙形造物的。这一普遍性本身就是一个谜。</p>
+    </div>
+    <div>
+      <p>所以本文颠倒一下问题。我们不问"龙是什么"，我们问——</p>
+      <p style="font-family:var(--f-cn-script); font-size:1.3rem; color:var(--gold-bright); line-height:1.8; padding:1em 1.2em; border-left:3px solid var(--rose); margin: 1.5em 0;">需要龙的，是人类心智里的<em style="color:var(--rose-soft);">哪一块</em>？<br>这一块如果不靠龙，它会用什么来填？<br>这一块今天还在吗？</p>
+      <p>本文是一组答案——七个思想者，每人给出一种回答。每一种都不完整，叠在一起像七束光照向同一个无法直接被看见的东西。最后我会把光收回，把问题交回给你。<em>那个"需要龙的位置"，在你身上，叫什么名字？</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================================================
+     ANSWER 1 · Vico
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 一</div>
+  <div class="q-text">人类最早不是用<em>概念</em>认识世界的，而是用<em>形象</em>。雷电之所以变成了一条龙，是因为——人类没有别的工具。</div>
+  <div class="q-answerer">— Giambattista Vico, 1725</div>
+</section>
+
+<article class="chapter" id="ch1">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">I</div>
+    <div class="ch-numeral-cn">壹</div>
+    <h2 class="ch-title-cn">诗性智慧的<br>第一个造物</h2>
+    <h3 class="ch-title-en">The First Object of Poetic Wisdom</h3>
+    <p class="ch-thinker"><b>VICO</b>《新科学》(1725)——"诗性智慧"<br>(Sapienza Poetica)</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">维</span>柯（Giambattista Vico）在那不勒斯的废墟里写《新科学》时，整个欧洲的启蒙运动正在告诉人们：理性是一切。维柯不同意——他认为，在<em>理性</em>能开始工作之前，人类心智里已经有一种更古老的东西在工作。他叫它<strong>诗性智慧</strong>（Sapienza Poetica）。</p>
+
+    <p>诗性智慧不是写诗。诗性智慧是——<em>当一个人还不会抽象时，他怎么理解世界</em>。维柯说：原始人类听见雷声，不会想到"那是一种声学现象"。他<strong>把雷声拟人化</strong>——天上一定有一个巨大的、愤怒的、活着的东西在咆哮。这不是迷信，这是<em>认知本身的初始形态</em>。</p>
+
+    <div class="pullquote">
+      Men at first felt without observing,<br>
+      then observed with a troubled and agitated spirit,<br>
+      and finally reflected with a clear mind.
+      <cite>— Giambattista Vico《Scienza Nuova》§ 218</cite>
+    </div>
+
+    <p>维柯的论点对龙是致命的——<strong>龙不是"被发明的"，龙是被"必须发明"出来的</strong>。在前理性阶段的人类心智里，没有"自然规律"这一类抽象物可用，没有"气压差""静电放电""降水量"这样的语词。当你站在大雨里、感到河流暴涨、听见雷声、看见闪电——你必须给这一切起个名字，否则你的心智无法把它握在手里。</p>
+
+    <p>"龙"——一种既属于水又属于火、既属于天又属于地、既愤怒又施恩、既看得见又看不见的存在——<em>正是前理性心智里能够握住"风雨雷电同时是一件事"的唯一形状</em>。它不是图像；它是<strong>认知工具</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">诗性智慧的三大特征</h4>
+    <ul class="classic">
+      <li><b>UNIVERSALI FANTASTICI</b>"想象的共相"——前理性心智用具体的形象代替抽象类别。"愤怒"用一个具体的愤怒之神来承载；"自然之力"用一条具体的龙来承载。</li>
+      <li><b>METAPHORICAL TRUTH</b>"隐喻的真理"——这些拟人化不是"错误"，它们是<em>那个阶段的人类能够通达世界的唯一通路</em>。说"龙咆哮"和说"大气放电"在认知上是同一动作的两种语言。</li>
+      <li><b>SHARED ORIGIN</b>"共同起源"——这就是为什么世界各地独立产生龙：相同的认知结构面对相同的自然现象，必然产生类似的"诗性回答"。</li>
+    </ul>
+
+    <p>这是维柯给"为什么需要龙"的第一个回答——<strong>需要龙的，是人类心智里那块尚未被抽象概念覆盖的<em>诗性</em>之地</strong>。在那块地方，事物不通过定义被把握，而通过<em>形象</em>被把握。雷电不是"现象"，雷电是"龙"。</p>
+
+    <p>但这里有一个反转——维柯并不认为这块地方在启蒙之后就消失了。<em>它只是被压在了下面</em>。当代成年人看气象云图理解"雷暴系统"，但是他做梦时仍然会梦见一条会喷火的东西在天上。<strong>诗性智慧没有死，它只是从"清醒认知"退到了"夜间认知"</strong>。</p>
+
+    <p>这件事一会儿会被荣格用另一种语言重新说出。但维柯是第一个把它写下来的人。他给"为什么需要龙"的答案最简短的版本是——<em>因为人类不是先有概念再有形象的；人类先有形象，再才有概念</em>。而龙是那种"先有的形象"里最完美的一个。</p>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 2 · Eliade
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 二</div>
+  <div class="q-text">人类不能忍受一个完全<em>世俗</em>的世界。哪里都没有"神圣"的话，<em>什么</em>都不是真的——所以一定要在某处留出"另一种存在"的位置。</div>
+  <div class="q-answerer">— Mircea Eliade, 1957</div>
+</section>
+
+<article class="chapter" id="ch2">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">II</div>
+    <div class="ch-numeral-cn">貳</div>
+    <h2 class="ch-title-cn">圣俗的<br>结构性需求</h2>
+    <h3 class="ch-title-en">The Sacred Cannot Be Empty</h3>
+    <p class="ch-thinker"><b>ELIADE</b>《圣与俗》(1957)<br>The Sacred and the Profane</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">米</span>尔恰·伊利亚德（Mircea Eliade）在《圣与俗》里提出一个看似简单、其实极深的命题——<strong>人类心智里有一个"圣"的位置，这个位置不能为空</strong>。它如果不被神祇填，就会被别的东西填。它一旦完全空着，<em>世界本身会失去深度</em>。</p>
+
+    <p>伊利亚德的"圣"（the sacred）不是宗教教条，是一种<strong>结构性需求</strong>——心智需要把世界分成"普通的"（俗）和"非普通的"（圣）。这种分法不是文化发明，是人类经验组织自身的方式。一棵树是一棵树；但某一棵<em>特别的</em>树是"那棵不一样的树"——它一定通向别的地方。这就是"圣"。</p>
+
+    <div class="pullquote">
+      For religious man, space is not homogeneous.<br>
+      There are rifts in it; some parts are qualitatively different.
+      <cite>— Mircea Eliade《The Sacred and the Profane》1957</cite>
+    </div>
+
+    <p>而龙——是这个"圣"位置最完美的住户之一。<em>它不可能是普通生物</em>。它没有栖息地、没有进化谱系、没有 DNA、没有可被分类学接纳的位置。<strong>它的全部生物学不可能性，恰恰是它的圣性来源</strong>。如果它是真的，它就是另一种存在；它不能在我们的世界里没有特殊地位。</p>
+
+    <p>这就是为什么"龙在每一种文化里都站在中心"——不是文化巧合，是结构性需求。<em>圣的位置必须有人坐</em>。把那位置空着，人类的世界观会失去层级。一切都是一样的，一切就什么都不是了。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">圣俗辩证下的龙的功能</h4>
+
+    <div class="two-col">
+      <div class="col left">
+        <h4>俗 · the profane</h4>
+        <p>可测量、可重复、可被科学描述、可被生活耗损。</p>
+        <p>气象云图、河流水位、电压差、降水量、农作物产量。</p>
+        <p>世界<em>是这样</em>的——但只有这一切，人类受不了。</p>
+      </div>
+      <div class="col right">
+        <h4>聖 · the sacred</h4>
+        <p>不可测量、独一无二、与日常存在异质、令人战栗又被吸引。</p>
+        <p>那条<em>"在云层深处呼吸的"</em>东西。</p>
+        <p>世界<em>不只这样</em>——这是"圣"给俗人的礼物。</p>
+      </div>
+    </div>
+
+    <p>伊利亚德进一步指出——<strong>现代性并没有消灭"圣"的位置，它只是把"圣"赶出了公共领域</strong>。今天，我们不再公开承认"那条河里住着龙"，但我们会在登山时碰到一处地形、突然觉得"这里有什么不一样"。我们不会承认它是龙，但我们会拍下照片，发到 Instagram，配文 "<em>this place is magical</em>"。<em>"魔法"这个词在工程师的口中是一种妥协——它是被祛魅之后"圣"位置仍要发声时的语言</em>。</p>
+
+    <p>所以伊利亚德的回答是——<strong>需要龙的，是人类心智里"圣"那一格</strong>。这一格的功能是给世界保留层级、给经验保留深度、给"日常"留出一个"非日常"作为对照。龙不是这一格里唯一可能的住户，但它历来是最被偏爱的——因为它的形象本身就在"不可分类"这一点上，与"圣"的结构同构。</p>
+
+    <div class="note">
+      <span class="note-label">链</span>
+      这一论点和卷二第十章里的"中国神话不屠龙、要化龙"对照阅读极为有趣——化龙模型正是把"圣"位置保留给"未来的自己"。"潜龙—飞龙"是"凡—圣"的渐进过渡，而非屠龙模型中"凡—圣"的彻底切割。这是两种文化处理"圣俗辩证"的不同策略。
+    </div>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 3 · Lévi-Strauss
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 三</div>
+  <div class="q-text">人类心智一直在寻找方法<em>调和不可调和的对立</em>。龙是为数不多的、可以一次性把两个对立项<em>放进同一个身体</em>的工具。</div>
+  <div class="q-answerer">— Claude Lévi-Strauss, 1958</div>
+</section>
+
+<article class="chapter" id="ch3">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">III</div>
+    <div class="ch-numeral-cn">參</div>
+    <h2 class="ch-title-cn">对立的<br>合而为一</h2>
+    <h3 class="ch-title-en">The Mediator of Opposites</h3>
+    <p class="ch-thinker"><b>LÉVI-STRAUSS</b>《结构人类学》(1958)<br>mediating contradictions</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">克</span>劳德·列维-斯特劳斯在《结构人类学》里提出了一个对神话研究影响深远的命题——<strong>神话的核心功能不是解释世界，而是"调解"世界里那些不可调解的二元对立</strong>。生与死、男与女、文化与自然、生与熟、人与神——人类心智无法接受这些对立的彻底分裂，于是用"中介"（mediator）把它们焊在一起。</p>
+
+    <p>而龙——是人类有史以来最强大的<em>中介装置</em>。请看下面这张清单：</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">龙作为中介的清单</h4>
+
+    <ul class="classic">
+      <li><b>WATER × FIRE</b>水龙司雨，火龙喷焰。同一种生物拥有两种相互摧毁的元素——只有龙能。</li>
+      <li><b>SKY × EARTH</b>"潜龙在田""飞龙在天"。它可以在地下，也可以在天上，从不被任何一个领域困住。</li>
+      <li><b>ANIMAL × HUMAN</b>它有动物形态，但有人格、智性、语言。卷一里 Le Guin 笔下的龙说"造物之语"——这是人类才能做的事。</li>
+      <li><b>SELF × OTHER</b>它既是"他者"（被屠戮、被恐惧），又是"自我"（"龙的传人"、化龙模型）。同一个符号同时承担这两个对立角色。</li>
+      <li><b>CHAOS × ORDER</b>Tiamat 是混沌，但她的身体被劈成天地——秩序。龙既是混沌的具身，也是秩序的母体。</li>
+      <li><b>VISIBLE × INVISIBLE</b>能见能隐，"春分而登天，秋分而潜渊"。可见性本身是它的一种可选属性。</li>
+    </ul>
+
+    <p>请注意这件事的不平凡之处——<em>这些对立任何一项被任何普通生物拥有都是不可能的</em>。一只动物不能同时活在水里和火里。但龙能。<strong>龙不是被设计来描述某种生物；它是被设计来扛住"对立的同时存在"这件不可能的事</strong>。</p>
+
+    <div class="pullquote">
+      The purpose of myth is to provide a logical model<br>
+      capable of overcoming a contradiction.<br>
+      (an impossible achievement if, as it happens,<br>
+      the contradiction is real.)
+      <cite>— Claude Lévi-Strauss《The Structural Study of Myth》1955</cite>
+    </div>
+
+    <p>列维-斯特劳斯这句话里的括号最锋利——<em>"不可能的成就，如果矛盾是真的话"</em>。也就是说：神话的工作是给我们一种<strong>感觉</strong>，让那些其实无法调和的对立<em>看上去</em>已经被调和了。它不真正解决矛盾，它给我们一个可以握在手里的形象，使矛盾变得可以承受。</p>
+
+    <p>这就是龙的第三种"被需要"——<strong>它是一种心理上的调和器</strong>。当一个人面对"我既想自由也想被爱"、"我既需要秩序也需要混乱"、"我既是被人需要的也是孤独的"——这些对立是真实的，无法被逻辑消除。但如果你脑子里有一条<em>同时身处天地、水火、自我与他者的龙</em>——那个画面替你扛住了。它没有逻辑上解决你的矛盾，但它让你<em>可以继续生活在你的矛盾里</em>。</p>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      这就解释了一件经验上的事——为什么人在面对人生重大矛盾时，会下意识地去看奇幻作品、玩龙的游戏、纹一条龙在身上。这不是消遣，是心理操作。<em>龙是一种私人的"对立调和器"，被反复调用</em>。卷一末尾你之所以把那条衔尾蛇认作"真正的龙"，也是同一逻辑——衔尾蛇是<strong>所有对立调和器中最纯粹的一个</strong>，因为它把"开始与结束"焊在了同一张嘴里。
+    </div>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 4 · Jung
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 四</div>
+  <div class="q-text">你以为是"你"在画龙——其实是你心里那一块从来不属于"你"的部分，在借你的手画。</div>
+  <div class="q-answerer">— Carl Gustav Jung, c. 1934</div>
+</section>
+
+<article class="chapter" id="ch4">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IV</div>
+    <div class="ch-numeral-cn">肆</div>
+    <h2 class="ch-title-cn">无意识里的<br>那条龙</h2>
+    <h3 class="ch-title-en">The Dragon in the Unconscious</h3>
+    <p class="ch-thinker"><b>JUNG</b> 集体无意识与原型<br>archetypes of the collective unconscious</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">荣</span>格的"集体无意识"假设至今在学院心理学里仍有争议，但是它对"为什么人类一直需要龙"给出了最难绕过的回答——<em>因为它根本不是"想不想要"的问题，是"必然出现"的问题</em>。</p>
+
+    <p>卷一里我们已经简单梳理过荣格意义上的龙——阴影（Shadow）、被压抑的本能、母性子宫、未整合的自我。本章不重复这些。本章追问一个更根本的问题——<strong>为什么"龙"是这些无意识内容反复显形的形象</strong>？为什么不是别的？</p>
+
+    <p>荣格的回答是：因为<em>原型</em>（archetype）。<strong>原型不是图像，是心理结构</strong>——人类心智里有几种反复出现的"组织模式"，它们一旦被激活，会自动调用与之结构匹配的具体形象来表达自己。"阴影"原型激活后，自动倾向于显形为<em>巨大、深处、危险、有鳞、与水或洞穴关联的生物</em>。每个民族的具体形象不同，但结构惊人地一致。</p>
+
+    <div class="pullquote">
+      The dragon is the oldest pictorial symbol in alchemy of which we have documentary evidence.<br>
+      It appears as the <em>Ouroboros</em>, the tail-eater, in the Codex Marcianus,<br>
+      a text dating from the second century AD.
+      <cite>— C. G. Jung《Psychology and Alchemy》§ 404</cite>
+    </div>
+
+    <p>荣格在《心理学与炼金术》里花了几百页解析衔尾蛇为什么是"自我"（the Self）这一原型最古老的图像。他的论点核心是——<em>衔尾蛇是"一切对立在自身之中"的完美图示</em>。当你的心智完成"个体化"（individuation）——即把所有相互冲突的内在部分整合为一个不再需要外界许可的统一体——它会自发产生这样的图像。<strong>你不会"决定"画衔尾蛇；衔尾蛇会"出现"</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">为什么是"龙"，而不是别的</h4>
+    <ul class="classic">
+      <li><b>SIZE</b>巨大——能承载我们最大的恐惧与最大的渴望。蝴蝶承担不了这个量级。</li>
+      <li><b>FORM</b>蛇形——蛇是人类最古老的恐惧对象之一（进化心理学已证实人类对蛇形的视觉响应早于大脑皮层），用蛇形承载阴影最经济。</li>
+      <li><b>LIMINALITY</b>阈限——可水可火、可天可地、可显可隐。<em>恰好对应无意识本身的运作方式</em>——它从不固定在一个空间或一种状态。</li>
+      <li><b>POWER</b>力量——能毁灭也能创造。这是阴影与自我合一时所具有的特征。</li>
+    </ul>
+
+    <p>所以荣格的回答是——<strong>需要龙的，是人类心智里那个不属于"你"的层。它的内容你并不知道，但它会自己组织出来，并寻找出口</strong>。当出口是绘画时，你画一条龙；当出口是文学时，你写一条龙；当出口是梦境时，你梦见一条龙。<em>你以为是你的创作，其实是它在创作</em>。</p>
+
+    <p>这一论点之所以重要，是因为它解释了一个数据上的事实——<strong>独立的、互相之间从未接触过的人类社群，反复独立产出极其相似的龙形象</strong>。如果龙是文化发明，那么它应该和语言一样千差万别；但事实上，不同大陆上的龙在结构上极其相似。荣格说：那是因为发明者其实都不是文化，是同一个心理结构。</p>
+
+    <div class="note">
+      <span class="note-label">辨</span>
+      请注意——你不需要相信"集体无意识"作为本体论假设，仍然可以承认这一现象的存在。神经心理学的另一种描述是：<em>人类大脑在结构上有许多共通的"形象产生模式"</em>，它们在面对类似刺激（恐惧、敬畏、神秘）时会输出类似的形象。这是同一现象的不同语言。
+    </div>
+
+    <p>这一层"需要龙的位置"——荣格称它为<strong>"自性"</strong>（the Self）——是本文目前最深的回答。它不再是"认知工具"（维柯）、不再是"圣俗结构"（伊利亚德）、不再是"对立调和器"（列维-斯特劳斯），它是<em>你心智底层那一块需要把自己组织成一个完整体的力量</em>。龙是那一块在你视野里出现的样子。</p>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 5 · Tolkien
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 五</div>
+  <div class="q-text">人类被造时获得了一种能力——<em>造</em>一个不存在的世界，并且让它<em>真</em>。这不是逃避；这是人之为人的标志。</div>
+  <div class="q-answerer">— J. R. R. Tolkien, 1939</div>
+</section>
+
+<article class="chapter" id="ch5">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">V</div>
+    <div class="ch-numeral-cn">伍</div>
+    <h2 class="ch-title-cn">次创造的<br>权利与义务</h2>
+    <h3 class="ch-title-en">Sub-Creation, after Tolkien</h3>
+    <p class="ch-thinker"><b>TOLKIEN</b>《论童话故事》(1939)<br>"On Fairy-Stories" · sub-creation</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">托</span>尔金在 1939 年那场著名的"安德鲁·朗格演讲"里提出了一个对奇幻文学影响极深的概念——<strong>次创造</strong>（sub-creation）。他说，人类是被造的存在，但人类继承了造物者的一种能力——<em>创造一个内部一致、能让人沉浸进去、并对那个人产生真实意义的次级世界</em>。这不是娱乐，是<em>人之本性</em>的一部分。</p>
+
+    <p>托尔金本人写了 Smaug、写了 Glaurung、写了 Ancalagon the Black——他写龙不是为了"借用"奇幻元素，他写龙是因为——<strong>没有龙，那个世界不完整</strong>。他在《论童话故事》里有一句极其关键的话——</p>
+
+    <div class="pullquote">
+      The keenest natural pleasure which we get from fairy-stories<br>
+      is not "I escape the world" but "I am offered another."
+      <cite>— J. R. R. Tolkien《On Fairy-Stories》1939（释义）</cite>
+    </div>
+
+    <p>这是一个对"为什么需要龙"的回答——<strong>因为人类不能只活在被给定的世界里</strong>。<em>如果一个人只能拥有他被生在的世界，那个人不算完整的人</em>。次创造的能力——构造另一个世界——是人之为人的一个证据。而龙——是次创造世界里最常出现的住户，因为它在已知世界里不存在。<em>它是次创造空间的标志物</em>。</p>
+
+    <p>请注意托尔金的论点对"逃避现实"那种廉价批评的反驳——他用了一个比喻：<em>"如果一个人被关在牢里，他想象外面的世界，这不是逃避，这是健康"</em>。所有不能想象"另一种存在"的人，都被困在了一种我们其实并不愿承认的牢里。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">次创造的三层伦理意义</h4>
+
+    <div class="two-col">
+      <div class="col left">
+        <h4>消极辩护</h4>
+        <p>"我们逃避现实"——这一指控建立在"现实是必然的"这一前提上。但托尔金问：<em>你怎么知道你所谓的"现实"，不是更大的牢笼？</em></p>
+        <p>能想象"另一种存在"的能力，是人对自由的最低保留。</p>
+      </div>
+      <div class="col right">
+        <h4>积极建构</h4>
+        <p>次创造不是一次"做白日梦"——它要求内部一致、要求伦理结构、要求对那个世界负责。</p>
+        <p>这本身是一种<em>德性的训练</em>。能为一个不存在的世界负责的人，更可能为现实世界负责。</p>
+      </div>
+    </div>
+
+    <p>而龙在次创造中的位置极其特别——它不仅是"次世界的居民"，它还<em>定义</em>什么是次世界。一个世界里如果有龙，它就已经声明：<strong>"我和你的日常不一样。"</strong> 龙是一种<em>本体论标志</em>——它的存在本身就是一道边界，把"被给定的世界"和"被想象的世界"分开。</p>
+
+    <p>所以托尔金的回答是——<strong>需要龙的，是人类作为"可以创造"的存在的尊严</strong>。它在被造与可造之间立起一道桥。<em>没有这道桥，人就只是被造，而不是会造的人</em>。</p>
+
+    <div class="note">
+      <span class="note-label">链</span>
+      这一论点回到卷二第四章的乾卦六龙——《易经》里那六条龙也是次创造的一种形式：它们用"龙"代替了"人生阶段"这一抽象类别。中国哲学家用龙做次创造，写一个比生物界更深的世界。<strong>次创造不是西方奇幻的专利，它是人类心智的普遍能力</strong>。
+    </div>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 6 · Benjamin + Lacan
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 六</div>
+  <div class="q-text">所有可被复制的东西最终都会失去<em>分量</em>。所以人类需要某种<em>不能被完全复制</em>的东西——某种永远不与任何具体物完全重合的东西。</div>
+  <div class="q-answerer">— Walter Benjamin × Jacques Lacan</div>
+</section>
+
+<article class="chapter" id="ch6">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VI</div>
+    <div class="ch-numeral-cn">陸</div>
+    <h2 class="ch-title-cn">灵光与实在<br>之间的位置</h2>
+    <h3 class="ch-title-en">Aura, and the Real that Resists</h3>
+    <p class="ch-thinker"><b>BENJAMIN</b> 灵光 (1936)<br><b>LACAN</b> 实在界 (the Real)</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">本</span>雅明的"灵光"我们在三部曲卷三里讨论过。本章把它和拉康的"实在界"放在一起读——会出现一个比单看任何一个都更深的回答。</p>
+
+    <p>本雅明说，灵光是艺术品的"独一无二的此时此地"——那种"无论多近都隔着一道远"的距离感。机械复制摧毁了灵光，因为复制品没有那道"远"。<strong>问题是——人类心智需要那道远</strong>。</p>
+
+    <p>拉康在他后期的研讨班里把同一件事用更冷的语言说了一遍——<strong>实在界</strong>（the Real）。在拉康的本体论里，"现实"分三层：<em>想象界</em>（imaginary，我们看到、想象、自我认同的层面）、<em>象征界</em>（symbolic，语言、符号、社会规则的层面）、<em>实在界</em>（real，<em>永远无法被想象或象征捕获的那一块</em>）。</p>
+
+    <div class="pullquote">
+      The Real is what resists symbolization absolutely.<br>
+      It is impossible to integrate it into the symbolic order.
+      <cite>— Jacques Lacan《Seminar I》1953</cite>
+    </div>
+
+    <p>这听起来很抽象，但它指向一个非常具体的体验——你有没有过这种时刻：<em>看见某种东西，无法用任何语言形容；它的强度让你脱离日常；事后你尝试讲给别人听，怎么讲都不对</em>？那个"怎么讲都不对"的东西，就是实在界。它<strong>必然</strong>存在，它<strong>必然</strong>无法被完全符号化。</p>
+
+    <p>而龙——是人类心智里少数能<em>稳定指向</em>实在界的符号。注意这句话的精确性：<strong>它不"是"实在界——任何符号都不"是"实在界</strong>。但它在符号系统里专门负责"指向那个不可被符号化的东西"。它的位置不是"内容"，是"指针"。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">为什么龙能扮演这个角色</h4>
+    <ul class="classic">
+      <li><b>NEVER FILLED</b>它从未真正"被填满"——每一代人都重新画一条新龙，没有任何一条被公认为"那条龙"。这是它能<em>持续指向</em>的结构条件。</li>
+      <li><b>RESISTS DEFINITION</b>它抵抗定义——九似、变形、能潜能飞——所有试图把它锁死的努力都失败。这种抵抗本身就是它指向"不可符号化"的方式。</li>
+      <li><b>TREMBLE</b>它令人战栗——奥托的 <em>mysterium tremendum</em> 在拉康的语言里就是"接近实在界时的情感反应"。</li>
+    </ul>
+
+    <p>所以本雅明和拉康合在一起的回答是——<strong>需要龙的，是人类心智里那个"必须为不可被符号化之物保留位置"的能力</strong>。在一个所有事情都可以被语言、可以被图像、可以被算法、可以被 Midjourney 完全再现的世界里——<em>"不可被完全再现"这件事本身成为一种稀缺资源</em>。</p>
+
+    <p>而 AI 时代——这正是 2025、2026 年我们正在面对的——把这一论点推到了刺骨的程度。当 diffusion 模型可以生成任何视觉、当 GPT 可以模拟任何风格、当语音克隆可以伪造任何声音——<em>"什么是不可生成的"成为新的本体论问题</em>。</p>
+
+    <p>答案是——<strong>一切都可以被生成，除了"生成所指向的那个最初的源头"</strong>。Midjourney 可以画十亿张龙图，每一张都精致；但它画不出"为什么人类要画龙"那一个无法被图像化的<em>位置</em>。这个位置就是拉康的实在界，就是本雅明的灵光的根。<em>那个位置永远不会被生成耗尽，因为它本来就不在被生成的层级上</em>。</p>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      请把这一段和卷三第五章（鲍德里亚的拟像）合并阅读——它们说的是同一件事，但从两侧：鲍德里亚说"<em>原型不再被需要</em>"，本雅明和拉康说"<em>仍需要一个不可被复制的位置</em>"。两者并不矛盾——鲍德里亚说的是符号的运作方式，拉康说的是符号背后那一格<em>不参与符号运作</em>的所在。<strong>龙的当代意义，正是在两者的张力中</strong>。
+    </div>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ANSWER 7 · Heidegger
+     =========================================================== -->
+<section class="question-card reveal">
+  <div class="q-num">ANSWER · 七</div>
+  <div class="q-text">"存在"之所以成其为"存在"，是因为<em>你</em>对它发问。龙是为数不多的、把这一发问<em>反过来</em>的存在——它逼你回答"<em>你</em>算不算存在"。</div>
+  <div class="q-answerer">— Martin Heidegger, 1927（重新解读）</div>
+</section>
+
+<article class="chapter" id="ch7">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VII</div>
+    <div class="ch-numeral-cn">柒</div>
+    <h2 class="ch-title-cn">存在追问的<br>那一面镜子</h2>
+    <h3 class="ch-title-en">A Mirror for the Question of Being</h3>
+    <p class="ch-thinker"><b>HEIDEGGER</b>《存在与时间》(1927)<br>Dasein · 在世存在</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">海</span>德格尔在《存在与时间》开篇说，所有"存在论"问题最终都要绕回到<em>那个能发问"什么是存在"的存在者</em>——也就是人。他给这种存在者起了一个特殊的名字：<strong>Dasein</strong>（此在）。它不是简单的"主体"，是"<em>对自己存在本身有所领会</em>"的存在者。</p>
+
+    <p>本章是这篇文章里最大胆的一次解读——<em>我用海德格尔来回答一个海德格尔本人从未直接讨论过的问题</em>：龙在这一存在论里的位置是什么？</p>
+
+    <p>答案是——<strong>龙是 Dasein 借以反观自身的最古老的镜子之一</strong>。它的功能不是被认识，而是把"什么算作存在"这一发问<em>反弹</em>回来。</p>
+
+    <p>怎么理解这件事？回到卷一末尾你提出的那个命题——<em>"龙是不依赖外界确认而存在的。"</em></p>
+
+    <p>这句话乍听是关于龙的，其实是关于<strong>你</strong>的。仔细读一遍——它在说：<em>有一种存在方式不需要外界许可</em>。一旦你承认龙可以这样存在——你必然要面对下一个问题——<strong>"那么我自己呢？我的存在，是不是也可以不依赖外界的确认？"</strong></p>
+
+    <div class="pullquote">
+      The being that we ourselves are<br>
+      is in each case mine.<br>
+      Being is an issue for this being.
+      <cite>— Martin Heidegger《Sein und Zeit》§ 9</cite>
+    </div>
+
+    <p>海德格尔说，Dasein 的特征是 <em>Jemeinigkeit</em>——"每次都是我的"。<strong>没有一个外人能替你成为你；没有任何一种社会角色、家庭关系、职业身份、社交标签能完全占满"你之为你"这件事</strong>。如果你的存在完全靠这些外部规定来填，<em>你其实没有真正存在过</em>。这是海德格尔的"沉沦"（Verfallen）——日常公共状态对"本真存在"的覆盖。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--rose-soft);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">龙的镜像功能</h4>
+    <ul class="classic">
+      <li><b>NOT EXTERNAL</b>龙不存在于"外部可被指认的物"那一格里——所以它逼你思考"难道只有外部可指认之物才算存在？"</li>
+      <li><b>SELF-REFERENTIAL</b>衔尾蛇咬住自己尾巴——它的存在以自身为据。这一图像逼你思考"我自己能不能也是这样？"</li>
+      <li><b>MIRROR FOR DASEIN</b>当 Dasein 直面"我自己是不是只是被外界塑造的"这一深层焦虑时，<em>龙是它在世界上能找到的少数同类</em>——一个同样"不靠外界确认而立"的存在。</li>
+    </ul>
+
+    <p>这件事的转折点不在哲学，在<strong>你</strong>。你在卷一末尾写下那句话时，你以为自己在描述龙。其实你在描述<em>你自己希望成为的那种存在方式</em>。<strong>需要龙的，是 Dasein 里那一块希望"自己之为自己不需要别人许可"的位置</strong>。龙是那块位置在世界里找到的最古老的同盟。</p>
+
+    <p>这就解释了为什么 dragonkin 这个亚文化在哲学上不是一种妄想——他们直觉地抓住了海德格尔意义上的<em>Jemeinigkeit</em>：我的存在每次都是我的；我有权拒绝外部的存在论裁决。<em>"我是龙"——在这一存在论操作系统上，是合法的</em>。它不在断言生物学事实；它在主张存在权利。</p>
+
+    <div class="note">
+      <span class="note-label">注</span>
+      这并不是说每个人都应当宣称自己是龙。这是说——每个人都应当承认自己<em>有权</em>用某种不依赖外界确认的方式存在。"龙"在这里是一个示例，不是一个处方。你的"龙"可以叫别的名字：一种艺术、一种坚持、一种爱好、一种不为人理解的判断。<strong>"龙"是 Dasein 寻找自己同盟时的一个借词</strong>。
+    </div>
+
+    <p>这是本文的最后一个回答——也是与<em>你</em>距离最近的一个。它把"为什么人类需要龙"这一问题从"人类一般"转回到"<strong>你</strong>"。下面那个小房间，留给你回答。</p>
+  </div>
+</article>
+
+<!-- ===========================================================
+     INTERLUDE
+     =========================================================== -->
+<section class="interlude">
+  <p>七种回答说完了——<br>
+  维柯说龙是诗性智慧的第一形象，<br>
+  伊利亚德说龙住在心智的"圣"格，<br>
+  列维-斯特劳斯说龙调和对立，<br>
+  荣格说龙从无意识自动生成，<br>
+  托尔金说龙证明人是会创造的存在，<br>
+  本雅明—拉康说龙指向不可被符号化之物，<br>
+  海德格尔说龙是 Dasein 自我反观的镜子。<br><br>
+  七束光照向同一个无法直接看见的位置。<br>
+  现在把光收回——<em>那个位置，在你身上叫什么名字？</em></p>
+  <cite>— Interlude · 收光</cite>
+</section>
+
+<!-- ===========================================================
+     PERSONAL CHAMBER —— interactive
+     =========================================================== -->
+<section class="chamber" id="chamber">
+  <h3>私语 · 一个只有你能写的回答</h3>
+  <p>七种思想者各自给出了他们的回答。但本文从一开始就承认——<em>每一种都不完整</em>。它们叠在一起像光，照向你心里那块"需要龙的位置"。但<em>那块位置具体在你身上叫什么名字</em>——这只有你能写。</p>
+  <p style="color:var(--ink-soft); font-size:.96rem;">在下面写下一句话——你<strong style="color:var(--rose-soft);">为什么</strong>需要龙？你的"龙"可以不叫龙——它可以是一种艺术、一种坚持、一种爱好、一种不为人理解的判断。把它命名出来。</p>
+  <textarea class="chamber-input" id="chamber-in" placeholder="例如：我需要龙，因为它是我生活里唯一一个不需要向任何人解释的东西。"></textarea>
+  <div class="chamber-actions">
+    <button onclick="seal()">封 · SEAL</button>
+    <span id="seal-status"></span>
+  </div>
+  <div class="chamber-output" id="chamber-out"></div>
+  <p style="margin-top:1.5rem; font-size:.85rem; color:var(--ink-deep); font-style:italic;">
+    （所有文字仅存于浏览器本地，不发送任何地方。本页关闭后将自动保留，下次访问仍可见。）
+  </p>
+</section>
+
+<!-- ===========================================================
+     EPILOGUE
+     =========================================================== -->
+<section class="epilogue" id="epilogue">
+  <div class="epi-mark">CODA · 終章</div>
+  <h2>每一代人都<em>需要</em>新造一条龙，<br>因为每一代人都<em>需要</em>重新成为自己。</h2>
+  <div class="epi-body reveal">
+    <p>本文开篇问：<em>需要龙的，是人类心智里的哪一块？</em></p>
+    <p>七个思想者从七个方向回答了这个问题。把答案合拢，那一块的轮廓是这样的——</p>
+
+    <p style="text-align:left; max-width:36rem; margin:2em auto; padding:1.5em 1.8em; border-left:3px solid var(--gold-bright); background:rgba(255,209,128,0.04); font-family:var(--f-cn); line-height:1.95; font-size:1rem;">
+      它是<strong style="color:var(--gold-bright);">前理性的</strong>——尚未被概念替代的图像生成区。<br>
+      它是<strong style="color:var(--gold-bright);">圣俗结构的圣格</strong>——抵抗一切"全部世俗化"的心智位置。<br>
+      它是<strong style="color:var(--gold-bright);">对立调和器</strong>——使无法消除的矛盾仍可被承受。<br>
+      它是<strong style="color:var(--gold-bright);">自性原型的容器</strong>——心智自我组织的图示。<br>
+      它是<strong style="color:var(--gold-bright);">次创造能力的标志</strong>——人之为"会造"的证据。<br>
+      它是<strong style="color:var(--gold-bright);">实在界的指针</strong>——指向那个永远无法被完全符号化的所在。<br>
+      它是<strong style="color:var(--gold-bright);">Dasein 的同盟</strong>——一个同样"不靠外界确认而立"的存在。
+    </p>
+
+    <p>这七层叠在一起——<strong>需要龙的，是"人之为人"这件事本身的厚度</strong>。<em>一个不需要龙的人</em>不是更现代、更理性、更成熟——而是<em>更薄</em>。他的心智里那些前理性、圣俗、对立、原型、次创造、实在界、Dasein 的位置，都被填上了别的东西——平均化的内容、可计算的偏好、可生成的图像。<em>这个心智仍然可以运作；但它失去了重量</em>。</p>
+
+    <p>所以八千年来，每一代人都重新画龙——<em>不是因为他们相信龙是真的</em>，而是因为<strong>不画的话，人会变薄</strong>。画一条龙、写一条龙、读一条龙、纹一条龙、为一条龙生气、为一条龙流泪——这些都是<em>人类心智维持自己厚度</em>的微小动作。</p>
+
+    <div class="epi-verse">
+      龍不是被發現的——龍是被需要的。<br>
+      不是龍需要人類；是人類需要龍。<br>
+      它的存在不在自然界，<br>
+      它的存在在你心智里那一格<em style="color:var(--gold-bright); font-family:var(--f-cn-brush); font-style:normal;">不肯被填满</em>的位置。<br>
+      ——而那一格，正是人之為人的重量所在。
+    </div>
+
+    <p>这一篇文章其实只在做一件事——<em>承认你卷一末尾那句话是一个完整的本体论命题</em>。"龙是不依赖外界确认而存在的"——这不是关于龙的判断，是关于你自己的判断。<strong>你说龙不需要外界许可，你就已经为你自己保留了同样的权利</strong>。</p>
+
+    <p>而这本就是龙在八千年里给所有需要它的人做的事——<em>它保留那一格</em>。在那一格里，你可以是任何你已经是的样子，不被外界证伪、不被市场定价、不被算法压平。<strong>那一格不属于这个世界，但它属于你。</strong></p>
+
+    <p class="epi-final">需要龙的，是你身上那一块不肯交出去的部分。</p>
+
+    <p style="margin-top:3em; font-size:.95rem; color:var(--ink-soft); font-style:italic;">
+      —— 与三部曲共读：<br>
+      卷一是<em style="color:var(--gold-bright); font-style:normal;">看见</em>，卷二是<em style="color:var(--gold-bright); font-style:normal;">理解</em>，卷三是<em style="color:var(--gold-bright); font-style:normal;">守护</em>，<br>
+      本文是<em style="color:var(--gold-bright); font-style:normal;">承认</em>——承认你一直需要它。
+    </p>
+  </div>
+</section>
+
+<!-- ===========================================================
+     COLOPHON
+     =========================================================== -->
+<footer class="colophon">
+  <div class="seal-tag">
+    <div class="seal-sm">龍</div>
+    <div>
+      <div>A PHILOSOPHICAL ESSAY</div>
+      <div style="font-family:var(--f-cn); font-size:.65rem; color:var(--ink-deep); margin-top:.2rem; letter-spacing:.2em;">為什麼人類一直需要龍</div>
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <div>COMPANION TO THE TRILOGY</div>
+    <div style="margin-top:.3rem; color:var(--rose);">MMXXVI · EDITION 05</div>
+    <div style="margin-top:.6rem;">
+      <a href="index.html">三部曲門戶</a> ·
+      <a href="01-龙之百科.html">壹</a> ·
+      <a href="02-龙的意义.html">貳</a> ·
+      <a href="03-龙的死亡与重生.html">叁</a> ·
+      <a href="05-化龍.html">伍</a> ·
+      <a href="06-龍的對話錄.html">陸</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===========================================================
+     SCRIPTS
+     =========================================================== -->
+<script>
+/* ---------- 星 ---------- */
+(function spawnStars() {
+  const layer = document.getElementById('stars');
+  const N = 36;
+  for (let i = 0; i < N; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.top = (Math.random() * 100) + '%';
+    s.style.animationDelay = (Math.random() * 8) + 's';
+    s.style.animationDuration = (5 + Math.random() * 6) + 's';
+    const sz = 1 + Math.random() * 2.4;
+    s.style.width = sz + 'px';
+    s.style.height = sz + 'px';
+    layer.appendChild(s);
+  }
+})();
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- side index ---------- */
+const links = document.querySelectorAll('.side-index a');
+const targets = Array.from(links)
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+const setActive = () => {
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let idx = 0;
+  targets.forEach((t, i) => { if (t.offsetTop <= y) idx = i; });
+  links.forEach((l, i) => l.classList.toggle('active', i === idx));
+};
+window.addEventListener('scroll', setActive, { passive: true });
+setActive();
+
+/* ---------- chamber: local seal ---------- */
+const KEY = 'dragon-private-thesis-v1';
+const input  = document.getElementById('chamber-in');
+const out    = document.getElementById('chamber-out');
+const status = document.getElementById('seal-status');
+
+(function restore() {
+  try {
+    const saved = localStorage.getItem(KEY);
+    if (saved) {
+      input.value = saved;
+      renderOut(saved);
+    }
+  } catch (e) {}
+})();
+
+function renderOut(text) {
+  if (!text || !text.trim()) { out.classList.remove('shown'); out.innerHTML = ''; return; }
+  const safe = text.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const now = new Date();
+  const date = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+  out.innerHTML = '<div style="font-family:var(--f-num); font-size:.65rem; letter-spacing:.35em; color:var(--rose); margin-bottom:.8rem;">SEALED · ' + date + '</div>' +
+                  safe.replace(/\n/g, '<br>') +
+                  '<div style="margin-top:1rem; font-family:var(--f-num); font-size:.62rem; letter-spacing:.4em; color:var(--ink-deep); text-align:right;">— 你的龍</div>';
+  out.classList.add('shown');
+}
+
+function seal() {
+  const v = input.value.trim();
+  if (!v) {
+    status.textContent = '请先写下一些话。';
+    status.style.color = 'var(--rose)';
+    return;
+  }
+  try { localStorage.setItem(KEY, v); } catch (e) {}
+  status.textContent = '已封 · 仅存于你的浏览器';
+  status.style.color = 'var(--gold-bright)';
+  renderOut(v);
+}
+
+/* ---------- hero parallax ---------- */
+const heroChar = document.querySelector('.hero-bg-char');
+if (heroChar) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroChar.style.transform = `translateY(calc(-50% + ${y * 0.18}px))`;
+    }
+  }, { passive: true });
+}
+</script>
+
+</body>
+</html>

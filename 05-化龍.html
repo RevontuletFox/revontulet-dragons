@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>化龍 · The Becoming｜龙学第五卷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   卷五 · 化龍 · The Becoming
+   翠玉破曉美學：深翠 + 曉金 + 月銀 + 朱砂
+   呼应"化"的主题：从深水到天空的色温迁徙
+   =========================================================== */
+
+:root {
+  /* —— 翠玉破曉 —— */
+  --void:        #04100b;
+  --bg:          #0a1612;     /* 主底：深翠墨 */
+  --bg-2:        #12201a;     /* 一层亮 */
+  --bg-3:        #1a2c24;
+  --bg-moon:     #0e1820;     /* 偏冷月光区 */
+
+  --ink:         #e8e0c8;
+  --ink-soft:    #c9bea2;
+  --ink-deep:    #8a8270;
+  --ink-mute:    #525a52;
+
+  --jade:        #4a8a6e;      /* 翠玉主色 */
+  --jade-bright: #6eb892;      /* 嫩翠 */
+  --jade-deep:   #2a5240;
+  --jade-pale:   #aed4be;
+
+  --dawn:        #d4b870;      /* 晓金 */
+  --dawn-bright: #f5d990;      /* 破晓 */
+  --dawn-deep:   #8a7440;
+
+  --moon:        #c8d4d0;      /* 月银 */
+  --moon-dim:    #768680;
+  --moon-deep:   #3a4644;
+
+  --cinnabar:    #b8443a;       /* 朱砂点 */
+  --cinnabar-d:  #6a2218;
+
+  --line:        rgba(212,184,112,0.16);
+  --line-jade:   rgba(110,184,146,0.22);
+  --line-moon:   rgba(200,212,208,0.10);
+
+  --f-cn-brush:  'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --f-cn-script: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --f-cn:        'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
+  --f-en-disp:   'Cormorant Garamond', serif;
+  --f-en:        'EB Garamond', Georgia, serif;
+  --f-num:       'Cinzel', serif;
+
+  --measure: 38rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-cn);
+  font-weight: 300;
+  line-height: 1.88;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* === 气氛层 === */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 100%, rgba(74,138,110,0.16), transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 0%,   rgba(245,217,144,0.08), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 50% 50%, rgba(184,68,58,0.04),    transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: repeating-linear-gradient(
+    33deg,
+    rgba(232,224,200,0.013) 0,
+    rgba(232,224,200,0.013) 1px,
+    transparent 1px, transparent 7px
+  );
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* === 水波纹波动层（潜龙在水）=== */
+.waves {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 25vh;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(74,138,110,0.18), transparent 60%);
+  overflow: hidden;
+}
+.wave-line {
+  position: absolute;
+  bottom: 12%; left: -10%; right: -10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--jade-bright), transparent);
+  opacity: .25;
+  animation: drift 18s linear infinite;
+}
+.wave-line:nth-child(2) { bottom: 20%; opacity: .15; animation-duration: 26s; animation-direction: reverse; }
+.wave-line:nth-child(3) { bottom: 30%; opacity: .08; animation-duration: 32s; }
+@keyframes drift {
+  from { transform: translateX(-10%); }
+  to   { transform: translateX(10%); }
+}
+
+/* === 链接 === */
+a {
+  color: var(--dawn-bright);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(245,217,144,0.36);
+  transition: color .3s, border-color .3s;
+}
+a:hover { color: var(--jade-pale); border-bottom-color: var(--jade-pale); }
+img, svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   ★ 六龍位 ★ —— 左侧 6 个圆点对应乾卦六爻
+   随滚动逐个点亮金色
+   ============================================================ */
+.dragon-stages {
+  position: fixed;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex; flex-direction: column;
+  gap: 1.6rem;
+  padding: 1.8rem 0 1.8rem 0;
+  width: 9.5rem;
+}
+.dragon-stages::before {
+  content: '乾卦六龍';
+  display: block;
+  font-family: var(--f-cn);
+  font-size: .68rem;
+  letter-spacing: .42em;
+  color: var(--jade-bright);
+  padding-bottom: .8rem;
+  margin-bottom: .4rem;
+  border-bottom: 1px solid var(--line-jade);
+  text-align: left;
+  padding-left: 1.4rem;
+}
+.dragon-stages::after {
+  content: '';
+  position: absolute;
+  left: .7rem; top: 4rem; bottom: 1.8rem;
+  width: 1px;
+  background: linear-gradient(180deg,
+    transparent, var(--jade-deep) 20%, var(--jade-deep) 80%, transparent);
+  z-index: -1;
+}
+.stage {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-family: var(--f-cn);
+  font-size: .78rem;
+  color: var(--ink-deep);
+  text-decoration: none;
+  border: none;
+  letter-spacing: .12em;
+  transition: color .5s;
+  position: relative;
+}
+.stage .dot {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--bg-2);
+  border: 1.5px solid var(--moon-dim);
+  flex-shrink: 0;
+  transition: background .6s, border-color .6s, box-shadow .6s, transform .6s;
+}
+.stage .label {
+  display: flex; flex-direction: column;
+  line-height: 1.15;
+}
+.stage .label b {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: .82rem;
+  letter-spacing: .15em;
+  color: inherit;
+}
+.stage .label .num {
+  font-family: var(--f-num);
+  font-size: .55rem;
+  color: var(--ink-mute);
+  letter-spacing: .25em;
+  margin-top: .15rem;
+  transition: color .6s;
+}
+.stage:hover { color: var(--jade-pale); }
+.stage:hover .dot { border-color: var(--jade-bright); }
+.stage.lit { color: var(--dawn-bright); }
+.stage.lit .label .num { color: var(--dawn); }
+.stage.lit .dot {
+  background: var(--dawn-bright);
+  border-color: var(--dawn);
+  box-shadow:
+    0 0 12px var(--dawn-bright),
+    0 0 24px rgba(245,217,144,0.4);
+  transform: scale(1.08);
+}
+.stage.active { color: var(--jade-pale); }
+.stage.active .dot {
+  background: var(--jade-bright);
+  border-color: var(--jade-pale);
+  box-shadow: 0 0 12px var(--jade-bright);
+  animation: breathe-dot 2.2s ease-in-out infinite;
+}
+@keyframes breathe-dot {
+  0%, 100% { box-shadow: 0 0 8px var(--jade-bright); }
+  50%      { box-shadow: 0 0 16px var(--jade-bright), 0 0 28px rgba(110,184,146,0.45); }
+}
+
+@media (max-width: 1140px) {
+  .dragon-stages { display: none; }
+}
+
+/* 右上角 */
+.top-mark {
+  position: fixed;
+  top: 1.4rem; right: 1.6rem;
+  z-index: 50;
+  display: flex; align-items: center; gap: .9rem;
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .32em;
+  color: var(--ink-deep);
+}
+.top-mark .seal {
+  width: 1.8rem; height: 1.8rem;
+  background: var(--cinnabar);
+  display: grid; place-items: center;
+  color: var(--ink);
+  font-family: var(--f-cn-brush);
+  font-size: 1.05rem;
+  box-shadow:
+    0 0 0 1px rgba(184,68,58,.6) inset,
+    0 0 14px rgba(184,68,58,0.4);
+}
+.top-mark .nav-links {
+  display: flex; gap: .9rem;
+  font-family: var(--f-cn);
+  font-size: .72rem;
+  letter-spacing: .25em;
+}
+.top-mark .nav-links a {
+  color: var(--ink-deep);
+  border: none;
+}
+.top-mark .nav-links a:hover { color: var(--dawn-bright); }
+@media (max-width: 720px) { .top-mark .nav-links { display: none; } }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem var(--gutter) 4rem;
+  overflow: hidden;
+  z-index: 5;
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 100%, rgba(74,138,110,0.30), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 75% 10%, rgba(245,217,144,0.10), transparent 60%);
+  border-bottom: 1px solid var(--line-jade);
+}
+
+.hero-bg-char {
+  position: absolute;
+  left: 50%; top: 55%;
+  transform: translate(-50%, -50%);
+  font-family: var(--f-cn-brush);
+  font-size: clamp(28rem, 58vw, 52rem);
+  line-height: .85;
+  color: transparent;
+  background: linear-gradient(180deg,
+    rgba(245,217,144,0.16) 0%,
+    rgba(110,184,146,0.12) 50%,
+    rgba(74,138,110,0.08) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  filter: blur(.6px);
+  animation: surface 14s ease-in-out infinite;
+}
+@keyframes surface {
+  0%, 100% { transform: translate(-50%, -45%) scale(1); opacity: .85; }
+  50%      { transform: translate(-50%, -55%) scale(1.04); opacity: 1; }
+}
+
+.hero-eyebrow {
+  font-family: var(--f-num);
+  font-size: .76rem;
+  letter-spacing: .45em;
+  color: var(--jade-bright);
+  margin-bottom: 2.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; animation: rise 1s .15s ease-out forwards;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 3.5rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--jade-bright));
+}
+
+.hero h1 {
+  font-family: var(--f-cn-brush);
+  font-weight: 400;
+  font-size: clamp(5rem, 16vw, 14rem);
+  line-height: .92;
+  margin: 0 0 .15em;
+  color: var(--ink);
+  letter-spacing: .04em;
+  text-shadow:
+    0 0 40px rgba(110,184,146,0.30),
+    0 0 80px rgba(74,138,110,0.20);
+  opacity: 0;
+  animation: rise 1.2s .35s ease-out forwards;
+}
+
+.hero-sub-cn {
+  font-family: var(--f-cn);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 400;
+  color: var(--dawn-bright);
+  letter-spacing: .22em;
+  margin: 0 0 1.8rem;
+  opacity: 0; animation: rise 1.2s .7s ease-out forwards;
+}
+
+.hero-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+  letter-spacing: .04em;
+  color: var(--jade-pale);
+  margin: 0 0 3rem;
+  max-width: 38rem;
+  line-height: 1.3;
+  opacity: 0; animation: rise 1.2s 1s ease-out forwards;
+}
+.hero-title-en em { color: var(--dawn-bright); font-style: italic; }
+
+.hero-thesis {
+  max-width: 40rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line-jade);
+  font-family: var(--f-cn);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 2;
+  opacity: 0; animation: rise 1.2s 1.2s ease-out forwards;
+}
+.hero-thesis em { color: var(--jade-bright); font-style: normal; }
+
+.hero-meta {
+  display: flex; gap: 3rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--ink-deep);
+  margin-top: 3.2rem;
+  flex-wrap: wrap;
+  opacity: 0; animation: rise 1.2s 1.4s ease-out forwards;
+}
+.hero-meta div { display: flex; flex-direction: column; gap: .3rem; }
+.hero-meta strong { color: var(--jade-bright); font-weight: 500; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .4em;
+  color: var(--ink-deep);
+  display: flex; align-items: center; gap: .6rem;
+  opacity: 0; animation: rise 1s 1.7s ease-out forwards;
+}
+.scroll-cue::after {
+  content: ''; display: block; width: 1px; height: 2.2rem;
+  background: linear-gradient(180deg, var(--jade-bright), transparent);
+  animation: descend 2.6s ease-in-out infinite;
+}
+@keyframes descend {
+  0%, 100% { transform: scaleY(.6) translateY(-30%); opacity: .35; }
+  50%      { transform: scaleY(1)  translateY(0);   opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   PROLOGUE
+   ============================================================ */
+section { position: relative; z-index: 5; }
+
+.prologue {
+  padding: 9rem var(--gutter) 6rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  position: relative;
+}
+.prologue::before {
+  content: 'OVERTURE · 序';
+  position: absolute;
+  top: 5.5rem; left: var(--gutter);
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .4em;
+  color: var(--jade-bright);
+}
+
+.prologue-label {
+  font-family: var(--f-cn);
+  font-size: .85rem; letter-spacing: .4em;
+  color: var(--cinnabar);
+  margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.prologue-label::after {
+  content: ''; flex: 1; max-width: 6rem; height: 1px;
+  background: linear-gradient(90deg, var(--cinnabar), transparent);
+}
+
+.prologue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4.3vw, 3.6rem);
+  line-height: 1.3;
+  margin: .4em 0 1.5em;
+  color: var(--ink);
+  letter-spacing: .02em;
+  max-width: 32em;
+}
+.prologue h2 em {
+  font-style: normal;
+  color: var(--dawn-bright);
+  font-family: var(--f-cn-brush);
+  font-size: 1.2em;
+}
+
+.prologue-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+.prologue-body p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin: 0 0 1.3em;
+}
+.prologue-body p:first-child::first-letter {
+  font-family: var(--f-cn-brush);
+  font-size: 4.2em;
+  float: left;
+  line-height: .9;
+  padding: .1em .15em 0 0;
+  color: var(--jade-bright);
+}
+@media (max-width: 760px) { .prologue-body { grid-template-columns: 1fr; gap: 1rem; } }
+
+/* ============================================================
+   ACT divider
+   ============================================================ */
+.act-divider {
+  text-align: center;
+  padding: 8rem 1.5rem 5rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center, rgba(74,138,110,0.15), transparent 60%);
+}
+.act-divider .roman {
+  font-family: var(--f-num);
+  font-size: clamp(4rem, 9vw, 7rem);
+  font-weight: 500;
+  color: var(--jade-bright);
+  letter-spacing: .1em;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(110,184,146,0.4);
+}
+.act-divider .act-cn {
+  font-family: var(--f-cn-brush);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--ink);
+  margin-top: 1rem;
+  letter-spacing: .3em;
+}
+.act-divider .act-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  color: var(--jade-pale);
+  margin-top: 1rem;
+  letter-spacing: .04em;
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.act-divider .act-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--jade-bright), transparent);
+  margin: 2rem auto;
+}
+
+/* ============================================================
+   YAO BANNER —— 每章前的爻辞横幅
+   ============================================================ */
+.yao-banner {
+  max-width: 64rem;
+  margin: 6rem auto 0;
+  padding: 2.4rem 3rem;
+  background: linear-gradient(95deg,
+    rgba(74,138,110,0.12) 0%,
+    rgba(245,217,144,0.06) 50%,
+    transparent 100%);
+  border-left: 3px solid var(--dawn-bright);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.yao-banner .yao-num {
+  font-family: var(--f-num);
+  font-size: .72rem;
+  letter-spacing: .45em;
+  color: var(--jade-bright);
+  white-space: nowrap;
+  padding-right: 1.5rem;
+  border-right: 1px solid var(--line-jade);
+}
+.yao-banner .yao-text {
+  font-family: var(--f-cn-brush);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--ink);
+  letter-spacing: .15em;
+  line-height: 1.4;
+}
+.yao-banner .yao-text em {
+  color: var(--dawn-bright);
+  font-style: normal;
+}
+.yao-banner .yao-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--jade-pale);
+  margin-top: .4rem;
+  letter-spacing: .04em;
+}
+@media (max-width: 720px) {
+  .yao-banner { flex-direction: column; gap: 1rem; align-items: flex-start; padding: 1.8rem 1.6rem; }
+  .yao-banner .yao-num { border-right: none; padding-right: 0; padding-bottom: .8rem; border-bottom: 1px solid var(--line-jade); }
+}
+
+/* ============================================================
+   CHAPTER
+   ============================================================ */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 4rem;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 5rem var(--gutter);
+  position: relative;
+  scroll-margin-top: 4rem;
+}
+.chapter-head {
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.ch-numeral {
+  font-family: var(--f-num);
+  font-size: 5rem; font-weight: 500;
+  color: var(--jade-bright);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-shadow: 0 0 22px rgba(110,184,146,0.35);
+}
+.ch-numeral-cn {
+  font-family: var(--f-cn);
+  font-size: 1rem;
+  color: var(--ink-deep);
+  letter-spacing: .45em;
+  margin-top: -.4rem;
+}
+.ch-title-cn {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 2.4rem;
+  color: var(--ink);
+  margin: 1.5rem 0 .1em;
+  letter-spacing: .06em;
+  line-height: 1.25;
+}
+.ch-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--dawn-bright);
+  margin: 0;
+  letter-spacing: .04em;
+}
+.ch-tagline {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: .94rem;
+  color: var(--ink-soft);
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-jade);
+  max-width: 14rem;
+  line-height: 1.6;
+}
+
+.chapter-body {
+  font-size: 1.06rem;
+  color: var(--ink);
+}
+.chapter-body > *:first-child { margin-top: 0; }
+.chapter-body p { margin: 0 0 1.4em; }
+.chapter-body p strong { color: var(--jade-bright); font-weight: 500; }
+.chapter-body p em { color: var(--dawn-bright); font-style: normal; padding: 0 .1em; }
+.chapter-body p.lede {
+  font-family: var(--f-cn);
+  font-size: 1.22rem;
+  line-height: 1.85;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+.chapter-body .dropcap {
+  font-family: var(--f-cn-brush);
+  float: left;
+  font-size: 5em;
+  line-height: .85;
+  padding: .05em .15em 0 0;
+  color: var(--jade-bright);
+  font-weight: 400;
+}
+
+/* lists */
+.chapter-body ul.classic {
+  list-style: none;
+  padding: 0; margin: 1.5em 0;
+  border-left: 1px solid var(--line-jade);
+}
+.chapter-body ul.classic li {
+  padding: .55em 0 .55em 1.5em;
+  position: relative;
+  color: var(--ink);
+}
+.chapter-body ul.classic li::before {
+  content: ''; position: absolute;
+  left: -3.5px; top: 1.25em;
+  width: 6px; height: 6px;
+  background: var(--jade-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--jade-bright);
+}
+.chapter-body ul.classic li b {
+  color: var(--dawn-bright);
+  font-family: var(--f-num);
+  font-weight: 500;
+  letter-spacing: .1em;
+  font-size: .85em;
+  display: inline-block;
+  min-width: 6rem;
+}
+
+/* pullquote */
+.pullquote {
+  margin: 2.5em 0;
+  padding: 1.5em 0 1.5em 2em;
+  border-left: 3px solid var(--dawn-bright);
+  background: linear-gradient(90deg, rgba(245,217,144,0.06), transparent 80%);
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.75;
+  color: var(--ink);
+  letter-spacing: .04em;
+  position: relative;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1em;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--jade-pale);
+  letter-spacing: .05em;
+}
+
+/* note */
+.note {
+  display: block;
+  margin: 1.8em 0;
+  padding: 1.2em 1.4em;
+  background: rgba(110,184,146,0.05);
+  border: 1px solid var(--line-jade);
+  border-left: 3px solid var(--jade);
+  font-size: .94rem;
+  color: var(--ink-soft);
+  font-family: var(--f-cn);
+}
+.note .note-label {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .62rem; letter-spacing: .35em;
+  color: var(--jade-bright);
+  margin-right: .8em;
+  padding-right: .8em;
+  border-right: 1px solid var(--line-jade);
+}
+
+/* two-col */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5em 0;
+}
+.two-col .col {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  border-radius: 3px;
+}
+.two-col .col.east { border-color: var(--jade-deep); background: linear-gradient(180deg, rgba(42,82,64,0.22), var(--bg-2)); }
+.two-col .col.west { border-color: var(--moon-deep); background: linear-gradient(180deg, rgba(58,70,68,0.22), var(--bg-2)); }
+.two-col .col h4 {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 .8em;
+  letter-spacing: .1em;
+}
+.two-col .col.east h4 { color: var(--jade-bright); }
+.two-col .col.west h4 { color: var(--moon); }
+.two-col .col p { margin: 0 0 .8em; color: var(--ink-soft); font-size: .96rem; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+/* stage card */
+.stage-card {
+  margin: 2em 0;
+  padding: 1.6em 1.8em;
+  background:
+    radial-gradient(ellipse at top right, rgba(245,217,144,0.06), transparent 60%),
+    var(--bg-2);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--jade-bright);
+  position: relative;
+}
+.stage-card::before {
+  content: 'PRACTICE · 用';
+  position: absolute;
+  top: -.6rem; left: 1.6rem;
+  background: var(--bg);
+  padding: 0 .8rem;
+  font-family: var(--f-num);
+  font-size: .58rem;
+  letter-spacing: .4em;
+  color: var(--cinnabar);
+}
+.stage-card h5 {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--dawn-bright);
+  margin: .4rem 0 .6rem;
+  letter-spacing: .1em;
+}
+.stage-card p { margin: 0 0 .6em; color: var(--ink-soft); font-size: .98rem; }
+
+@media (max-width: 880px) {
+  .chapter { grid-template-columns: 1fr; gap: 2rem; }
+  .chapter-head { position: static; }
+  .ch-numeral { font-size: 3.6rem; }
+  .ch-title-cn { font-size: 2rem; }
+}
+
+/* ============================================================
+   INTERLUDE
+   ============================================================ */
+.interlude {
+  text-align: center;
+  padding: 7rem var(--gutter);
+  background:
+    radial-gradient(ellipse at center, rgba(74,138,110,0.16), transparent 60%);
+  position: relative;
+}
+.interlude::before, .interlude::after {
+  content: '◇';
+  display: block;
+  color: var(--jade-bright);
+  font-size: .8rem;
+  letter-spacing: 1rem;
+  margin: 0 auto 2.5rem;
+  opacity: .55;
+}
+.interlude::after { margin: 2.5rem auto 0; }
+.interlude p {
+  font-family: var(--f-cn-script);
+  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+  color: var(--ink);
+  line-height: 2;
+  max-width: 38rem;
+  margin: 0 auto;
+  letter-spacing: .06em;
+}
+.interlude cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--jade-pale);
+}
+
+/* ============================================================
+   EPILOGUE
+   ============================================================ */
+.epilogue {
+  padding: 10rem var(--gutter) 8rem;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center top, rgba(245,217,144,0.15), transparent 55%),
+    radial-gradient(ellipse at center bottom, rgba(74,138,110,0.25), transparent 60%);
+  border-top: 1px solid var(--line-jade);
+}
+.epilogue .epi-mark {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .5em;
+  color: var(--jade-bright);
+  margin-bottom: 1.4rem;
+}
+.epilogue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--ink);
+  margin: 0 0 2em;
+  letter-spacing: .06em;
+}
+.epilogue h2 em {
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  color: var(--dawn-bright);
+  font-size: 1.3em;
+}
+.epi-body {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--ink);
+  line-height: 2;
+}
+.epi-body p { margin: 0 0 1.3em; }
+.epi-body p strong { color: var(--dawn-bright); }
+.epi-verse {
+  margin: 3em auto;
+  padding: 2em 0;
+  border-top: 1px solid var(--line-jade);
+  border-bottom: 1px solid var(--line-jade);
+  font-family: var(--f-cn-script);
+  font-size: 1.35rem;
+  color: var(--jade-pale);
+  line-height: 2.4;
+  letter-spacing: .08em;
+}
+.epi-final {
+  margin-top: 3em;
+  font-family: var(--f-cn-brush);
+  font-size: 2rem;
+  color: var(--dawn-bright);
+  letter-spacing: .25em;
+  text-shadow: 0 0 24px rgba(245,217,144,0.45);
+}
+
+/* 六龙位完成器 */
+.six-dragons-final {
+  display: flex; justify-content: center;
+  gap: 1.4rem;
+  margin: 3rem auto;
+  flex-wrap: wrap;
+}
+.six-dragons-final .d {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--dawn-bright);
+  border: 2px solid var(--dawn);
+  box-shadow: 0 0 12px var(--dawn-bright);
+}
+
+/* colophon */
+.colophon {
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--ink-deep);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+.colophon .seal-tag { display: flex; align-items: center; gap: .8rem; }
+.colophon .seal-tag .seal-sm {
+  width: 1.9rem; height: 1.9rem;
+  background: var(--cinnabar);
+  display: grid; place-items: center;
+  color: var(--ink);
+  font-family: var(--f-cn-brush);
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px rgba(184,68,58,0.4);
+}
+.colophon a { color: var(--ink-soft); border: none; }
+.colophon a:hover { color: var(--dawn-bright); }
+
+/* reveal */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 1.1s ease-out, transform 1.1s ease-out; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+  .chapter, .prologue, .act-divider, .interlude, .epilogue, .yao-banner { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero-meta { gap: 1.5rem; }
+  .top-mark { right: 1rem; font-size: .55rem; letter-spacing: .2em; }
+}
+</style>
+</head>
+<body>
+
+<!-- 水波 -->
+<div class="waves" aria-hidden="true">
+  <div class="wave-line"></div>
+  <div class="wave-line"></div>
+  <div class="wave-line"></div>
+</div>
+
+<!-- ★ 六龍位 —— 左侧乾卦六爻 ★ -->
+<nav class="dragon-stages" aria-label="乾卦六龙位">
+  <a class="stage" href="#ch1" data-stage="1">
+    <div class="dot"></div>
+    <div class="label"><b>潛龍</b><span class="num">初九 · I</span></div>
+  </a>
+  <a class="stage" href="#ch2" data-stage="2">
+    <div class="dot"></div>
+    <div class="label"><b>見龍</b><span class="num">九二 · II</span></div>
+  </a>
+  <a class="stage" href="#ch3" data-stage="3">
+    <div class="dot"></div>
+    <div class="label"><b>惕厲</b><span class="num">九三 · III</span></div>
+  </a>
+  <a class="stage" href="#ch4" data-stage="4">
+    <div class="dot"></div>
+    <div class="label"><b>躍淵</b><span class="num">九四 · IV</span></div>
+  </a>
+  <a class="stage" href="#ch5" data-stage="5">
+    <div class="dot"></div>
+    <div class="label"><b>飛龍</b><span class="num">九五 · V</span></div>
+  </a>
+  <a class="stage" href="#ch6" data-stage="6">
+    <div class="dot"></div>
+    <div class="label"><b>亢龍</b><span class="num">上九 · VI</span></div>
+  </a>
+</nav>
+
+<!-- 右上 -->
+<div class="top-mark">
+  <span>VOL. V · MMXXVI</span>
+  <div class="nav-links">
+    <a href="01-龙之百科.html">壹</a>
+    <a href="02-龙的意义.html">貳</a>
+    <a href="03-龙的死亡与重生.html">叁</a>
+    <a href="04-为什么人类一直需要龙.html">長文</a>
+    <a href="06-龍的對話錄.html">陸</a>
+    <a href="index.html">門</a>
+  </div>
+  <div class="seal">龍</div>
+</div>
+
+<!-- ===========================================================
+     HERO
+     =========================================================== -->
+<header class="hero">
+  <div class="hero-bg-char" aria-hidden="true">化</div>
+  <div class="hero-eyebrow">VOLUME FIVE · 卷伍 · 化龍</div>
+  <h1>化&nbsp;龍</h1>
+  <div class="hero-sub-cn">The Becoming · 承認之後</div>
+  <p class="hero-title-en">
+    From <em>acknowledging</em> the dragon you need —<br>
+    to becoming a dragon you can live with.<br>
+    The oldest Eastern model of transformation,<br>
+    re-read for now.
+  </p>
+  <p class="hero-thesis">
+    西方教人<em>屠龍</em>。东方教人<em>化龍</em>。<br>
+    第四篇你<em>承认</em>了你需要龙——这一卷追问：然后呢？<br>
+    化龍不是修仙，不是鸡汤；它是一条比"个体化"更古老、比"成为自己"更具体的<em>结构</em>。<br>
+    这一卷把它从《易经》乾卦里挪出来，放进你的生活时间表里。
+  </p>
+  <div class="hero-meta">
+    <div><span>FORMAT</span><strong>VOL · 卷</strong></div>
+    <div><span>STAGES</span><strong>六龍位</strong></div>
+    <div><span>CHAPTERS</span><strong>8 + 序終</strong></div>
+    <div><span>EDITION</span><strong>MMXXVI · 05</strong></div>
+  </div>
+  <div class="scroll-cue">SCROLL ／ 入潛</div>
+</header>
+
+<!-- ===========================================================
+     OVERTURE
+     =========================================================== -->
+<section class="prologue" id="overture">
+  <div class="prologue-label">序章 · 承認之後</div>
+  <h2>第四篇你承认了——<br>你心智里有一格<em>不肯被填满</em>的位置。<br>这一卷追问：然后呢？</h2>
+  <div class="prologue-body reveal">
+    <div>
+      <p>三部曲+长文走到这里，已经把"龙是什么"和"为什么需要龙"问到了底。但有一件事一直被推迟——<em>承认需要之后，怎么办</em>？</p>
+      <p>大多数关于"成为自己"的书在这一步出问题。它们要么走向<strong>励志</strong>（"你可以做到！"），要么走向<strong>玄学</strong>（"打开你的脉轮"），要么走向<strong>商品</strong>（"购买这门课程"）。这些都不是<em>化龍</em>。</p>
+      <p>东亚有一个比这些都老、也都更冷静的模型——<strong>化龍</strong>。它来自《易经》乾卦的六爻、来自《后汉书》"鲤鱼跃龙门"的鱼、来自朝鲜民间"Imugi 修行千年"的蟒。这个模型的核心不是"努力变成更好的你"，而是——<em>认识你正在哪个阶段，做该阶段唯一应做的事，不做不该做的事</em>。</p>
+    </div>
+    <div>
+      <p>这一卷把这个古老模型从《易经》注疏里拽出来，<em>不</em>把它玄学化、<em>不</em>把它鸡汤化、<em>不</em>把它课程化。把它当作<strong>一种关于"成为"的结构</strong>对待。</p>
+      <p>左侧那六个圆点是<em>乾卦六龙位</em>——潜、见、惕、跃、飞、亢。你每读一章，对应那一爻的圆点会从冷变金。读到第六章，六龙位俱明。读到终章，你会看见一件你早就知道、但需要被以这种方式说出来的事——<strong>你已经在化龍的过程里。问题只是你认不认得它，配不配合它</strong>。</p>
+      <p style="font-family:var(--f-cn-script); font-size:1.2rem; color:var(--dawn-bright); line-height:1.8; padding:1em 1.2em; border-left:3px solid var(--jade-bright); margin: 1.5em 0;">
+        本卷的开示：化龍不是<em style="color:var(--jade-pale);">未来时</em>，是<em style="color:var(--jade-pale);">现在进行时</em>。<br>它早已开始；你之所以读到这里，<em style="color:var(--jade-pale);">就是它已经开始的证据</em>。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================================================
+     ACT I —— 古典化龙模型
+     =========================================================== -->
+<section class="act-divider" id="act1">
+  <div class="roman">ACT&nbsp;I</div>
+  <div class="act-cn">古典化龍 · 六龍之位</div>
+  <div class="act-line"></div>
+  <div class="act-en">The Classical Model — Six Stations of the Dragon, from the Qian Hexagram.</div>
+</section>
+
+<!-- ===== Chapter I —— 潛龍 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">初九 · LINE I</div>
+  <div>
+    <div class="yao-text"><em>潛</em>龍勿用。</div>
+    <div class="yao-en">The submerged dragon does not act.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch1">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">I</div>
+    <div class="ch-numeral-cn">壹 · 初九</div>
+    <h2 class="ch-title-cn">潜龙<br>勿用</h2>
+    <h3 class="ch-title-en">The Hidden Dragon</h3>
+    <p class="ch-tagline">深水里的纪律——什么都不该做的那一段时间。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">所</span>有"成为"的过程都有一段没有人鼓掌的时间。那段时间里你做的最大努力，恰恰是<em>什么都不做</em>。乾卦把它放在第一爻——<strong>潜龙勿用</strong>。</p>
+
+    <p>"勿用"两个字常被误读为"不能用、能力不足"。这是字面错误。"勿用"是<em>纪律</em>——<strong>不是不能用，是不该用</strong>。这个区分极重要。一条潜龙在深水里，不是没有翅膀，是知道现在不是飞的时候。一旦它过早试飞，不是它会摔下来——是它<em>没机会再潜回去</em>。深水的入场券一旦交出去，就拿不回了。</p>
+
+    <div class="pullquote">
+      潛龍勿用，陽在下也。<br>
+      君子以成德為行，日可見之行也。<br>
+      <em>潛之為言也，隱而未見，行而未成</em>，是以君子弗用也。
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>这段注疏里的关键是 <strong>"行而未成"</strong>——你已经在<em>行</em>了，只是<em>未成</em>。潜龙不是无所事事的龙，是<em>在不被看见的地方持续做事</em>的龙。这与今日朋友圈/社交资本逻辑彻底相反——后者要求"做了就发"、"做了就被看见"、"被看见才算做了"。<strong>潜龙之所以是龙，正因为它能在不发朋友圈的时段里仍然做事</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">潜龙阶段的三条纪律</h4>
+    <ul class="classic">
+      <li><b>NON-PERFORMANCE</b>不表演——把"做"和"被看见"解绑。这一阶段最大的破坏是<em>过早接受外部反馈</em>。反馈在错误时刻会改变你正在养成的事物的形状。</li>
+      <li><b>NON-DEFINITION</b>不被定义——这一阶段你最忌让别人替你命名你正在做的事。"你是想做什么"这个问题在潜龙期没有答案，<em>有答案就是一个坏答案</em>。</li>
+      <li><b>NON-OPTIMIZATION</b>不优化——潜龙不优化，潜龙只<em>累积</em>。优化是有目标的；累积是不确定目标的。在你还不知道自己要飞向哪里之前，优化只会让你飞错方向。</li>
+    </ul>
+
+    <p>大多数人没能成为他们本可成为的样子，是因为他们<strong>不会潜</strong>。他们一有些样子立刻拿出来给人看，立刻寻求反馈，立刻调整方向，立刻给自己起名字。这些动作单独看每个都对，加在一起——你失去了潜的机会。</p>
+
+    <div class="stage-card">
+      <h5>潜龍期的辨认</h5>
+      <p>如果你正在做某件事——一份手稿、一个想法、一种练习、一种学习——并且：<em>它还不能解释清楚是什么；它还不能稳定输出；你向别人提起它会被劝阻；你自己有时也想放弃</em>——那么你大概率在潜龙期。</p>
+      <p>这一期的唯一动作：<strong>保持不被看见地继续做</strong>。每天一点点。不发，不晒，不告诉关心你的人。等待你自己确认你在做什么的那一天到来——那天到来时，你会知道。</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">古</span>
+      孔子在《系辞》里说："君子藏器於身，待時而動。" 翻译过来是——把工具藏在身上，等时机来了再用。这不是"伪装"，是<em>对时机的尊重</em>。潜龙期不是被动等待，是<strong>主动藏匿</strong>。藏匿本身是一种动作。
+    </div>
+  </div>
+</article>
+
+<!-- ===== Chapter II —— 見龍 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">九二 · LINE II</div>
+  <div>
+    <div class="yao-text"><em>見</em>龍在田，利見大人。</div>
+    <div class="yao-en">The dragon appears in the field; meeting the great person is advantageous.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch2">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">II</div>
+    <div class="ch-numeral-cn">貳 · 九二</div>
+    <h2 class="ch-title-cn">见龙<br>在田</h2>
+    <h3 class="ch-title-en">First Sighting</h3>
+    <p class="ch-tagline">第一次出水——找谁是你"在田里见到的大人"。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">某</span>一天你抬起头——你做的那件事开始有了被外界辨认的形状。这是<em>见龙在田</em>。你已不再是水里的一条蜷曲之物，你出现在田里——一个介乎私密与公开之间的场所。</p>
+
+    <p>"田"这个字选得极精确。<em>田</em>不是市场，不是宫殿，不是讲坛——田是<strong>"小规模见证"的场所</strong>。这一阶段你需要的不是被所有人看见，是被<em>恰好对的几个人</em>看见。卦辞里的 "<strong>利见大人</strong>" 四个字是这一阶段唯一的实务建议——<em>这时候你需要找对的人看到你</em>。</p>
+
+    <div class="pullquote">
+      見龍在田，德施普也。<br>
+      ……龍德而正中者也，<br>
+      庸言之信，庸行之謹，閑邪存其誠，<br>
+      <em>善世而不伐</em>，德博而化。
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>"善世而不伐" 这一句指向见龙期最易犯的错误——<em>开始夸自己</em>。一离开潜龙的纪律，外部反馈终于到来——大多数人开始过度消费它。<strong>见龙阶段被毁掉的人，比潜龙阶段被毁掉的人还多</strong>。原因是它伪装成了成功。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">见龙期的三条窄路</h4>
+    <ul class="classic">
+      <li><b>SCALE QUIETLY</b>"小规模见证"——你需要的是 5–50 个对的人，不是 5000 个泛人。卷一里你已经知道为什么——大规模指认会把龙拍扁为符号。这一阶段，<em>留心你被指认的方式与规模</em>。</li>
+      <li><b>FIND YOUR 大人</b>找一个真正懂你做的事的人。"大人"不是名人，是<em>能看出你做的事价值在哪里的人</em>。这种人很少。一个就够。两个是奢侈。三个以上你大概率走错了。</li>
+      <li><b>DON'T TRADE THE DEPTH</b>不要把潜龙期攒下的深度，用来换见龙期的可见度。这是最常见的退化——一旦开始被看见，就只做<em>能被看见</em>的事，停止做<em>使你成为你</em>的事。这就是"出水之后再没有回过水"的鱼的结局。</li>
+    </ul>
+
+    <p>有一个很少被讨论的细节——见龙期是<strong>认知陷阱的高密度区</strong>。突然到来的小规模反馈会让你以为自己已经"成了"。这个错觉非常致命，因为它会让你跳过接下来的三爻（九三、九四、九五），直接幻觉自己在"飞龙在天"。<em>你没飞。你只是被田里偶然路过的人看见了</em>。</p>
+
+    <div class="stage-card">
+      <h5>见龍期的辨认</h5>
+      <p>如果有人开始向你描述<em>你做的那件事</em>，并且ta的描述比你以前能说出口的更清晰——见龙期已经开始。这种"被对的人说出口"的体验是这一阶段最重要的事件。</p>
+      <p>这一期的唯一动作：<strong>感谢那个看出你来的人，然后回到工作</strong>。不要因为被看见而改变你做事的方式；不要扩大规模；不要把这次见证当作"开始"，<em>它只是确认你过去那段时间没有白做</em>。</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">注</span>
+      卷四里我们说龙不依赖外界确认而存在——这与见龙期"利见大人"并不矛盾。区分在这里：<em>外界确认不是你存在的根据，但外界确认可以是你某一阶段的工具</em>。"利见大人"是工具性的，不是构成性的。大人不能赋予你龙性；大人只能<em>认出</em>你已有的龙性。
+    </div>
+  </div>
+</article>
+
+<!-- ===== Chapter III —— 惕厉 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">九三 · LINE III</div>
+  <div>
+    <div class="yao-text">君子終日乾乾，夕<em>惕</em>若，厲，無咎。</div>
+    <div class="yao-en">All day long, the noble one toils; in the evening, vigilant — danger, but no blame.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch3">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">III</div>
+    <div class="ch-numeral-cn">參 · 九三</div>
+    <h2 class="ch-title-cn">惕厉<br>之中段</h2>
+    <h3 class="ch-title-en">The Vigilant Midwork</h3>
+    <p class="ch-tagline">最磨人的一段：被见之后、未飞之前。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">九</span>三是六爻里最难走的一段。它没有"潜"的清净，没有"见"的喜悦，没有"飞"的高度——它是<em>白天累、晚上怕</em>。<strong>终日乾乾，夕惕若，厲，無咎</strong>——白天不停做、晚上仍提防，处于"危厲"之中，但<em>无咎</em>（没错）。</p>
+
+    <p>"无咎"两个字是这一阶段唯一的回报。它不是"成功"，是"还没出错"。这一阶段你做对所有事的奖励——只是<em>没被淘汰</em>。这种回报结构会击垮很多人。</p>
+
+    <div class="pullquote">
+      九三重剛而不中，<br>
+      上不在天，下不在田，故乾乾因其時而惕，雖危無咎矣。
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>关键在 "<strong>上不在天，下不在田</strong>" 这八个字——你已经离开了田（你不再隐匿），但还没到天（你还没立稳）。这是龙最危险的位置——<em>没有掩护，又没有高度</em>。<strong>所有失败的"成为"都在这一段坍塌</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">九三期的三个常见崩塌</h4>
+    <ul class="classic">
+      <li><b>EXHAUSTION</b>耗竭——白天工作量已到顶峰，晚上还要保持警觉。许多人在这一阶段彻底退回潜龙期，从此不再出来。<em>这不是失败，是节奏失调</em>。</li>
+      <li><b>PRAISE TRAP</b>赞美陷阱——这一阶段你开始被更多人称赞。九三的危厲恰恰是——<em>赞美的数量与你正在承担的危险成正比，而不是与你的安全成正比</em>。每多一个赞美，你失去了一份对真实状态的警觉。</li>
+      <li><b>EARLY DECLARATION</b>过早宣告——这一阶段你最想做的事，是宣布自己"已经成了"。这是九三给你的最大测试——<em>能不能不宣告</em>。乾乾不止，惕若不断，无言。</li>
+    </ul>
+
+    <p>注意"終日乾乾"的"<em>乾乾</em>"——这两个字不是"乾乾净净"，是<strong>"反复地、不停地、一刻不松地"乾</strong>。九三是<em>密度最高的劳作期</em>。它不像潜龙期可以慢，不像见龙期有回报，不像飞龙期有空间——它是<strong>没有空间也必须继续推</strong>。</p>
+
+    <div class="stage-card">
+      <h5>九三期的辨认</h5>
+      <p>如果你正在做的那件事——已经有人在看了、有人在用了、有人对它有期待了，但你心里清楚<em>距离它真正稳定还差很远</em>——你在九三。如果你晚上睡觉前会想"明天还能继续撑住吗"——九三确认。如果你白天感到无穷无尽的琐事必须处理，没有时间想大事——九三典型症状。</p>
+      <p>这一期的唯一动作：<strong>保住节奏，保住警觉，保住不宣告</strong>。这是最难也最枯燥的一段，正因为它枯燥，能撑过去的人就能进九四。</p>
+    </div>
+
+    <p>古人留给九三的判断是"<em>无咎</em>"——不是"吉"。这是个冷静的奖励。但请注意——<em>在乾卦六爻里，"无咎"已经是这一阶段所能达到的最高分</em>。明白这一点，你不再为"九三没有更多奖励"而沮丧。这一段的本质就是<strong>"被允许继续走"</strong>。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter IV —— 跃渊 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">九四 · LINE IV</div>
+  <div>
+    <div class="yao-text">或<em>躍</em>在淵，無咎。</div>
+    <div class="yao-en">It may leap in the abyss — no blame.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch4">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IV</div>
+    <div class="ch-numeral-cn">肆 · 九四</div>
+    <h2 class="ch-title-cn">或跃<br>在渊</h2>
+    <h3 class="ch-title-en">Leap or Stay?</h3>
+    <p class="ch-tagline">那个"要不要跳"的瞬间——能进退两可。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">九</span>四是"或跃在渊"。"<em>或</em>"是关键字——<strong>可跃可不跃，由你判断</strong>。乾卦六爻里只有这一爻明确把决定权交给主体。"或"在文言里是模态词，意思是 "may"——不是 "must"。<em>这一刻，做不做，是你的事</em>。</p>
+
+    <p>这阶段你已经积攒够了——潜过了，见过了，惕过了。"渊"还在你脚下——回得去。"天"在你头上——上得去。你处于<em>临界态</em>。<strong>临界态的特征是：留与跳都不算错</strong>。卦辞说"无咎"——意思是无论你这一刻选哪个都不会被判错。但你必须选。</p>
+
+    <div class="pullquote">
+      或躍在淵，乾道乃革。<br>
+      ……上下無常，非為邪也；<br>
+      <em>進退無恆，非離群也</em>。<br>
+      君子進德修業，欲及時也，故無咎。
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>这一段注疏极美——"<strong>上下无常，非为邪也；进退无恒，非离群也</strong>"。意思是：在这一阶段进可退可，不是反复无常，不是脱群——而是<em>对时机的诚实</em>。<strong>九四是六爻里唯一允许"反悔"的爻位</strong>。你以为该跳了，跳到一半发现不该，可以退；你以为不该跳，过了一会发现该跳，可以重选。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">九四的三种"或"</h4>
+
+    <div class="two-col">
+      <div class="col east">
+        <h4>跃 · 上行</h4>
+        <p>跨出当前的安全圈——把你做的事从"私事"变为"公事"，从"试验"变为"承诺"，从"可能"变为"已是"。</p>
+        <p>跃的代价：失去回头的便利。跃的收获：进入九五的可能。</p>
+      </div>
+      <div class="col west">
+        <h4>不跃 · 持守</h4>
+        <p>留在临界点，继续观察。<em>不跃也是一种合法的"或"</em>。这一爻独有的属性是：选择"不动"和选择"动"同样被卦象允许。</p>
+        <p>不跃的代价：可能错过窗口。不跃的收获：可继续看局势。</p>
+      </div>
+    </div>
+
+    <p>这一阶段最常见的错误，<em>不是错选</em>——是<strong>不选</strong>。"或跃在渊" 不是"不必决定"，是"<em>由你决定</em>"。许多人在九四僵住——既不跃也不退，仅仅<em>耗着</em>。耗着的代价是<em>不在六爻的任何位置上</em>——脱出节奏。</p>
+
+    <div class="stage-card">
+      <h5>九四期的辨认</h5>
+      <p>如果你正面对一个"做与不做"的决定——做了就出去了，不做仍可在原位再观望——你在九四。这个时刻的内在感觉是：<em>两个选择都不算错，但你必须选</em>。第三个选项"再等等" 看似温和，其实是这一爻最危险的诱惑——它消耗你的时机。</p>
+      <p>这一期的唯一动作：<strong>做出决定</strong>。或跃或不跃，<em>必须有"或"</em>。请记得文言："<em>欲及时也</em>"——把决定与时机绑在一起，不是与心情绑在一起。</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      九四在《易经》研究里被称为"<em>转折之爻</em>"。它是乾卦中段与上段的桥梁。如果九三是"日复一日的坚持"，九四就是"某一刻的飞身一跃"。卷三第二章里我们说萨根的刀杀死的是"需要外界确认才成立"的龙；九四的"或"恰恰让你<em>不需要外界确认就能做决定</em>。这是化龍模型与西方决策学最显著的差别——它把决定权完全交还给"在时机里的你"。
+    </div>
+  </div>
+</article>
+
+<!-- ===== Chapter V —— 飞龙 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">九五 · LINE V</div>
+  <div>
+    <div class="yao-text"><em>飛</em>龍在天，利見大人。</div>
+    <div class="yao-en">The flying dragon in the sky; meeting the great person is advantageous.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch5">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">V</div>
+    <div class="ch-numeral-cn">伍 · 九五</div>
+    <h2 class="ch-title-cn">飞龙<br>在天</h2>
+    <h3 class="ch-title-en">The Sky-Dragon</h3>
+    <p class="ch-tagline">巅峰——但请注意：巅峰不是飞行本身，是"在合适的位置"。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">九</span>五是这一卷里最被误解的一爻。"<strong>飞龙在天，九五之尊</strong>"——这两句被反复引用以致变成"成功"的代名词。但《文言》对这一爻的解读细致而冷静：飞龙不是"飞到了最高处"，是 "<em>在合适的位置上</em>"。</p>
+
+    <div class="pullquote">
+      飛龍在天，乃位乎天德。<br>
+      ……同聲相應，同氣相求；<br>
+      水流濕，火就燥，雲從龍，風從虎。<br>
+      <em>聖人作而萬物覩</em>。<br>
+      本乎天者親上，本乎地者親下，則各從其類也。
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>这段引文里的核心机制是 "<strong>同声相应，同气相求</strong>"。飞龙在天的功能不是"被仰望"，是<em>"召唤同类"</em>。"<strong>云从龙，风从虎</strong>"——龙在天上一动，云自动跟随；这不是龙"统治"云，是龙的位置使云<em>自然而然地</em>显形。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">飞龙阶段的真实工作</h4>
+    <ul class="classic">
+      <li><b>POSITION</b>位——在这一阶段，做对的事不再靠"努力"，靠<em>"位"</em>。你在哪里，决定什么自然到你身边。"位乎天德" 不是"地位高"，是<em>与你应有的"德"对齐了的位置</em>。</li>
+      <li><b>ATTRACTION</b>引——你不再追逐资源，资源被你的位置自然引来。但请注意：这不是"被动等"，是<em>"以位行事"</em>。位本身是你做出来的，不是命运给的。</li>
+      <li><b>VISIBLE WORK</b>显现——"圣人作而万物覩"——你做的事不再隐匿，它<em>自然</em>被看见。但被看见已不是它的目的，只是它的副产品。</li>
+    </ul>
+
+    <p>注意——飞龙阶段也"利见大人"。这与九二一样。但意义不同。九二的"利见大人"是<em>"你被一个大人看见"</em>；九五的"利见大人"是<em>"你以大人之姿见另一个大人"</em>。<strong>这一阶段的"大人"是同侪——是另一个飞龙</strong>。这是文言哲学最微妙的一点：在最高处遇见的不是俯视你的人，是与你平视的人。</p>
+
+    <p>很多人到了九五，仍以为自己应当"继续努力变得更强"。这是误读——<em>九五的考验不是力量，是"在位"</em>。"力量"是九三的事；九五的事是"<em>是否安于位</em>"。<strong>飞龙最常见的失败，是飞过了头</strong>——这就直接通向下一爻：上九。</p>
+
+    <div class="stage-card">
+      <h5>飞龍期的辨认</h5>
+      <p>如果你做的那件事开始<em>自动</em>引来对的人、对的机会、对的合作——你在九五。如果你不再需要解释你是谁，外界已经知道——九五。如果你能"在场即工作"——你的存在本身已经在产出价值——九五。</p>
+      <p>这一期的唯一动作：<strong>在位，不过位</strong>。不要把九五当作"应当继续上行"的台阶；它是<em>顶点</em>，不是中途。下一爻不是更高的飞，是<em>过高的飞——亢龙</em>。</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">辨</span>
+      请把九五的"位"和西方个人主义传统里的"成功"区分开。"成功"是<em>累积外部资源到一定阈值</em>；"位"是<em>找到自己结构性应在的位置并安住其中</em>。两者偶尔重合，但本质不同。一个人可以在西方意义上"非常成功"却<em>没有飞龙的位</em>——他在错的位置上累积了很多资源。<em>飞龙之德首先是知位，其次才是知己</em>。
+    </div>
+  </div>
+</article>
+
+<!-- ===== Chapter VI —— 亢龙 ===== -->
+<section class="yao-banner reveal">
+  <div class="yao-num">上九 · LINE VI</div>
+  <div>
+    <div class="yao-text"><em>亢</em>龍有悔。</div>
+    <div class="yao-en">The arrogant dragon — there will be regret.</div>
+  </div>
+</section>
+
+<article class="chapter" id="ch6">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VI</div>
+    <div class="ch-numeral-cn">陸 · 上九</div>
+    <h2 class="ch-title-cn">亢龙<br>有悔</h2>
+    <h3 class="ch-title-en">The Overreaching Dragon</h3>
+    <p class="ch-tagline">最后一段：当"位"被弃、贪图再上一步。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">上</span>九是"<strong>亢龙有悔</strong>"——飞过头的龙，将会后悔。乾卦走到第六爻，给的不是更高的祝福，是<em>警告</em>。这一警告在化龍模型里有特殊的位置——它告诉你：<strong>"成为"的过程是有终点的，超过终点不是更进一步，是退两步</strong>。</p>
+
+    <div class="pullquote">
+      亢龍有悔，盈不可久也。<br>
+      ……知進而不知退，知存而不知亡，知得而不知喪。<br>
+      <em>其唯聖人乎</em>！知進退存亡而不失其正者，<em>其唯聖人乎</em>！
+      <cite>— 《易經·乾·文言》</cite>
+    </div>
+
+    <p>"知进而不知退"——这是亢龙的病。在九五时你已经在合适的位置了，你以为再上一步会更好，于是飞过了——结果是<em>不再有云从你、不再有风随你</em>。<strong>亢龙的悔不是被惩罚，是失位</strong>。它仍在天上，但<em>那里已经不是它的位</em>。</p>
+
+    <p>这一爻在化龍模型里有两重意义——</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">亢龙的两重启示</h4>
+
+    <div class="two-col">
+      <div class="col east">
+        <h4>对当下飞龙的警告</h4>
+        <p>在九五的人最大风险是"我还可以再上一点"。亢龙告诉你：<em>不，再上一点不是上，是过</em>。化龍的本质不是不停升级，是<strong>知止</strong>。</p>
+        <p>知止不是停止行动，是<em>在合适处不再加力</em>。这是六爻给"成为"过程下的最严厉刹车。</p>
+      </div>
+      <div class="col west">
+        <h4>对所有阶段的镜子</h4>
+        <p>更深的解读——亢龙不仅是九五之后的下一步，它是<em>每一爻都可能出现的"过位"现象</em>。潜龙过潜成隐者，见龙过见成网红，惕厲过惕成焦虑，跃淵过跃成跳楼，飞龍过飞成亢龍。</p>
+        <p>"亢"是<em>所有过度的总名</em>。它不是阶段，是危险结构本身。</p>
+      </div>
+    </div>
+
+    <p>《文言》对这一爻的核心评论是 "<strong>知进退存亡而不失其正者，其唯圣人乎</strong>"——能知道进退、知道存亡、并且不失其本心的，那就是圣人吧。这一句的语气极美——它带着<em>感叹</em>。意思是：这件事很难，能做到的几乎只有圣人。<strong>但难不等于不能做。它只意味着——你做到了，就是圣人意义上的化龍</strong>。</p>
+
+    <div class="stage-card">
+      <h5>亢龍期的辨认</h5>
+      <p>如果你已经在某个领域抵达了合适的位置，但仍然不自觉地<em>"再加一点"</em>——再多一个项目、再多一份责任、再多一次曝光、再多一个产品线——你在接近亢龙。如果你周围的人开始问"<em>你为什么还要这么拼</em>"——亢龙警告灯亮。如果你内心知道"再这样会出事"但停不下来——亢龙已至。</p>
+      <p>这一期的唯一动作：<strong>退一步</strong>。不是退回起点，是退到"位"。退到你应在的位置上，从那里看你之前飞过了什么。<em>退一步的人不丢龙，进一步的人变亢龙</em>。</p>
+    </div>
+
+    <p>注意一件事——<strong>亢龙的"悔"不是终结</strong>。乾卦走完之后还有"用九"——一个特殊的总爻辞。它对"成为完成之后"给出最后一个开示。这是终章的事情。</p>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ACT II —— 西方化龙的回响
+     =========================================================== -->
+<section class="act-divider" id="act2">
+  <div class="roman">ACT&nbsp;II</div>
+  <div class="act-cn">西方回響 · 化龍的另一種語言</div>
+  <div class="act-line"></div>
+  <div class="act-en">Western Echoes — When the Becoming Has Other Names.</div>
+</section>
+
+<!-- ===== Chapter VII —— Jung / Le Guin ===== -->
+<article class="chapter" id="ch7">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VII</div>
+    <div class="ch-numeral-cn">柒</div>
+    <h2 class="ch-title-cn">个体化与<br>造物之语</h2>
+    <h3 class="ch-title-en">Individuation &amp; the True Name</h3>
+    <p class="ch-tagline">荣格与 Le Guin——西方语言里两个最接近"化龙"的概念。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">乾</span>卦六爻是化龍最古老的语法。但同一件事，在西方有两个最近的对应物——<em>荣格的"个体化"</em>（individuation）与<em>Le Guin 的"造物之语"</em>（the Old Speech）。它们不能替代化龍模型，但读懂它们，能让你<em>从两个方向同时看到"成为"的形状</em>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">荣格的个体化</h4>
+
+    <p>荣格的<strong>"个体化"</strong>（individuation）是他后期最重要的概念。它指的是——<em>一个人逐渐把自己的所有部分（意识、阴影、阿尼玛/阿尼姆斯、自性）整合为一个不再依赖外界许可的整体</em>。这与化龍极其接近，但有一个重要的不同——</p>
+
+    <div class="two-col">
+      <div class="col west">
+        <h4>个体化 · Individuation</h4>
+        <p>结构：<em>整合内在的各个部分</em>——把阴影、本能、人格面具、原型都纳入一个统一的"自性"（Self）。</p>
+        <p>叙事：<em>英雄之旅</em>——离开、遇敌、战斗、回归。常以"屠龙"形式出现。</p>
+        <p>结果：一个不被外界定义的、强大的、统一的"我"。</p>
+      </div>
+      <div class="col east">
+        <h4>化龍 · The Becoming</h4>
+        <p>结构：<em>在六个时位中各做该做之事</em>——不是整合，是<em>对时机的诚实</em>。</p>
+        <p>叙事：<em>潜到飞到亢的弧线</em>——龙不"战斗"，龙<em>转化</em>。</p>
+        <p>结果：一个知进退存亡的"在位之人"。结果不是"强大"，是"<em>合时</em>"。</p>
+      </div>
+    </div>
+
+    <p>关键区别在于——<strong>个体化是空间结构（整合各部分），化龍是时间结构（按时位做事）</strong>。前者问"你是不是完整"，后者问"你是不是合时"。两者都通往"<em>不依赖外界许可的自我</em>"——但路径不同。</p>
+
+    <p>对你来说，两种语言可以同时使用。<em>个体化</em> 帮你看清你内在的哪些部分还没被整合；<em>化龍</em> 帮你看清你现在正处于六爻的哪一爻。两者像左右脚，交替前行。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">Le Guin 的造物之语</h4>
+
+    <p>厄休拉·勒古恩在《地海传奇》里发明了一个极美的概念——<strong>"造物之语"</strong>（the Old Speech）。这是一种特殊的语言，每一个词都是<em>事物的真名</em>。说出真名，事物就显现；说错真名，事物消失。在她的世界里，<em>只有龙天生说造物之语</em>。</p>
+
+    <div class="pullquote">
+      To say the name is to know the thing.<br>
+      To know the thing is to <em>be</em> it.<br>
+      Dragons do not learn the Old Speech;<br>
+      they <em>are</em> it.
+      <cite>— Ursula K. Le Guin《A Wizard of Earthsea》（释义）</cite>
+    </div>
+
+    <p>这段虚构里有一个对"化龍"极深的隐喻——<strong>化龍的本质，是慢慢能用"真名"称呼自己正在做的事</strong>。潜龙阶段你说不出真名（说出会被打回去）；见龙阶段你试着说，听见有人替你说出更准的版本；惕厉阶段你练习；跃渊阶段你第一次<em>以真名行事</em>；飞龙阶段真名已成你的位；亢龙阶段你说过了头，名失其物。</p>
+
+    <p>Le Guin 让"龙"这一物种<em>"天生说造物之语"</em>。这意味着——<strong>龙不是后来才学会真名的，龙是真名本身</strong>。这是 Le Guin 对"龙之为龙"的最深定义。她和卷一末尾你的命题在这里相遇——<em>龙不依赖外界确认而存在，因为龙本身就是命名的源头</em>。</p>
+
+    <div class="note">
+      <span class="note-label">链</span>
+      把这一段和卷四第五章（Tolkien 次创造）放在一起读——Tolkien 说人之为人在于"能造另一个世界"，Le Guin 在他基础上更进一步：<em>能为自己说出真名</em>。这两件事是化龍在西方语言里的两条最完整线索。
+    </div>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ACT III —— 当代化龙的窄路
+     =========================================================== -->
+<section class="act-divider" id="act3">
+  <div class="roman">ACT&nbsp;III</div>
+  <div class="act-cn">當代之路 · 三條窄門</div>
+  <div class="act-line"></div>
+  <div class="act-en">Modern Pathways — Three Narrow Doors into the Becoming.</div>
+</section>
+
+<!-- ===== Chapter VIII —— 三条窄路 ===== -->
+<article class="chapter" id="ch8">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VIII</div>
+    <div class="ch-numeral-cn">捌</div>
+    <h2 class="ch-title-cn">当代化龙的<br>三条窄路</h2>
+    <h3 class="ch-title-en">Three Narrow Pathways for Now</h3>
+    <p class="ch-tagline">创作 · 孤独 · 传递——古典模型如何活在你 2026 年的日历里。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">乾</span>卦的语言古老。它的结构有效，但它的应用场景不在你日常用的语言里。本章把六爻翻译为当代生活——具体到你 2026 年的日历里。化龍在今天有三条窄路——<strong>创作、孤独、传递</strong>。它们彼此交叉，但又各自独立。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">第一条窄路 · 通过创作</h4>
+
+    <p>这是 Tolkien 在卷四第五章里给的回答——<em>"次创造"是人之本性的一部分</em>。当代化龍的第一条路是——<strong>持续做一件不被立刻奖赏的创作</strong>。它可以是写、画、编程、研究、教学、设计、烹饪、园艺、修理——任何一种"<em>把世界上不存在的东西做出来</em>"的行为。</p>
+
+    <p>但这一路有它的窄门——<em>不能为外部反馈调整本质</em>。你可以为外部反馈调整呈现，但本质必须由你自己决定。一旦本质被反馈塑造，你创造的不是你的次创造，是市场的次创造——<em>那是亢龙提前出现</em>。</p>
+
+    <div class="stage-card">
+      <h5>创作之路的乾卦对应</h5>
+      <p><strong>潜龍</strong> = 你私下做、不发任何地方的那段时间。<br>
+         <strong>見龍</strong> = 第一次让 1-3 个对的人看到，听他们怎么描述。<br>
+         <strong>惕厲</strong> = 把它持续做下去、不发声、不停手的日复一日。<br>
+         <strong>躍淵</strong> = 第一次公开宣告"我在做这个"。<br>
+         <strong>飛龍</strong> = 它开始自动引来同类。<br>
+         <strong>亢龍</strong> = 你开始接太多、做太多、想做更大——退一步。</p>
+    </div>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">第二条窄路 · 通过孤独</h4>
+
+    <p>这一条路在当代尤其难走。<em>不是因为没有人陪伴，而是因为有太多陪伴的替代品——社交媒体、短视频、推送、群聊</em>。这些都不算陪伴；它们是<strong>"伪连接"</strong>——它们填满你的注意力，让你以为不孤独，但你<em>没真正与谁在一起，也没真正与自己在一起</em>。</p>
+
+    <p>孤独之路的核心是——<strong>每天给自己留一段没有外部输入的时间</strong>。不是冥想（那是工具），不是阅读（那也是输入），是<em>纯粹的、与自己在一起的时间</em>。可以散步，可以发呆，可以盯着天花板，可以洗碗。条件是——<em>没有手机</em>。</p>
+
+    <div class="pullquote">
+      All of humanity's problems stem from man's inability<br>
+      to sit quietly in a room alone.
+      <cite>— Blaise Pascal《Pensées》§ 139</cite>
+    </div>
+
+    <p>帕斯卡这句话三百年前已经写下，今天比当时更尖锐。<strong>能独自坐在一个房间里不查手机，是当代潜龙期最具体的形式</strong>。这一动作看似简单，但绝大多数人无法持续做它——它太"无产出"。但化龍的全部秘密就在这里——<em>有些"产出"是从无产出的时间里长出来的</em>。</p>
+
+    <div class="stage-card">
+      <h5>孤独之路的具体形式</h5>
+      <p><strong>每日</strong> · 半小时无手机的独处。最低剂量。</p>
+      <p><strong>每周</strong> · 一次半天的"无外部输入日"——不刷、不读、不听。</p>
+      <p><strong>每年</strong> · 一段几天的彻底退场——把所有人都礼貌地告诉一声"我消失几天"。</p>
+      <p>不为产出做这些。<em>做这些本身就是产出</em>——化龍期的潜水量。</p>
+    </div>
+
+    <h4 style="font-family:var(--f-cn);color:var(--jade-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">第三条窄路 · 通过传递</h4>
+
+    <p>这一条路最少被讨论，但它是飞龙阶段最重要的事。<em>化龍不是私事</em>——一个人化龍到飞龙之后，下一步不是继续上行（那是亢龙），是<strong>把你的龙交给下一个能理解的人</strong>。</p>
+
+    <p>"传递"不是教学。教学是<em>把知识给一个班</em>。传递是<em>把"那种东西"给一个人</em>。你认得的某个人，ta 正处于潜龙期——你帮ta潜得久一点；ta 正处于见龙期——你做那个"利见的大人"；ta 在惕厲——你陪ta 撑过去；ta 在或跃——你不替ta 决定但你在场；ta 在飞龙——你退到一边让ta 自己飞；ta 在亢龙——你直接告诉ta"亢龍有悔"。</p>
+
+    <p>传递有一个反直觉的属性——<strong>它使飞龙更稳，使亢龙退回飞龙</strong>。一个人专注于传递时，无暇过度扩张自己。他在传递的过程中重新认识自己的位。<em>传递是飞龙的解药，是亢龙的预防</em>。</p>
+
+    <div class="stage-card">
+      <h5>传递的具体形式</h5>
+      <p><strong>识别</strong> · 留意你身边正在化龙的人。他们正处于哪一爻？</p>
+      <p><strong>陪</strong> · 做他们那一阶段最需要的事——不是你最想做的事。潜龙期不要替他们发声；见龙期才适合替他们说话；惕厲期他们最需要不被打扰；跃渊期他们需要"你在场即可"；飞龙期请<em>退后</em>；亢龙期请<em>直接说</em>。</p>
+      <p><strong>不留名</strong> · 传递最深的形式是——<em>对方不必知道是你帮的</em>。这一点反直觉，但它是传递质量的试金石。如果你需要被感谢，那不是传递，是自我扩张。</p>
+    </div>
+
+    <div class="note">
+      <span class="note-label">合</span>
+      这三条窄路不是平行选择，是<em>同时进行的三个面</em>。一个真正在化龍的人，三条都在走——他在创作（私下做着东西），他在孤独（每日留一段无外部时间），他在传递（陪着身边某个人化龍）。<strong>少任何一条，化龍都不稳</strong>。三条齐备时，潜见惕跃飞亢的弧线会自然展开。
+    </div>
+  </div>
+</article>
+
+<!-- ===== Interlude ===== -->
+<section class="interlude">
+  <p>六爻已尽，三路已陈——<br>
+  但乾卦在六爻之外，还藏着第七个开示。<br>
+  那个开示叫"<em>用九</em>"。<br>
+  它不属于任何一爻，它<em>是六爻全部走完之后</em>，对走完的人讲的话。<br>
+  这就是终章。</p>
+  <cite>— Interlude · 用九之前</cite>
+</section>
+
+<!-- ===========================================================
+     EPILOGUE —— 用九 群龙无首
+     =========================================================== -->
+<section class="epilogue" id="epilogue">
+  <div class="epi-mark">CODA · 用九 · 終章</div>
+  <h2><em>群</em>龍無首，<em>吉</em>。</h2>
+  <div class="epi-body reveal">
+    <p>《易经》六十四卦里，<em>只有乾卦和坤卦</em>有一句"<strong>用</strong>"——独立于六爻之外的总开示。乾卦的总开示是这一句——</p>
+
+    <p style="font-family:var(--f-cn-brush); font-size:2.2rem; color:var(--dawn-bright); text-align:center; line-height:1.6; margin:2.5em 0; letter-spacing:.2em;">
+      用九：見群龍無首，吉。
+    </p>
+
+    <p>"<strong>群龍無首</strong>"——这四个字在现代汉语里有了贬义（"一盘散沙"），但《易经》的原意完全不同。它的意思是——<em>当你看见一群龙、而没有一条龙是"首"</em>——<strong>吉</strong>。</p>
+
+    <p>这是一个极其深的开示。它说——<em>化龍的最高境界，不是你成为众龙之首；是你看到所有的龙都各在其位，没有一条是另一条的统治者</em>。</p>
+
+    <div class="epi-verse">
+      潛龍在水，飛龍在天，<br>
+      亢龍知退，群龍無首。<br>
+      <em>無首</em>者，無爭也，<br>
+      <em>無爭</em>者，各歸其位也。<br>
+      ——化龍至此，不再有一條更高的龍可飛。<br>
+      你已是你，<em>不再需要更是</em>。
+    </div>
+
+    <p>这一卷开篇说——<em>化龙是现在进行时，不是未来时</em>。终章告诉你为什么——<strong>它的目的地不是某个比你更高的位置，是你回到你本该在的位置，并允许别人回到他们本该在的位置</strong>。</p>
+
+    <p>"无首" 不是无领导，是<em>无层级</em>。化龙到这一步，你不再以"比别人高"来确认自己——你早已不需要确认。你也不再要求别人比你低——他们的存在与你同样合法。<strong>你看见群龙，没有一条是首，没有一条是末——每一条都在自己的爻位上</strong>。</p>
+
+    <p>这就是为什么乾卦把"用九"放在六爻之外——它不是一个阶段，它是<em>走过所有阶段之后，对"成为"这件事最终的态度</em>。化龍的目的不是升级，是<strong>回归到一个不需要升级的看待方式</strong>。卷四里你认出了那条不死之龙；卷五终章你认出——那条龙不必独飞。它在你内心；它也在你身边每一个正在化龍的人内心。</p>
+
+    <p style="margin-top:2em;">现在请抬头看一眼左侧——<br>
+    六龙位俱明。<br>
+    你已经走完了乾卦的六爻——<em>这一次是借这一卷的形式走完的</em>。下一次，你会借你自己的生活时间表走一遍。<strong>那时你不再需要这一卷</strong>。</p>
+
+    <div class="six-dragons-final" id="six-final" aria-hidden="true">
+      <div class="d"></div><div class="d"></div><div class="d"></div>
+      <div class="d"></div><div class="d"></div><div class="d"></div>
+    </div>
+
+    <p class="epi-final">你已是龍。</p>
+
+    <p style="margin-top:3em; font-size:.95rem; color:var(--ink-soft); font-style:italic;">
+      —— 五卷的弧线：<br>
+      卷一<em style="color:var(--dawn-bright); font-style:normal;">看见</em> · 卷二<em style="color:var(--dawn-bright); font-style:normal;">理解</em> · 卷三<em style="color:var(--dawn-bright); font-style:normal;">守护</em> · 长文<em style="color:var(--dawn-bright); font-style:normal;">承认</em> · 卷五<em style="color:var(--dawn-bright); font-style:normal;">化身</em>。<br>
+      到此，龙学闭环。<br>
+      你不再读关于龙的书——<em>你过你的化龙之日</em>。
+    </p>
+  </div>
+</section>
+
+<!-- ===========================================================
+     COLOPHON
+     =========================================================== -->
+<footer class="colophon">
+  <div class="seal-tag">
+    <div class="seal-sm">龍</div>
+    <div>
+      <div>FIELD NOTES · No. V</div>
+      <div style="font-family:var(--f-cn); font-size:.65rem; color:var(--ink-deep); margin-top:.2rem; letter-spacing:.2em;">化龍 · The Becoming</div>
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <div>A QUINTOLOGY · VOL. V / V</div>
+    <div style="margin-top:.3rem; color:var(--jade-bright);">MMXXVI · EDITION 05</div>
+    <div style="margin-top:.6rem;">
+      <a href="01-龙之百科.html">壹</a> ·
+      <a href="02-龙的意义.html">貳</a> ·
+      <a href="03-龙的死亡与重生.html">叁</a> ·
+      <a href="04-为什么人类一直需要龙.html">長文</a> ·
+      <a href="06-龍的對話錄.html">陸</a> ·
+      <a href="index.html">門</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===========================================================
+     SCRIPTS
+     =========================================================== -->
+<script>
+/* ---------- 六龍位：跟随滚动 lit ---------- */
+const stages = document.querySelectorAll('.dragon-stages .stage');
+const chapterIds = ['ch1','ch2','ch3','ch4','ch5','ch6'];
+const chapterEls = chapterIds.map(id => document.getElementById(id)).filter(Boolean);
+
+function updateStages() {
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let activeIdx = -1;
+  let litCount = 0;
+  chapterEls.forEach((el, i) => {
+    if (el.offsetTop <= y) { activeIdx = i; litCount = i + 1; }
+  });
+  stages.forEach((s, i) => {
+    s.classList.toggle('lit', i < litCount && i !== activeIdx);
+    s.classList.toggle('active', i === activeIdx);
+  });
+}
+window.addEventListener('scroll', updateStages, { passive: true });
+updateStages();
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- hero 字幅视差 ---------- */
+const heroChar = document.querySelector('.hero-bg-char');
+if (heroChar) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroChar.style.transform = `translate(-50%, calc(-50% + ${y * 0.16}px))`;
+    }
+  }, { passive: true });
+}
+
+/* ---------- 终章六龙位完成态：滚动到位逐个亮 ---------- */
+const finalDots = document.querySelectorAll('#six-final .d');
+const finalIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      finalDots.forEach((d, i) => {
+        d.style.opacity = 0;
+        setTimeout(() => {
+          d.style.transition = 'opacity .6s ease-out, transform .6s ease-out';
+          d.style.opacity = 1;
+        }, 200 + i * 220);
+      });
+      finalIo.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+const finalSection = document.getElementById('six-final');
+if (finalSection) finalIo.observe(finalSection);
+</script>
+
+</body>
+</html>

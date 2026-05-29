@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龍 · 死亡与重生｜The Death and Rebirth of the Dragon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================
+   龙学三部曲 · 第三卷
+   暮色—余烬美学：死亡与重生的临界时刻
+   =========================================================== */
+
+:root {
+  /* ---- night & ember palette ---- */
+  --void:          #08060a;     /* 最深处 */
+  --bg:            #0d0a10;     /* 主底 */
+  --bg-2:          #15101a;     /* 略亮一层 */
+  --bg-3:          #1c1623;     /* 卡片底 */
+  --bg-warm:       #1a120c;     /* 暖深底（火焰区） */
+
+  --ash:           #8a7d70;     /* 灰烬主色 */
+  --ash-cool:      #5e5a5a;
+  --ash-deep:      #3a352f;
+  --bone:          #e8d5b8;     /* 骨白：正文主色 */
+  --bone-soft:     #b8ab95;
+  --bone-deep:     #76695a;
+
+  --ember:         #d97144;     /* 余烬橙 */
+  --ember-bright:  #f5a35b;     /* 火光 */
+  --ember-deep:    #8a3a1d;     /* 暗火 */
+  --gold:          #c9a961;     /* 金 */
+  --gold-bright:   #f3c969;
+  --gold-deep:     #8a7440;
+
+  --crimson:       #8b2c2c;
+  --crimson-dim:   #4a1818;     /* 死亡暗红 */
+  --indigo:        #2f2a4a;     /* 夜的紫 */
+  --jade:          #466b5a;     /* 重生青 */
+
+  --line:          rgba(201,169,97,0.18);
+  --line-soft:     rgba(232,213,184,0.08);
+  --line-ember:    rgba(217,113,68,0.22);
+
+  /* ---- typography ---- */
+  --f-cn-brush:    'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --f-cn-script:   'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+  --f-cn:          'Noto Serif SC', 'Songti SC', 'Source Han Serif SC', serif;
+  --f-en-disp:     'Cormorant Garamond', serif;
+  --f-en:          'EB Garamond', Georgia, serif;
+  --f-num:         'Cinzel', serif;
+
+  --measure: 38rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--bone);
+  font-family: var(--f-cn);
+  font-weight: 300;
+  line-height: 1.85;
+  letter-spacing: .01em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== 全局氛围层：余烬颗粒 + 烟 ===== */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 0%,  rgba(217,113,68,0.10), transparent 60%),
+    radial-gradient(ellipse 80% 80% at 80% 100%, rgba(47,42,74,0.30),  transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 50%, rgba(139,44,44,0.06), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(232,213,184,0.015) 0,
+      rgba(232,213,184,0.015) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* ===== 余烬粒子层 ===== */
+.embers {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+.ember-dot {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: var(--ember-bright);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 6px var(--ember-bright), 0 0 12px var(--ember);
+  animation: rise-ember 11s ease-in infinite;
+}
+@keyframes rise-ember {
+  0%   { transform: translateY(0)      translateX(0)    scale(.6); opacity: 0; }
+  10%  { opacity: .9; }
+  60%  { opacity: .7; }
+  100% { transform: translateY(-110vh) translateX(40px) scale(.2); opacity: 0; }
+}
+
+/* ===== 链接 ===== */
+a { color: var(--ember-bright); text-decoration: none; border-bottom: 1px dashed rgba(245,163,91,0.35); transition: color .3s, border-color .3s; }
+a:hover { color: var(--bone); border-bottom-color: var(--bone); }
+
+img, svg { display: block; max-width: 100%; }
+
+/* ============================================================
+   侧边索引
+   ============================================================ */
+.side-index {
+  position: fixed;
+  left: 1.4rem; top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex; flex-direction: column; gap: .8rem;
+  padding: 1.4rem .8rem;
+  font-family: var(--f-num);
+  font-size: .72rem; letter-spacing: .18em;
+  color: var(--bone-deep);
+}
+.side-index .vert-label {
+  font-family: var(--f-cn);
+  font-size: .7rem;
+  color: var(--ember);
+  letter-spacing: .4em;
+  padding-bottom: .6rem;
+  margin-bottom: .4rem;
+  border-bottom: 1px solid var(--line-ember);
+  text-align: center;
+}
+.side-index a {
+  color: var(--bone-deep);
+  border: none;
+  transition: color .3s, transform .3s;
+  text-align: center;
+}
+.side-index a:hover, .side-index a.active {
+  color: var(--ember-bright);
+  transform: translateX(2px);
+}
+@media (max-width: 980px) { .side-index { display: none; } }
+
+/* 右上角铭文 */
+.top-mark {
+  position: fixed;
+  top: 1.4rem; right: 1.6rem;
+  z-index: 50;
+  display: flex; align-items: center; gap: .8rem;
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .32em;
+  color: var(--bone-deep);
+}
+.top-mark .seal {
+  width: 1.7rem; height: 1.7rem;
+  background: var(--crimson);
+  color: var(--bone);
+  display: grid; place-items: center;
+  font-family: var(--f-cn-brush);
+  font-size: 1rem;
+  box-shadow: 0 0 0 1px var(--ember-deep) inset,
+              0 0 14px rgba(217,113,68,0.35);
+}
+.top-mark .nav-links {
+  display: flex; gap: 1rem;
+  font-family: var(--f-cn);
+  font-size: .72rem;
+  letter-spacing: .25em;
+}
+.top-mark .nav-links a {
+  color: var(--bone-deep);
+  border: none;
+}
+.top-mark .nav-links a:hover { color: var(--ember-bright); }
+@media (max-width: 720px) {
+  .top-mark .nav-links { display: none; }
+}
+
+/* ============================================================
+   HERO ——— 一条正在熄灭的龙
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem var(--gutter) 4rem;
+  overflow: hidden;
+  z-index: 5;
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 100%, rgba(139,44,44,0.18), transparent 70%),
+    radial-gradient(ellipse 60% 80% at 50% 0%,   rgba(47,42,74,0.40),  transparent 70%);
+  border-bottom: 1px solid var(--line-ember);
+}
+
+.hero-bg-char {
+  position: absolute;
+  left: 50%; top: 52%;
+  transform: translate(-50%, -50%);
+  font-family: var(--f-cn-brush);
+  font-size: clamp(28rem, 60vw, 56rem);
+  line-height: .85;
+  color: transparent;
+  background: linear-gradient(180deg,
+    rgba(245,163,91,0.18) 0%,
+    rgba(217,113,68,0.14) 40%,
+    rgba(139,44,44,0.10)  60%,
+    rgba(60,40,30,0.04)   100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+  z-index: -1;
+  filter: blur(.6px);
+  animation: dying 9s ease-in-out infinite;
+}
+@keyframes dying {
+  0%, 100% { opacity: .95; filter: blur(.6px); }
+  35% { opacity: .42; filter: blur(2.4px); }
+  70% { opacity: .85; filter: blur(.9px); }
+}
+
+.hero-tag {
+  font-family: var(--f-num);
+  font-size: .78rem;
+  letter-spacing: .45em;
+  color: var(--ember);
+  margin-bottom: 2.4rem;
+  display: flex; align-items: center; gap: 1rem;
+  opacity: 0; animation: rise 1s .15s ease-out forwards;
+}
+.hero-tag::before {
+  content: ''; display: block;
+  width: 3.5rem; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember));
+}
+
+.hero h1 {
+  font-family: var(--f-cn-brush);
+  font-weight: 400;
+  font-size: clamp(4.8rem, 16vw, 14rem);
+  line-height: .92;
+  margin: 0 0 .15em;
+  color: var(--bone);
+  letter-spacing: -.02em;
+  text-shadow: 0 0 40px rgba(217,113,68,0.35),
+               0 0 80px rgba(139,44,44,0.20);
+  opacity: 0;
+  animation: rise 1.2s .4s ease-out forwards;
+}
+
+.hero-sub-cn {
+  font-family: var(--f-cn);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  font-weight: 400;
+  color: var(--ember-bright);
+  letter-spacing: .22em;
+  margin: 0 0 1.8rem;
+  opacity: 0; animation: rise 1.2s .7s ease-out forwards;
+}
+
+.hero-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.45rem, 2.6vw, 2.4rem);
+  letter-spacing: .04em;
+  color: var(--bone-soft);
+  margin: 0 0 3rem;
+  max-width: 38rem;
+  line-height: 1.3;
+  opacity: 0; animation: rise 1.2s 1s ease-out forwards;
+}
+.hero-title-en em { color: var(--ember); font-style: italic; }
+
+.hero-meta {
+  display: flex; gap: 3rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--bone-deep);
+  margin-top: 3.5rem;
+  flex-wrap: wrap;
+  opacity: 0; animation: rise 1.2s 1.3s ease-out forwards;
+}
+.hero-meta div { display: flex; flex-direction: column; gap: .3rem; }
+.hero-meta strong { color: var(--ember); font-weight: 500; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-num);
+  font-size: .65rem; letter-spacing: .4em;
+  color: var(--bone-deep);
+  display: flex; align-items: center; gap: .6rem;
+  opacity: 0; animation: rise 1s 1.6s ease-out forwards;
+}
+.scroll-cue::after {
+  content: ''; display: block; width: 1px; height: 2.2rem;
+  background: linear-gradient(180deg, var(--ember), transparent);
+  animation: descend 2.6s ease-in-out infinite;
+}
+@keyframes descend {
+  0%, 100% { transform: scaleY(.6) translateY(-30%); opacity: .35; }
+  50%      { transform: scaleY(1)  translateY(0);   opacity: 1; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   PROLOGUE
+   ============================================================ */
+section { position: relative; z-index: 5; }
+
+.prologue {
+  padding: 9rem var(--gutter) 6rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  position: relative;
+}
+.prologue::before {
+  content: 'PROLOGUE · 序';
+  position: absolute;
+  top: 5.5rem; left: var(--gutter);
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .4em;
+  color: var(--ember);
+}
+
+.prologue-cn-label {
+  font-family: var(--f-cn);
+  font-size: .85rem; letter-spacing: .4em;
+  color: var(--crimson);
+  margin-bottom: 1.4rem;
+  display: flex; align-items: center; gap: .8rem;
+}
+.prologue-cn-label::after {
+  content: ''; flex: 1; max-width: 6rem; height: 1px;
+  background: linear-gradient(90deg, var(--crimson), transparent);
+}
+
+.prologue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 4.3vw, 3.6rem);
+  line-height: 1.3;
+  margin: .4em 0 1.5em;
+  color: var(--bone);
+  letter-spacing: .02em;
+  max-width: 32em;
+}
+.prologue h2 em {
+  font-style: normal;
+  color: var(--ember-bright);
+  font-family: var(--f-cn-brush);
+  font-size: 1.2em;
+}
+
+.prologue-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+.prologue-body p {
+  font-size: 1.05rem;
+  color: var(--bone);
+  margin: 0 0 1.3em;
+}
+.prologue-body p:first-child::first-letter {
+  font-family: var(--f-cn-brush);
+  font-size: 4.2em;
+  float: left;
+  line-height: .9;
+  padding: .1em .15em 0 0;
+  color: var(--ember-bright);
+}
+@media (max-width: 760px) {
+  .prologue-body { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ============================================================
+   ACT divider —— 三幕剧分隔
+   ============================================================ */
+.act-divider {
+  text-align: center;
+  padding: 8rem 1.5rem 5rem;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center, rgba(217,113,68,0.10), transparent 60%);
+}
+.act-divider .roman {
+  font-family: var(--f-num);
+  font-size: clamp(4rem, 9vw, 7rem);
+  font-weight: 500;
+  color: var(--ember);
+  letter-spacing: .1em;
+  line-height: 1;
+  text-shadow: 0 0 30px rgba(217,113,68,0.4);
+}
+.act-divider .act-cn {
+  font-family: var(--f-cn-brush);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--bone);
+  margin-top: 1rem;
+  letter-spacing: .3em;
+}
+.act-divider .act-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  color: var(--bone-soft);
+  margin-top: 1rem;
+  letter-spacing: .04em;
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.act-divider .act-line {
+  width: 80px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember), transparent);
+  margin: 2rem auto;
+}
+
+/* ============================================================
+   CHAPTER
+   ============================================================ */
+.chapter {
+  display: grid;
+  grid-template-columns: 1fr 2.4fr;
+  gap: 4rem;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 6rem var(--gutter);
+  position: relative;
+  scroll-margin-top: 4rem;
+}
+.chapter-head {
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.ch-numeral {
+  font-family: var(--f-num);
+  font-size: 5rem; font-weight: 500;
+  color: var(--ember);
+  line-height: 1;
+  letter-spacing: .02em;
+  text-shadow: 0 0 20px rgba(217,113,68,0.35);
+}
+.ch-numeral-cn {
+  font-family: var(--f-cn);
+  font-size: 1rem;
+  color: var(--bone-deep);
+  letter-spacing: .45em;
+  margin-top: -.4rem;
+}
+.ch-title-cn {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--bone);
+  margin: 1.5rem 0 .1em;
+  letter-spacing: .06em;
+}
+.ch-title-en {
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--ember);
+  margin: 0;
+  letter-spacing: .04em;
+}
+.ch-tagline {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: .95rem;
+  color: var(--bone-soft);
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-ember);
+  max-width: 14rem;
+  line-height: 1.6;
+}
+
+.chapter-body {
+  font-size: 1.05rem;
+  color: var(--bone);
+}
+.chapter-body > *:first-child { margin-top: 0; }
+.chapter-body p { margin: 0 0 1.4em; }
+.chapter-body p strong { color: var(--ember-bright); font-weight: 500; }
+.chapter-body p em { color: var(--gold-bright); font-style: normal; padding: 0 .1em; }
+.chapter-body p.lede {
+  font-family: var(--f-cn);
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: var(--bone);
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+.chapter-body .dropcap {
+  font-family: var(--f-cn-brush);
+  float: left;
+  font-size: 5em;
+  line-height: .85;
+  padding: .05em .15em 0 0;
+  color: var(--ember-bright);
+  font-weight: 400;
+}
+
+/* ===== lists ===== */
+.chapter-body ul.classic {
+  list-style: none;
+  padding: 0; margin: 1.5em 0;
+  border-left: 1px solid var(--line-ember);
+}
+.chapter-body ul.classic li {
+  padding: .55em 0 .55em 1.5em;
+  position: relative;
+  color: var(--bone);
+}
+.chapter-body ul.classic li::before {
+  content: ''; position: absolute;
+  left: -3.5px; top: 1.25em;
+  width: 6px; height: 6px;
+  background: var(--ember);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--ember);
+}
+.chapter-body ul.classic li b {
+  color: var(--ember-bright);
+  font-family: var(--f-num);
+  font-weight: 500;
+  letter-spacing: .1em;
+  font-size: .85em;
+  display: inline-block;
+  min-width: 6rem;
+}
+
+/* ===== pullquote ===== */
+.pullquote {
+  margin: 2.5em 0;
+  padding: 1.5em 0 1.5em 2em;
+  border-left: 3px solid var(--ember);
+  background: linear-gradient(90deg, rgba(217,113,68,0.07), transparent 80%);
+  font-family: var(--f-cn);
+  font-weight: 400;
+  font-size: 1.35rem;
+  line-height: 1.75;
+  color: var(--bone);
+  letter-spacing: .04em;
+  position: relative;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 1em;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--ember);
+  letter-spacing: .05em;
+}
+
+/* ===== note ===== */
+.note {
+  display: block;
+  margin: 1.8em 0;
+  padding: 1.2em 1.4em;
+  background: rgba(217,113,68,0.04);
+  border: 1px solid var(--line-ember);
+  border-left: 3px solid var(--gold);
+  font-size: .94rem;
+  color: var(--bone-soft);
+  font-family: var(--f-cn);
+}
+.note .note-label {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .62rem; letter-spacing: .35em;
+  color: var(--gold-bright);
+  margin-right: .8em;
+  padding-right: .8em;
+  border-right: 1px solid var(--line-ember);
+}
+
+/* ===== data row ===== */
+.data-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 1.5rem;
+  margin: 2.2em 0;
+  padding: 1.5em 0;
+  border-top: 1px solid var(--line-ember);
+  border-bottom: 1px solid var(--line-ember);
+}
+.data-row .cell { display: flex; flex-direction: column; }
+.data-row .cell strong {
+  font-family: var(--f-num);
+  font-size: 1.8rem;
+  color: var(--ember-bright);
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: .4em;
+}
+.data-row .cell span {
+  font-size: .85rem;
+  color: var(--bone-soft);
+  letter-spacing: .04em;
+}
+
+/* ===== compare table ===== */
+.compare-table {
+  margin: 2.5em 0;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .95rem;
+}
+.compare-table th, .compare-table td {
+  padding: 1em 1.2em;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line-soft);
+}
+.compare-table th {
+  font-family: var(--f-num);
+  font-weight: 500;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  padding-bottom: .8em;
+  border-bottom: 1px solid var(--line);
+}
+.compare-table td.label {
+  color: var(--ember-bright);
+  font-weight: 500;
+  width: 9rem;
+}
+.compare-table tr:hover td { background: rgba(217,113,68,0.04); }
+
+/* ===== two-col compare card ===== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5em 0;
+}
+.two-col .col {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--line-soft);
+  background: var(--bg-2);
+  border-radius: 3px;
+}
+.two-col .col.death {
+  border-color: var(--crimson-dim);
+  background: linear-gradient(180deg, rgba(74,24,24,0.18), var(--bg-2));
+}
+.two-col .col.life {
+  border-color: var(--ember);
+  background: linear-gradient(180deg, rgba(217,113,68,0.10), var(--bg-2));
+}
+.two-col .col h4 {
+  font-family: var(--f-cn);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0 0 .8em;
+  letter-spacing: .1em;
+}
+.two-col .col.death h4 { color: var(--crimson); }
+.two-col .col.life h4  { color: var(--ember-bright); }
+.two-col .col p { margin: 0 0 .8em; color: var(--bone-soft); font-size: .96rem; }
+@media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+
+/* ===== chapter responsive ===== */
+@media (max-width: 880px) {
+  .chapter { grid-template-columns: 1fr; gap: 2rem; }
+  .chapter-head { position: static; }
+  .ch-numeral { font-size: 3.6rem; }
+  .ch-title-cn { font-size: 2rem; }
+}
+
+/* ============================================================
+   INTERLUDE —— 三段引文性段落
+   ============================================================ */
+.interlude {
+  text-align: center;
+  padding: 7rem var(--gutter);
+  background:
+    radial-gradient(ellipse at center, rgba(47,42,74,0.30), transparent 60%);
+  position: relative;
+}
+.interlude::before, .interlude::after {
+  content: '◆';
+  display: block;
+  color: var(--ember-deep);
+  font-size: .8rem;
+  letter-spacing: 1rem;
+  margin: 0 auto 2.5rem;
+  opacity: .6;
+}
+.interlude::after { margin: 2.5rem auto 0; }
+.interlude p {
+  font-family: var(--f-cn-script);
+  font-size: clamp(1.3rem, 2.3vw, 1.9rem);
+  color: var(--bone);
+  line-height: 2;
+  max-width: 36rem;
+  margin: 0 auto;
+  letter-spacing: .06em;
+}
+.interlude cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--f-en-disp);
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--ember);
+}
+
+/* ============================================================
+   EPILOGUE
+   ============================================================ */
+.epilogue {
+  padding: 10rem var(--gutter) 7rem;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center top, rgba(217,113,68,0.18), transparent 55%),
+    radial-gradient(ellipse at center bottom, rgba(70,107,90,0.10), transparent 60%);
+  border-top: 1px solid var(--line-ember);
+}
+.epilogue .epi-mark {
+  display: inline-block;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .5em;
+  color: var(--ember);
+  margin-bottom: 1.4rem;
+}
+.epilogue h2 {
+  font-family: var(--f-cn);
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--bone);
+  margin: 0 0 2em;
+  letter-spacing: .06em;
+}
+.epilogue h2 em {
+  font-family: var(--f-cn-brush);
+  font-style: normal;
+  color: var(--ember-bright);
+  font-size: 1.3em;
+}
+.epi-body {
+  max-width: 38rem;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--bone);
+  line-height: 2;
+}
+.epi-body p { margin: 0 0 1.3em; }
+.epi-body p strong { color: var(--ember-bright); }
+.epi-verse {
+  margin: 3em auto;
+  padding: 2em 0;
+  border-top: 1px solid var(--line-ember);
+  border-bottom: 1px solid var(--line-ember);
+  font-family: var(--f-cn-script);
+  font-size: 1.35rem;
+  color: var(--ember-bright);
+  line-height: 2.4;
+  letter-spacing: .08em;
+}
+.epi-final {
+  margin-top: 3em;
+  font-family: var(--f-cn-brush);
+  font-size: 2rem;
+  color: var(--ember-bright);
+  letter-spacing: .25em;
+  text-shadow: 0 0 24px rgba(245,163,91,0.5);
+}
+
+/* ouroboros 标志 */
+.ouroboros {
+  width: 9rem; height: 9rem;
+  margin: 3rem auto 0;
+  opacity: .85;
+}
+
+/* ============================================================
+   COLOPHON
+   ============================================================ */
+.colophon {
+  padding: 3rem var(--gutter) 4rem;
+  border-top: 1px solid var(--line-soft);
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+  font-family: var(--f-num);
+  font-size: .7rem; letter-spacing: .3em;
+  color: var(--bone-deep);
+  max-width: 78rem;
+  margin: 0 auto;
+}
+.colophon .seal-tag { display: flex; align-items: center; gap: .8rem; }
+.colophon .seal-tag .seal-sm {
+  width: 1.9rem; height: 1.9rem;
+  background: var(--crimson);
+  display: grid; place-items: center;
+  color: var(--bone);
+  font-family: var(--f-cn-brush);
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px rgba(217,113,68,0.4);
+}
+.colophon a { color: var(--bone-soft); border: none; }
+.colophon a:hover { color: var(--ember-bright); }
+
+/* ===== reveal animation ===== */
+.reveal { opacity: 0; transform: translateY(28px);
+  transition: opacity 1.1s ease-out, transform 1.1s ease-out; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ===== small screens ===== */
+@media (max-width: 600px) {
+  .chapter, .prologue, .act-divider, .interlude, .epilogue { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .hero-meta { gap: 1.5rem; }
+  .top-mark { right: 1rem; font-size: .55rem; letter-spacing: .2em; }
+  .top-mark .seal { width: 1.4rem; height: 1.4rem; font-size: .9rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 余烬粒子层 ===== -->
+<div class="embers" aria-hidden="true" id="embers"></div>
+
+<!-- ===== 侧边索引 ===== -->
+<nav class="side-index" aria-label="目录">
+  <div class="vert-label">三<br>幕</div>
+  <a href="#prologue">序</a>
+  <a href="#act1">幕一</a>
+  <a href="#ch1">I</a>
+  <a href="#ch2">II</a>
+  <a href="#ch3">III</a>
+  <a href="#act2">幕二</a>
+  <a href="#ch4">IV</a>
+  <a href="#ch5">V</a>
+  <a href="#ch6">VI</a>
+  <a href="#act3">幕三</a>
+  <a href="#ch7">VII</a>
+  <a href="#ch8">VIII</a>
+  <a href="#ch9">IX</a>
+  <a href="#epilogue">終</a>
+</nav>
+
+<!-- ===== 右上角 ===== -->
+<div class="top-mark">
+  <span>VOL. III · MMXXVI</span>
+  <div class="nav-links">
+    <a href="01-龙之百科.html">壹</a>
+    <a href="02-龙的意义.html">貳</a>
+    <a href="04-为什么人类一直需要龙.html">長文</a>
+    <a href="05-化龍.html">伍</a>
+    <a href="06-龍的對話錄.html">陸</a>
+    <a href="index.html">門</a>
+  </div>
+  <div class="seal">龍</div>
+</div>
+
+<!-- ===========================================================
+     HERO
+     =========================================================== -->
+<header class="hero">
+  <div class="hero-bg-char" aria-hidden="true">龍</div>
+  <div class="hero-tag">VOLUME THREE · 卷叁 · 死亡与重生</div>
+  <h1>龍</h1>
+  <div class="hero-sub-cn">死亡与重生 · A Trilogy's Third Voice</div>
+  <p class="hero-title-en">
+    The <em>Death</em> &amp; <em>Rebirth</em> of the Dragon —<br>
+    on what dies in the age of reason, capital and AI,<br>
+    and on the one dragon that does not.
+  </p>
+  <div class="hero-meta">
+    <div><span>VOLUME</span><strong>III / III</strong></div>
+    <div><span>ACTS</span><strong>3</strong></div>
+    <div><span>CHAPTERS</span><strong>9 + 序終</strong></div>
+    <div><span>EDITION</span><strong>MMXXVI · 05</strong></div>
+  </div>
+  <div class="scroll-cue">SCROLL ／ 入幕</div>
+</header>
+
+<!-- ===========================================================
+     PROLOGUE · 失踪的龙
+     =========================================================== -->
+<section class="prologue" id="prologue">
+  <div class="prologue-cn-label">序章 · 失踪的龙</div>
+  <h2>有人说：龙早就死了。<br>问题是——<em>谁</em>说的，<em>哪一条</em>龙，又死在<em>谁</em>的手里？</h2>
+  <div class="prologue-body reveal">
+    <div>
+      <p>第一卷里我们追问"龙是什么"，把世界上九种龙文化铺开比较，得出五个共同特征——阈限、变形、神秘、生灭并存、自我之镜。第二卷里我们专问中国龙的意义，让十一道学科之光照向同一条龙，得出"一龍，萬解"。</p>
+      <p>但有一件事我们一直没有正面回答——<strong>这条龙今天还活着吗</strong>？</p>
+      <p>在一个没人再求雨、没人再仰望星象、没人再相信"九五之尊"是宇宙合法性的时代，龙还能在哪里继续存在？</p>
+    </div>
+    <div>
+      <p>本卷的论题简单而锋利——龙在过去三百年里被反复杀死，又被反复复活。<em>它死于理性的剃刀、屠龙的政治寓言、迪士尼的甜腻笑容、本雅明的灵光衰落、Midjourney 无限增殖的图像</em>。</p>
+      <p>它又复活于<em>孩子选择和无牙仔做朋友的那一刻、宫崎骏笔下白龙记起自己名字的那一刻、Dragonkin 在键盘后宣称"我就是龙"的那一刻</em>。</p>
+      <p>而最深处那条龙——卷一末尾你已经认出来的那一条——它从未真正死过。它<strong>不能</strong>死，因为它的存在不需要外界允许。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===========================================================
+     ACT I —— 祛魅与死亡
+     =========================================================== -->
+<section class="act-divider" id="act1">
+  <div class="roman">ACT&nbsp;I</div>
+  <div class="act-cn">祛魅 · 三种死法</div>
+  <div class="act-line"></div>
+  <div class="act-en">The Disenchantment — Three Ways a Dragon Dies in the Modern World.</div>
+</section>
+
+<!-- ===== Chapter I —— 韦伯与失踪的龙 ===== -->
+<article class="chapter" id="ch1">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">I</div>
+    <div class="ch-numeral-cn">壹</div>
+    <h2 class="ch-title-cn">祛魅的世界</h2>
+    <h3 class="ch-title-en">Disenchantment, after Weber</h3>
+    <p class="ch-tagline">韦伯说现代世界"再也没有让人战栗的神秘力量"——龙正是第一批被驱逐的住客。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">一</span>八九五年，弗里德里希·席勒在《希腊的诸神》里哀叹："众神已经离开。" 二十年后，马克斯·韦伯在慕尼黑的演讲《以学术为业》里把这件事说得更冷酷——他给它取了一个名字：<em>Entzauberung</em>，"祛魅"。</p>
+
+    <div class="pullquote">
+      我们时代的命运，是一个理性化、知识化，最重要的是"祛魅"了的时代。<br>
+      昔日由神秘的、不可计算的力量所支配之物——风、雷、雨、瘟疫与丰收——如今原则上皆可被计算所掌握。
+      <cite>— Max Weber《以学术为业》1917</cite>
+    </div>
+
+    <p>韦伯说的不是"神死了"——尼采那句话太大，太抽象。韦伯说的更具体：<strong>不是神不在了，是<em>人不再期待神在了</em></strong>。雷被气压差解释，丰收被氮肥解释，瘟疫被细菌解释。世界没有变小，但<em>它不再"凝视"我们</em>。</p>
+
+    <p>而龙——正是那个被凝视也被凝视回去的存在。它住在祛魅最先扫荡的那片地带：风、雨、水、雷、灾、福、命。<strong>祛魅每前进一步，龙的物理领地就退后一寸</strong>。汉代董仲舒立土龙求雨，是因为没有别的解释。今天我们看气象云图，没有人会想到那是龙的呼吸。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">三条祛魅的战线</h4>
+    <ul class="classic">
+      <li><b>METEOROLOGY</b>气象学解释了"司雨之龙"——龙王不再被需要，求雨仪式降级为节庆表演。</li>
+      <li><b>BIOLOGY</b>生物学穷尽了所有"鳞虫之长"——再没有为龙留下分类学的位置，《辞海》将"龙"写为"古代传说中的神异动物"，前置"传说"二字即是判决书。</li>
+      <li><b>HISTORIOGRAPHY</b>历史学考据揭开了"真龙天子"叙事的政治装置——刘邦母亲所感的不是龙而是叙事，皇权的神圣性被还原为人类政治史的章节。</li>
+    </ul>
+
+    <p>注意：韦伯没说祛魅是<em>错的</em>，他说祛魅是我们的<em>命运</em>。这是一个清醒的判断——你可以惋惜它，但你无法回头。<strong>祛魅不是龙的一次失败，而是龙的"第一种死法"</strong>：它把龙从公共解释体系里驱逐出去，让它从"世界的语法"退化为"民俗的修辞"。</p>
+
+    <div class="note">
+      <span class="note-label">辨</span>
+      韦伯并不否认神秘体验在私人领域的合法性。他说的是——这些体验<em>无法再被公开化为知识</em>。"龙下了一场雨"如果还在你心里有意义，它只能在你心里有意义。这就是为什么本文卷一末尾你的命题如此关键：它把龙从公共解释空间救回到本体论空间。
+    </div>
+
+    <p>所以本卷的整个第一幕，将沿着祛魅的三条战线走下去——看龙是<em>怎么死的</em>，谁动的手，凶器是什么。这不是悼词，这是验尸报告。我们要弄清楚死了什么，才能知道留下了什么。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter II —— 萨根的车库再访 ===== -->
+<article class="chapter" id="ch2">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">II</div>
+    <div class="ch-numeral-cn">貳</div>
+    <h2 class="ch-title-cn">理性之刃</h2>
+    <h3 class="ch-title-en">Sagan's Garage Revisited</h3>
+    <p class="ch-tagline">第一种死法：可证伪性把龙关进了"无意义"的牢房。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">卡</span>尔·萨根没有用枪杀死龙。他用的是一句问句：<em>"和一条不存在的龙有什么区别？"</em></p>
+
+    <p>卷一里我们已经引过《魔鬼出没的世界》的那段对话——一条隐形、漂浮、喷无热之火、漆不沾身的龙住在我的车库。<strong>萨根的论点不是"龙不存在"，而是"这种龙在认识论上和不存在等价"</strong>。这一刀切在卡尔·波普尔的"可证伪性"上，比直接否定更致命——它不否定，它<em>注销</em>。</p>
+
+    <div class="pullquote">
+      不可证伪的命题不是错的，<br>
+      是<em>无意义</em>的。
+      <cite>— Karl Popper《科学发现的逻辑》1934（释义）</cite>
+    </div>
+
+    <p>这是龙的第二次死亡——不是被打败，而是被踢出"值得讨论"的范畴。可证伪性把世界划成两块：可被经验检验的那块叫"知识"，不能的那块叫"诗"。龙被划到诗的一边。这听起来像是宽容，其实是软流放——你可以继续写诗，但<strong>诗不再决定我们对世界的描述</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">理性之刃的三种切法</h4>
+    <ul class="classic">
+      <li><b>OCKHAM</b>奥卡姆剃刀：不要增加非必要的实体。既然降水可以用气压解释，"龙"作为解释项就是多余的实体——奥卡姆把它剃掉。</li>
+      <li><b>POPPER</b>可证伪性：科学命题必须能被经验否证。"龙存在"原则上无法证伪，因此被踢出科学语境。</li>
+      <li><b>SAGAN</b>"非凡主张需要非凡证据"：日常证据不足以支撑超出日常的存在主张。一句"我看见龙了"只能让科学界轻轻一笑，递上一杯水。</li>
+    </ul>
+
+    <p>这套刀法极其漂亮，它把世界打扫得一干二净。<em>但代价是什么？</em></p>
+
+    <p>代价是——<strong>所有不能被外部观察确认的存在，都失去了存在的资格</strong>。这正是萨根方法论的限度：它问的是"你能向我证明吗"，而不是"你能向自己证明吗"。它用"被外界确认"作为"存在"的唯一通行证。</p>
+
+    <p>但请记住第一卷末尾你说的那句话——<em>"龙是不依赖外界确认而存在的。"</em></p>
+
+    <p>萨根的刀杀死了"需要外界确认才成立"的龙。它没有触及——也<strong>无权触及</strong>——那条不需要外界确认的龙。这一区分极其关键：理性之刃的有效范围，是<em>关系性本体的龙</em>；它对<em>自因本体的龙</em>无效。萨根的车库里没有龙；但卷一末尾的衔尾蛇，它根本不在车库里。</p>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      这不是反科学。这是对科学边界的精确划定。萨根本人一生都在做这件事——他既驱逐了车库里的假龙，也敬畏宇宙的"<em>cosmos</em>"。他清楚知道：理性的圆圈之外，<strong>不是无意义，而是不同种类的意义</strong>。
+    </div>
+
+    <p>但理性之刃在公共领域的胜利，让大多数人忘了这个区分。在大众的常识里，"科学没说存在的就是不存在的"。这一误读使龙从公共意义版图上正式注销。<strong>这是龙的第一种死法——不是被反驳，而是被注销</strong>。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter III —— 屠龙模型的政治滥用 ===== -->
+<article class="chapter" id="ch3">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">III</div>
+    <div class="ch-numeral-cn">參</div>
+    <h2 class="ch-title-cn">屠龙者的诅咒</h2>
+    <h3 class="ch-title-en">The Curse of the Dragon-Slayer</h3>
+    <p class="ch-tagline">第二种死法：每一个屠龙者最终都长出了鳞片。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">尼</span>采在《善恶的彼岸》第 146 节留下一句格言，被反复引用却很少被读懂——<em>"与怪兽搏斗者，应当小心自己不要因此成为怪兽。当你长久凝视深渊时，深渊也在凝视你。"</em></p>
+
+    <p>这句话不是文学修辞。它是一条结构性预言——<strong>"屠龙—得宝—成英雄"的叙事模型一旦被用于政治，就会自我反转</strong>。屠龙者继承龙的位置。</p>
+
+    <p>卷一里我们梳理过"屠龙模型"的印欧—闪族谱系：因陀罗杀 Vritra、Marduk 杀 Tiamat、宙斯杀 Typhon、圣乔治杀龙。Calvert Watkins 在《How to Kill a Dragon》中证明这是同一个元神话。但卷一止步于"它存在"。第二卷止步于"中国没有这条模型"。本章要追问的是——<em>当现代政治继续使用这个模型时，发生了什么？</em></p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">屠龙叙事的现代化身</h4>
+
+    <table class="compare-table">
+      <thead><tr><th>语境</th><th>"龙"是什么</th><th>结果</th></tr></thead>
+      <tbody>
+        <tr><td class="label">法国大革命</td><td>"暴君—巨龙"（路易十六）</td><td>雅各宾派成为新的恐怖统治者</td></tr>
+        <tr><td class="label">俄国革命</td><td>"沙皇—蟒蛇"</td><td>苏维埃政权重建专制</td></tr>
+        <tr><td class="label">冷战</td><td>"红色巨龙"／"美帝巨蛇"</td><td>双方各自妖魔化、军备竞赛</td></tr>
+        <tr><td class="label">当代媒体战</td><td>各种"威胁"被龙形化</td><td>仇恨叙事可生产无限新龙</td></tr>
+      </tbody>
+    </table>
+
+    <p>这里有一个深刻的结构问题——<strong>屠龙叙事永远需要一条新龙</strong>。它的语法不允许"龙已经被屠完了"。一旦旧龙被杀死，新龙必须被指认，否则英雄会失业。这就是为什么所有以"屠龙"为合法性来源的政权，最终都会变成龙：<em>它们的整个机器都是为了屠龙而搭建的，没有龙就没有它们存在的理由</em>。</p>
+
+    <div class="pullquote">
+      In a world without dragons,<br>
+      the dragon-slayer must invent them<br>
+      — or die.
+      <cite>— a contemporary diagnosis</cite>
+    </div>
+
+    <p>这是龙在现代政治领域的"第二种死法"——<em>死于过度征用</em>。当所有反对者都被叙事化为龙，"龙"这一概念被稀释、被工具化、被滥用至失去意义。"龙"从一个意义浓密的符号，变成贴在敌人额头上的标签。卷一里那条<em>numinous</em>（神秘、令人战栗的）龙死了——剩下的是政治宣传里廉价的纸龙。</p>
+
+    <p>更深刻的是——<strong>屠龙者的身份本身需要龙</strong>。"我是屠龙英雄"这一身份只能通过"那里有龙"来成立。没有龙，就没有英雄。所以屠龙者会下意识地维持龙的存在——他们不会杀死最后一条龙。他们会杀死前九条，但留下第十条，因为第十条是他们自己的镜子。</p>
+
+    <p>这一悖论在荣格那里有最锋利的表达：<em>你越是宣布"我已经战胜了我的阴影"，你越是被你的阴影统治</em>。屠龙者从内部生长出鳞片，自己都没注意到。某一天他抬起手，看见手背上覆满了金色的甲片。</p>
+
+    <div class="note">
+      <span class="note-label">注</span>
+      请注意中国神话与此模型的对比——卷二里我们指出中国主流叙事是"化龙"而非"屠龙"。"化龙"模型不需要外部敌人来定义自我，因此不会陷入"必须不断指认新敌人"的恶性循环。这是两种心理结构在政治后果上的差异。<strong>屠龙模型在被现代政治拿来当锤子之后，反噬了自己</strong>。
+    </div>
+
+    <p>所以："圣乔治杀龙救公主"作为<em>神圣英雄叙事</em>已经死了——它太天真。今天每一个"我们是英雄、他们是龙"的叙事都会立刻引发反向叙事："你们才是龙。"在这一互相指认中，<strong>龙的神性被磨损至零</strong>。它不再是阈限存在，它只是一面政治标签。</p>
+  </div>
+</article>
+
+<!-- ===========================================================
+     ACT II —— 拟像、复制、生成
+     =========================================================== -->
+<section class="act-divider" id="act2">
+  <div class="roman">ACT&nbsp;II</div>
+  <div class="act-cn">复制 · 灵光与生成</div>
+  <div class="act-line"></div>
+  <div class="act-en">The Reproductions — Aura, Simulacrum, and the Endlessly Generated Dragon.</div>
+</section>
+
+<!-- ===== Chapter IV —— 卡通化、IP化、emoji化 ===== -->
+<article class="chapter" id="ch4">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IV</div>
+    <div class="ch-numeral-cn">肆</div>
+    <h2 class="ch-title-cn">微笑的诅咒</h2>
+    <h3 class="ch-title-en">The Smile That Kills</h3>
+    <p class="ch-tagline">第三种死法：迪士尼让龙学会了笑，从此再没有人怕它。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">真</span>正的恐怖不是被仇恨——是被喜爱。让一头惧怕的存在变得"萌"，是消灭它最干净的方法。商品化的笑容是龙的第三种死法。</p>
+
+    <p>1959 年迪士尼《睡美人》的玛琳菲森变身的紫黑色龙，是西方动画"恶龙"的视觉范式定型——黑翼、紫焰、嘶吼。半世纪后，2014 年同公司发行的真人版《沉睡魔咒》（Maleficent）将这同一只龙改写为<em>被误解的女性受害者</em>。同一只龙，半个世纪里完成了从"被屠戮的他者"到"值得被同情的他者"的转身——这听起来像进步，但其中有一个悄悄发生的损失：<strong>那只龙从此再不可怕</strong>。</p>
+
+    <p>2010 年梦工厂《驯龙高手》（How to Train Your Dragon）把这一转身推向极致——龙不再是英雄要屠戮的对象，而是孩子要拥抱的伙伴。"无牙仔"以一双大眼睛、一对短角、一个让人心碎的迷惑表情，永久改写了一代西方儿童对龙的本能反应：<em>看见龙，不再想杀它，而想抱它</em>。</p>
+
+    <div class="pullquote">
+      在大众视觉文化里，可以杀死一头神兽的最有效武器，<br>
+      不是剑，是大眼睛与圆下巴。
+      <cite>— A working diagnosis</cite>
+    </div>
+
+    <p>这是一次极其深刻的视觉政治变迁。从康德到鲁道夫·奥托，西方对神圣性的描述都强调<em>"令人战栗的吸引"</em>（mysterium tremendum et fascinans）——你既被吸引，又被吓退。龙正是这一双重情感的典范——你想靠近它，但你的肌肉本能想跑开。<strong>把它变成可拥抱的东西，就是把它从"神圣"降级为"宠物"</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">龙的卡通化光谱</h4>
+    <ul class="classic">
+      <li><b>1937</b>《白雪公主》：女巫，无龙</li>
+      <li><b>1959</b>《睡美人》玛琳菲森龙——恐怖龙的迪士尼定型</li>
+      <li><b>1977</b>《彼得与艾略特》：可爱龙登场，但还小众</li>
+      <li><b>1984</b>《大魔域》福克尔：白色长毛"幸运之龙"——龙开始变成善意化身</li>
+      <li><b>1998</b>《花木兰》木须龙：龙作为搞笑工具</li>
+      <li><b>2010</b>《驯龙高手》无牙仔：完成商品化甜化的视觉定型</li>
+      <li><b>2014</b>《沉睡魔咒》：连"反派龙"也被翻供为受害者</li>
+      <li><b>2021</b>《寻龙传说》Sisu：龙作为"失落和谐"的疗愈伙伴</li>
+    </ul>
+
+    <p>这一光谱不是审美演化，是<em>意识形态变迁</em>。当代消费主义需要的不是令人战栗的他者，而是<strong>可被授权、可被印在T恤上、可被做成毛绒玩具的"温柔他者"</strong>。"令人战栗"不能用于售卖——所以它被系统性地剔除。</p>
+
+    <p>更进一步，是 <strong>emoji 化</strong>。Unicode 标准为龙保留了两个字符：<em>🐉</em> 与 <em>🐲</em>。前者是"dragon"，后者是"dragon face"。当一只跨越八千年神话史的存在被压缩成两个 12×12 像素的标志符，<em>它的所有阈限性、所有不可分类性、所有崇高感都被压平为一道字符宽度的符号</em>。它仍然出现，但它不再"在场"。</p>
+
+    <div class="note">
+      <span class="note-label">参</span>
+      让·鲍德里亚在《拟像与仿真》（1981）中指出，符号在消费社会中经历四个阶段：<em>它是真实的反映 → 它扭曲真实 → 它掩盖没有真实 → 它与任何真实无关</em>。emoji 龙站在第四阶段的边缘——它<em>什么都不是</em>，只是一个用来表达"东方酷"或"龙年快乐"的可点击图形。
+    </div>
+
+    <p>同时是<strong>IP 化</strong>。"龙"成为商业资产——保时捷推出"龙年特别版"，可口可乐做"龙年红罐"，奢侈品牌出"龙年限定"。这些都不是冒犯——它们是商品逻辑下"龙"作为符号资产的合法运作。问题不在它们做这件事，问题在<em>当龙只剩这件事可做时，它已经没有别的地方可去</em>。</p>
+
+    <p>这是龙的"第三种死法"——<strong>不是被反驳，不是被滥用，而是被驯化</strong>。它从"令人战栗的他者"变成"值得被收藏的萌宠"。它进入儿童房、玩具柜、限定款、SKU 编码。它的鳞片被打磨光滑，它的火焰被调成温水，它的怒吼被设置成"嘟囔"。</p>
+
+    <p>而最深的诅咒是——<em>大多数人因此感到这是好事</em>。一个"被驯化的龙"被解读为"进步"，因为它"不再吓唬孩子"。但一个不再吓唬任何人的龙，<strong>已经没必要存在</strong>。这才是消费主义最完美的暗杀——它让被害者觉得自己是受益者。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter V —— 拟像之龙 ===== -->
+<article class="chapter" id="ch5">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">V</div>
+    <div class="ch-numeral-cn">伍</div>
+    <h2 class="ch-title-cn">没有原型的龙</h2>
+    <h3 class="ch-title-en">Dragons Without an Original</h3>
+    <p class="ch-tagline">鲍德里亚警告我们：当复制超过了原型，原型就不再被需要。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">让</span>·鲍德里亚在 1981 年的《拟像与仿真》中提出了一个比"祛魅"更刺骨的诊断——他说，问题不是神死了，问题是<em>我们已经不需要原型了</em>。复制品自给自足，它们之间互相参考、互相生成、互相强化，最初的真实从未出场，也从未被要求出场。</p>
+
+    <p>把这一诊断套在龙身上，结果令人不安——<strong>今天我们看到的几乎所有"龙"，都不指向一条真实的龙；它们只是指向其他的龙图像</strong>。</p>
+
+    <ul class="classic">
+      <li><b>D&amp;D 龙</b>它的设计来自 Tolkien 的 Smaug，Smaug 来自 Beowulf 之龙，Beowulf 来自更古老的北欧蛇龙——一条参考链，最初的源头早已无可考。</li>
+      <li><b>《冰与火之歌》龙</b>设计参考了 D&amp;D + 蝙蝠 + 翼龙化石——它没有指向任何"真实"。</li>
+      <li><b>《家族》的龙</b>参考 HBO 前作 + GRRM 的世界观文档——它指向的是另一个文本中的龙。</li>
+      <li><b>《黑神话：悟空》小白龙</b>参考《西游记》白龙马 + 现代东方写实化潮流 + 游戏建模技术。</li>
+      <li><b>《原神》岩王帝君</b>参考中国传统 + 日本游戏的"皇家龙"模板 + 现代潮玩美学。</li>
+    </ul>
+
+    <p>这不是抄袭。这是<em>整个图像生态的运行方式</em>——龙的图像之间互为参考，构成一个不需要外部锚点的封闭循环。鲍德里亚称之为 <strong>simulacra（拟像）</strong>——副本的副本，复制的复制，没有原版的版本。</p>
+
+    <div class="pullquote">
+      Simulacra is never that which conceals the truth —<br>
+      it is the truth which conceals that there is none.
+      <cite>— Jean Baudrillard《Simulacra and Simulation》1981</cite>
+    </div>
+
+    <p>这一描述对龙尤其残酷——因为<em>龙本来就没有"真实的原型"</em>。它从一开始就是文化合成（卷二里我们看过那个"九似"清单）。所以龙是<strong>"先天的拟像"</strong>——它在被祛魅之前就已经没有"指向物"。鲍德里亚的批判把它推到了逻辑极端：<em>既然没有原型，那么所有复制都是合法的；既然所有复制都是合法的，那么"哪一条才是真龙"是一个无意义的问题</em>。</p>
+
+    <p>这就是为什么 Disney 龙、D&amp;D 龙、《冰火》龙、《原神》龙、emoji 龙、Loong 翻译运动里的"新龙"——它们可以同时存在，互不相让，谁也无法宣布自己是"那一条"。<strong>龙作为符号已经彻底脱离了任何外部锚定</strong>。</p>
+
+    <p>这听起来像诺贝尔级的虚无主义。但请注意一件事——<em>本来就是这样的</em>。卷一卷二早已表明：龙从来不是一种动物，龙从来都是文化合成。鲍德里亚的诊断不是发现了新问题，而是<em>把一直存在的状况推到了透明</em>。</p>
+
+    <p>关键的区分在这里——<strong>"龙没有外部原型"不等于"龙不存在"</strong>。它只意味着：龙的存在方式不是"指向外物"。如果存在必须靠"指向外物"来成立，那么龙不存在；但如果存在可以"以自身为据"——这正是你在卷一末尾提出的命题——那么龙在拟像泛滥的世界里依然完好无损。</p>
+
+    <div class="note">
+      <span class="note-label">链</span>
+      请回到卷一终章的衔尾蛇——<em>那条咬住自己尾巴的龙，不靠外物维持存在</em>。鲍德里亚的"拟像无原型"在它面前失效了——因为衔尾蛇<em>从一开始就不需要原型</em>。它的存在以自己为根据。这条龙是鲍德里亚式批判到达不了的地方。
+    </div>
+
+    <p>所以拟像化是龙的一次大型死亡——但它只杀死了"指向外物的那种存在方式"。它对"以自己为据的存在"无效。这是本卷接下来必须不断回到的区分：<em>关系性本体 vs 自因本体</em>。每一种死法都只能杀死前者；后者必须用别的方式接近，但永远无法被杀死。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter VI —— Midjourney 与本雅明的灵光 ===== -->
+<article class="chapter" id="ch6">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VI</div>
+    <div class="ch-numeral-cn">陸</div>
+    <h2 class="ch-title-cn">生成之龙</h2>
+    <h3 class="ch-title-en">Aura, after Benjamin, in the Age of Diffusion</h3>
+    <p class="ch-tagline">本雅明在 1936 年说"灵光在机械复制时代正在凋零"。他没看见 Midjourney。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">瓦</span>尔特·本雅明在《机械复制时代的艺术品》中提出"灵光"（Aura）这一概念——艺术品的"<em>此时此地的独一性</em>"，那种"无论多近，都隔着一道远"的距离感。他认为摄影与电影正在让灵光凋零——因为任何作品都可以被无限复制，独一性消失了。</p>
+
+    <p>但请注意——本雅明谈的是"<em>同一件作品的多次复制</em>"。摄影把一幅画印一千份，每一份都是同一幅画。Midjourney 不是这样——它<strong>每次生成都是一件新作品</strong>，而且看起来都"差不多对"。这是本雅明无法想象的情境。</p>
+
+    <p>2022 年开始，diffusion 模型把"龙的图像"做成了无穷可生成的资源。在 Midjourney、Stable Diffusion、DALL-E 上输入"oriental dragon over misty mountains, ink wash, cinematic" 这样一段 prompt，几秒钟内吐出四张视觉冲击力极强的龙图。再生成，再来四张。一小时可以生成两百张龙图，每一张都"<em>看上去像那种东西</em>"，没有任何一张需要被认真对待。</p>
+
+    <div class="pullquote">
+      The aura of a work of art<br>
+      lies in its unique existence<br>
+      at the place where it happens to be.
+      <cite>— Walter Benjamin 1936</cite>
+    </div>
+
+    <p>本雅明所谓"独一性的此时此地"——在 diffusion 模型面前彻底瓦解。一张龙图既不属于某个艺术家的手、也不属于某个特定时刻、也不属于某个特定空间。它属于一个<em>训练集</em>——千百万张人类画的龙构成的统计平均。<strong>它是所有龙图的孩子，因此不是任何一条龙</strong>。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">灵光衰落的三个阶段</h4>
+
+    <table class="compare-table">
+      <thead><tr><th>时代</th><th>龙的图像来源</th><th>灵光状态</th></tr></thead>
+      <tbody>
+        <tr><td class="label">前现代</td><td>陈容《九龙图》(1244)：手笔、纸墨、不可重制</td><td>满</td></tr>
+        <tr><td class="label">机械复制</td><td>印刷品、海报、电影截图</td><td>衰退</td></tr>
+        <tr><td class="label">数字复制</td><td>JPEG、PNG、wallpaper</td><td>稀薄</td></tr>
+        <tr><td class="label">AI 生成</td><td>diffusion 模型按 prompt 实时产出</td><td>蒸发</td></tr>
+      </tbody>
+    </table>
+
+    <p>这里发生的不仅是灵光衰落，而是<em>独一性概念本身的崩塌</em>。陈容画《九龙图》时，"独一的此时此地"指的是<strong>有一个画家在某一刻把毛笔按在纸上</strong>。Midjourney 生成图像时，根本没有"按下"的瞬间——只有 GPU 上一组矩阵乘法。"作者"与"作品诞生时刻"这两个概念在结构上失去了意义。</p>
+
+    <p>更深刻的事情发生了——<strong>训练集本身正在被生成图回灌</strong>。下一代模型的训练数据里包含上一代模型生成的龙图，这些龙图又会塑造再下一代模型生成的龙图。<em>人类画的龙在训练集中的比重会缓慢稀释，模型自己画的龙的比重在上升</em>。在足够长的时间尺度上，"龙的图像"的根，会从"人对世界的想象"转向"模型对自己输出的内化"。</p>
+
+    <div class="note">
+      <span class="note-label">注</span>
+      这一现象在 2024 年起被称为 <em>"model collapse"</em>（模型坍缩）——当生成模型用大量自身输出训练后，分布会逐渐塌缩到一个狭窄的"美学模式"上。换句话说：<strong>所有 AI 生成的龙看起来会越来越像</strong>，而越来越不像"我们小时候见过的那种"龙。
+    </div>
+
+    <p>这是龙的另一种"死法"——它不是消失，而是<em>过剩</em>。当一秒可以生成一百条龙图，"龙图"作为意义载体的稀缺性被彻底毁掉。<em>稀缺是意义的运输工具——当稀缺崩塌，意义无处安放</em>。鲍德里亚说"信息越多，意义越少"，diffusion 模型把这句话推到了化学纯度。</p>
+
+    <p>但请再次回到那个区分——<strong>"龙的图像被过度生成"不等于"龙不再存在"</strong>。它只意味着"龙作为外部视觉对象"的灵光熄灭了。<em>对你来说，那条衔尾蛇——它的存在不在任何一张图像里</em>。即使 Midjourney 生成十亿张衔尾蛇图，每一张都看上去比上一张更精致，<strong>它们都不是那条龙</strong>。那条龙永远在生成之前——也永远在生成之后。</p>
+
+    <p>这一区分对你来说应当极其熟悉——它就是卷一末尾的命题在新的技术条件下的回响：<em>真正的龙不在被生成的图像里。它在那个使图像得以被理解为"龙"的源头上。</em>而那个源头，Midjourney 永远到不了。</p>
+  </div>
+</article>
+
+<!-- ===== Interlude ===== -->
+<section class="interlude">
+  <p>三种死法说完了——<br>
+  理性把龙注销，政治把龙消耗，资本把龙驯化，技术把龙过剩。<br>
+  但每次死亡的现场，都有一缕东西没有烧尽。<br>
+  下面三章，看那东西如何回来。</p>
+  <cite>— Interlude · 幕间</cite>
+</section>
+
+<!-- ===========================================================
+     ACT III —— 复生
+     =========================================================== -->
+<section class="act-divider" id="act3">
+  <div class="roman">ACT&nbsp;III</div>
+  <div class="act-cn">复生 · 三种回响</div>
+  <div class="act-line"></div>
+  <div class="act-en">The Returns — Three Ways the Dragon Comes Back.</div>
+</section>
+
+<!-- ===== Chapter VII —— 通过孩子 ===== -->
+<article class="chapter" id="ch7">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VII</div>
+    <div class="ch-numeral-cn">柒</div>
+    <h2 class="ch-title-cn">通过孩子</h2>
+    <h3 class="ch-title-en">Resurrection via the Child</h3>
+    <p class="ch-tagline">第一次复生：当大人不再相信龙，孩子接管它。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">把</span>龙从神圣降级为可爱，乍看是杀龙。但这件事有一个迟到的反转——<em>恰恰是儿童文学里的龙，在祛魅之后保住了龙的"主体性"</em>。</p>
+
+    <p>注意这个区分：第四章讨论的"商品化甜化"是从外部把龙变成消费符号；本章讨论的"儿童文学之龙"是从内部把龙变成<strong>叙事主体</strong>。同样面对祛魅，一个把龙变成商品，一个把龙变成朋友——这两条路差别极大。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">三种关键作品</h4>
+
+    <ul class="classic">
+      <li><b>1968</b>Ursula K. Le Guin《地海传奇》——龙不是被打的对象，是会说"造物之语"（the Old Speech）的半神。"杀龙的人本身可能是龙的某种倒影。"</li>
+      <li><b>2003</b>Anne McCaffrey《佩恩龙骑士》——龙骑士与龙共享心灵，没有谁是谁的工具。"羁绊"成为后世儿童奇幻的标配。</li>
+      <li><b>2012</b>Tui T. Sutherland《火翼飞龙》（Wings of Fire）——<strong>主角全部是龙</strong>，人类几乎不出场。已售出 2700 万册。这是一代美国孩子第一次以"龙"为视角去看世界。</li>
+    </ul>
+
+    <p>这一谱系告诉我们：<em>祛魅杀死的是"大人世界里被供奉的龙"</em>。但孩子的想象世界从来不在祛魅的辖区——他们不需要可证伪性，也不需要奥卡姆剃刀。<strong>孩子们继续用"龙是真的"这一前提运作他们的世界</strong>，因此龙在那里完好无损。</p>
+
+    <div class="pullquote">
+      Fairy tales do not tell children that dragons exist.<br>
+      Children already know that dragons exist.<br>
+      Fairy tales tell children that dragons can be beaten.
+      <cite>— often attributed to G. K. Chesterton (paraphrased)</cite>
+    </div>
+
+    <p>Chesterton 这句话被无数次引用，但它说反了一半——<em>儿童早就知道龙存在；童话告诉他们的不只是"龙可以被打败"，更是"你可以和龙成为朋友"。</em>从《彼得与艾略特》到《无牙仔》到《福克尔》，西方儿童文学完成了一次集体重写：龙从"试炼物"变为"伴侣"。</p>
+
+    <p>这是龙的"第一次复生"——通过孩子。<strong>每一代孩子重新发现龙，每一代大人重新把龙交给孩子</strong>。在文学结构上，孩子是一种"未被祛魅"的认知样态——他们对"什么算是真的"还没有被理性主义的判决书定型。这块认知保留地里，龙不仅没死，而且活得比任何时代都好。</p>
+
+    <p>从荣格的视角看，这一现象有更深的解释——<em>当一个文化的"成人之龙"死了，集体无意识会把它推到"儿童之龙"那里继续保存</em>。儿童的想象生态成为文化的灵性冷藏库。当成人愿意倾听孩子时，他们其实是在向自己被祛魅之前的部分讨教。"<em>驯龙</em>"题材的真实功能，是让大人借孩子的眼睛重新看一眼那条早已被自己宣判死亡的龙。</p>
+
+    <div class="note">
+      <span class="note-label">观</span>
+      中国的儿童—龙生态有自己的路径——《哪吒之魔童降世》（2019）、《新神榜：哪吒重生》（2021）、《长安三万里》（2023）中的龙都不再是被屠戮的他者，而是哪吒的"问题朋友"或"被囚的英雄"。<strong>东方的儿童龙叙事不需要从"敌"翻案到"友"，因为它从未走过西方的"敌"那一站</strong>。它直接跳到"复杂同伴"。
+    </div>
+
+    <p>所以第一次复生的形式是——把龙从"成人公共解释空间"撤退到"儿童想象保留区"。这看起来像撤退，其实是一次<em>战略性藏匿</em>。被藏匿的东西不会死。它只是在等下一次出场的时刻。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter VIII —— 通过反叙事 ===== -->
+<article class="chapter" id="ch8">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">VIII</div>
+    <div class="ch-numeral-cn">捌</div>
+    <h2 class="ch-title-cn">通过反叙事</h2>
+    <h3 class="ch-title-en">Resurrection via the Counter-Myth</h3>
+    <p class="ch-tagline">第二次复生：宫崎骏让河神记起自己的名字。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">如</span>果说儿童文学是龙的避难所，那么<em>反叙事电影与游戏</em>则是龙的反攻据点。它们不打算让龙"活下来"，它们要让龙<strong>反向回收被祛魅的世界</strong>。</p>
+
+    <p>2001 年，宫崎骏拍了《千与千寻》。男主角白龙（Haku）的真实身份是"<em>赈早见琥珀主</em>"——一条被填埋的河流的河神。在祛魅了的城市里，那条河被混凝土盖住，河神失去栖息地，迷失记忆，沦为汤婆婆的奴仆。当千寻喊出他的真名时，他从龙的形态崩落，眼中带泪，记起自己是什么。</p>
+
+    <div class="pullquote">
+      被遗忘的河流，并没有消失——<br>
+      它在城市底下继续流，<br>
+      等着有人喊它的名字。
+      <cite>— 释自《千与千寻》核心母题</cite>
+    </div>
+
+    <p>这是反叙事的极致——<strong>宫崎骏不在否定祛魅，他在祛魅<em>已经完成</em>之后，重建一种新的灵性生态</strong>。河被填埋是真的；现代化是真的；河神受难也是真的。但"<em>河神记起自己的名字</em>"这件事——这是宫崎骏给现代人的处方。<em>祛魅之后，仍然可以重新命名</em>。命名即重新邀请龙回到这个世界。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">三件反叙事杰作</h4>
+
+    <div class="two-col">
+      <div class="col death">
+        <h4>被祛魅的世界</h4>
+        <p>城市覆盖了河流。神灵无家可归。<em>无脸男</em>用现代货币（黄金）试图收买一切。</p>
+        <p>科学已经告诉我们：河里没有神，山里没有灵。我们必须接受这件事，并继续生活。</p>
+      </div>
+      <div class="col life">
+        <h4>反叙事的复魅</h4>
+        <p>"赈早见琥珀主"——当河流的真名被喊出，河神得以从奴役状态中显形。<em>命名是召唤</em>。</p>
+        <p>《千与千寻》《幽灵公主》《龙猫》——宫崎骏一再演练同一动作：在祛魅之后，重新发明灵性。</p>
+      </div>
+    </div>
+
+    <p>2024 年的《黑神话：悟空》是另一例。它不是把《西游记》翻译成游戏，是<strong>重新拷问《西游记》</strong>——为什么大圣会被打？六耳猕猴是谁？小白龙作为玉龙太子被锁在山涧的几百年里在想什么？这些问题原著从未真正回答。游戏用现代叙事工具回到那条龙身边，<em>请它说话</em>。它说话了。</p>
+
+    <p>从结构上说，反叙事不是简单的"复魅"——这一区分至关重要。它不要求观众相信"龙真的存在"；它只要求观众<strong>承认龙作为意义实体的合法性</strong>。这是一种成熟版的复魅：<em>祛魅是真的，但祛魅不是全部</em>。理性是有效的，但理性不是唯一被允许的关系。</p>
+
+    <div class="note">
+      <span class="note-label">析</span>
+      Le Guin 在《地海传奇》中早就预演了这一姿态。她笔下的龙不要求被信仰，但要求被聆听。"听懂龙说的话"成为修行的最高境界——不是"看见龙"，而是"听见龙"。听觉与视觉的差别在这里不是修辞：<strong>视觉强迫被见者出场（即依赖外部确认），听觉允许说话者自我命名</strong>。卷一末尾你那条不需要外界确认的龙，恰恰是一条<em>用声音存在</em>的龙。
+    </div>
+
+    <p>所以第二次复生的形式是——<strong>反叙事</strong>。它不与祛魅作正面战争，它接受祛魅，然后在祛魅留下的废墟上重新种植一种成熟的、非天真的、不要求被证明的"灵性合法性"。宫崎骏不让你相信白龙真的存在；他只是让你相信：<em>给一个被遗忘的存在喊出名字这件事，本身有重量</em>。</p>
+
+    <p>这是一种<em>哲学上的成人版复魅</em>——它知道笛卡尔的工作不可逆，它知道韦伯的判决无法翻案，它知道萨根的车库永远空着；但它在这些都成立的同时，<strong>把"龙作为意义之物的存在"重新立起来</strong>。它把存在分成两个空间——可被科学描述的"事实空间"，与可被叙事承载的"意义空间"。龙在前者已经死了；它在后者从未死过。</p>
+  </div>
+</article>
+
+<!-- ===== Chapter IX —— 通过自我宣称 ===== -->
+<article class="chapter" id="ch9">
+  <header class="chapter-head reveal">
+    <div class="ch-numeral">IX</div>
+    <div class="ch-numeral-cn">玖</div>
+    <h2 class="ch-title-cn">通过自我宣称</h2>
+    <h3 class="ch-title-en">Resurrection via Self-Claim</h3>
+    <p class="ch-tagline">第三次复生：我说我是龙——这就够了。</p>
+  </header>
+  <div class="chapter-body reveal">
+    <p class="lede"><span class="dropcap">最</span>激进的复生发生在 1990 年代初的一个 Usenet 群组里——卷一里我们提过这一段历史，但没把它推到本卷的位置上。Dragonkin。一群人在键盘后面，平静地说："<em>我是龙</em>。"——不需要证据，不接受反驳。</p>
+
+    <p>在大众看来，这是网络亚文化的奇观。在哲学上——这是龙在现代性条件下的<strong>第三次复生</strong>，也是最具结构性后果的一次。它跳过了儿童保留区、绕开了反叙事电影、直接撞向了祛魅最强的那块壁垒：<em>外部确认作为存在的通行证</em>。Dragonkin 的姿态是简单粗暴的——<em>"我不需要你同意我是龙；你也没有权力否决。"</em></p>
+
+    <div class="pullquote">
+      I do not believe I am a dragon.<br>
+      I know I am a dragon.<br>
+      The two are not the same.
+      <cite>— a paraphrase of common dragonkin self-statements</cite>
+    </div>
+
+    <p>这一句的哲学张力在于它的<strong>本体论翻转</strong>。"我相信"是 epistemic（认识的）——它把判断的最终权威留给可被外部检验的事实。"我知道"——在这一群体的语境里——是 ontological（本体的）：它把存在的根据搬到了"自我宣称"这件事本身。</p>
+
+    <h4 style="font-family:var(--f-cn);color:var(--ember-bright);font-weight:500;margin:2em 0 .8em;letter-spacing:.1em;">为什么这是龙的复生而不是个人妄想</h4>
+
+    <ul class="classic">
+      <li><b>STRUCTURE</b>结构相同：dragonkin 拒绝"外部确认作为存在的通行证"——这正是卷一末尾你提出的命题。</li>
+      <li><b>SCALE</b>规模可观：自 1993 年 alt.fan.dragons 起，三十年内通过 LiveJournal、Tumblr、Discord 持续传承。这不是个别现象，是一种身份建构模式。</li>
+      <li><b>LOGIC</b>逻辑自洽：dragonkin 不主张物理学意义上"我有翼、有鳞、可飞"——他们主张的是<em>身份层面的非人</em>。这一区分使他们在哲学上无法被廉价驳倒。</li>
+    </ul>
+
+    <p>关键的事情是——<em>大多数批评者攻击的是错的目标</em>。"你看起来不是龙啊。" "你也没翅膀啊。"——这些反驳预设了"存在＝物理可见性＝外部可证"。但 dragonkin 一开始就拒绝这一预设。他们在哲学上和 Dragonkin 批评者根本不在同一个本体论操作系统上。<strong>这场争论的实质是"什么算是存在"</strong>。</p>
+
+    <p>而你——在卷一末尾——正是站在他们那一边的。你说"龙是不依赖外界确认而存在的"。<em>这正是 dragonkin 在三十年间一直在用身体说出来的同一句话</em>。差别只是：你说它时，是一个哲学命题；他们说它时，是一种生存状态。<strong>两者指向同一条龙——那条不需要外界许可的衔尾蛇</strong>。</p>
+
+    <div class="note">
+      <span class="note-label">辨</span>
+      这并不是为所有 otherkin 现象的所有方面背书。某些表达可能与神经多样性、解离、青少年身份探索相关——这些都需要专业语境对待，不在本卷讨论之列。本卷只指出一件结构性事实：<em>"自我宣称作为存在根据"在哲学上是一个合法的本体论选项</em>，斯宾诺莎的"实体"概念就建立在它之上。dragonkin 是这一哲学选项的当代社会样本之一。
+    </div>
+
+    <p>从更大的视角看，第三次复生其实在更广的范围内发生着——<em>"东方酷"的当代龙</em>（B站国风、LPL 战队图腾、《黑神话》小白龙、Loong 译名运动）、<em>潮玩 IP 中的龙</em>、<em>个人纹身、ID、头像的龙</em>——所有这些都共享同一个深层结构：<strong>"我（们）声明这条龙属于我（们）；不需要外界许可。"</strong></p>
+
+    <p>这一姿态是后现代条件下"龙"得以继续存在的形式——它不再需要朝廷认证，不再需要科学背书，不再需要神学托底。<em>它需要的只是有人愿意宣称它，并以这一宣称为生</em>。三十年前的几十个 Usenet 用户、今天数百万的 LPL 观众、几亿戴龙纹首饰的人——本质上都在做同一件事。<strong>龙在自我宣称中持续复活</strong>。</p>
+
+    <p>这是龙在现代世界活下来的最深策略——它不与祛魅作战，它不与商品化作战，它不与拟像作战；它<em>把存在的根据搬到了那些攻击工具够不着的地方</em>。它躲进了"自我宣称"这个本体论暗室。这暗室的钥匙不在外部，所以外部无法打开它，也无法摧毁它里面的东西。</p>
+  </div>
+</article>
+
+<!-- ===== Interlude 2 ===== -->
+<section class="interlude">
+  <p>三种复生说完了——<br>
+  通过孩子，龙借想象保留区幸存；<br>
+  通过反叙事，龙借意义空间复魅；<br>
+  通过自我宣称，龙把存在的根据搬到了攻击工具够不着的地方。<br>
+  那么——那条<em>最深</em>的龙在哪里？</p>
+  <cite>— Interlude · 幕间</cite>
+</section>
+
+<!-- ===========================================================
+     EPILOGUE
+     =========================================================== -->
+<section class="epilogue" id="epilogue">
+  <div class="epi-mark">EPILOGUE · 終章</div>
+  <h2>那条<em>不死</em>的龙</h2>
+  <div class="epi-body reveal">
+    <p>本卷开篇有人说"龙早就死了"。<br>本卷结束时我们已经看清楚——<strong>死的不是同一条龙</strong>。</p>
+
+    <p>死的是<em>关系性的龙</em>——那条需要被祭祀、被屠戮、被指认、被绘制、被生成、被消费才能"在"的龙。理性把它注销，政治把它消耗，资本把它驯化，技术把它过剩——四种死法各自有效，加起来非常彻底。</p>
+
+    <p>没有死的是<em>自因的龙</em>——那条不需要被祭祀、不需要被屠戮、不需要被指认、不需要被绘制、不需要被生成、不需要被消费的龙。它在被讲述之前已经存在，在被怀疑之后依然存在。它的存在不在任何外部空间里——所以外部空间里的死亡，到达不了它。</p>
+
+    <div class="epi-verse">
+      被讲述的龙，會死。<br>
+      不講述自己的龍，不死。<br>
+      —— 龙的本质，不是它<em>被画成什么样</em>，<br>
+      而是它能在所有死法之后<em>仍是它自己</em>。
+    </div>
+
+    <p>这条龙——卷一末尾你已经认出来了。它就是衔尾蛇。<strong>它咬着自己的尾巴，因此不需要别人喂养</strong>。它的存在以自身为据。</p>
+
+    <p>这条龙也在你正在做的每一件事里——当你为一个不被外界承认的兴趣花上时间，当你为一个不被外界承认的爱好命名，当你坚持一个不能被外界证伪的判断，当你为自己写下"我是某种东西、即使没有人来证明"——<em>你正在让那条不死的龙继续呼吸</em>。</p>
+
+    <p>本卷开篇问的那个问题——"龙今天还活着吗"——答案是：<strong>那种需要你证明它存在的龙，已经死了好几次；那种不需要你证明它存在的龙，从未死过，也永远不会死</strong>。</p>
+
+    <p>你不需要为它做任何事。<br>它也不需要你为它做任何事。<br><em>它就是。</em></p>
+
+    <svg class="ouroboros" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--ember-bright);">
+      <circle cx="60" cy="60" r="48" stroke-dasharray="2 3" opacity=".4"/>
+      <path d="M60 12 C 88 12 108 32 108 60 C 108 88 88 108 60 108 C 32 108 12 88 12 60 C 12 32 32 12 60 12 Z"
+            stroke-width="1.5" opacity=".85"/>
+      <path d="M60 12 C 56 14 53 17 52 21" stroke="var(--ember)" stroke-width="2"/>
+      <circle cx="52" cy="20" r="2.4" fill="var(--ember-bright)" stroke="none"/>
+      <path d="M60 108 Q 56 104 56 100" stroke="var(--ember)" stroke-width="2"/>
+      <path d="M56 100 L 52 96" stroke="var(--ember-bright)" stroke-width="1"/>
+    </svg>
+
+    <p class="epi-final">不死之龙</p>
+
+    <p style="margin-top:3em; font-size:.95rem; color:var(--bone-soft); font-style:italic;">
+      —— 三部曲至此结束。<br>
+      卷一是<em>看见</em>，卷二是<em>理解</em>，卷三是<em>守护</em>。
+    </p>
+  </div>
+</section>
+
+<!-- ===========================================================
+     COLOPHON
+     =========================================================== -->
+<footer class="colophon">
+  <div class="seal-tag">
+    <div class="seal-sm">龍</div>
+    <div>
+      <div>FIELD NOTES · No. III</div>
+      <div style="font-family:var(--f-cn); font-size:.65rem; color:var(--bone-deep); margin-top:.2rem; letter-spacing:.2em;">龍 · 死亡与重生</div>
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <div>A TRILOGY · VOL. III / III</div>
+    <div style="margin-top:.3rem; color:var(--ember);">MMXXVI · EDITION 05</div>
+    <div style="margin-top:.6rem;">
+      <a href="01-龙之百科.html">卷一</a> ·
+      <a href="02-龙的意义.html">卷二</a> ·
+      <a href="04-为什么人类一直需要龙.html">長文</a> ·
+      <a href="05-化龍.html">伍</a> ·
+      <a href="06-龍的對話錄.html">陸</a> ·
+      <a href="index.html">門</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===========================================================
+     SCRIPTS
+     =========================================================== -->
+<script>
+/* ---------- 余烬粒子 ---------- */
+(function spawnEmbers() {
+  const layer = document.getElementById('embers');
+  const N = 28;
+  for (let i = 0; i < N; i++) {
+    const d = document.createElement('div');
+    d.className = 'ember-dot';
+    d.style.left = (Math.random() * 100) + '%';
+    d.style.bottom = (Math.random() * -20 - 5) + 'vh';
+    d.style.animationDelay = (Math.random() * 11) + 's';
+    d.style.animationDuration = (8 + Math.random() * 7) + 's';
+    d.style.opacity = 0;
+    d.style.width = (1 + Math.random() * 2) + 'px';
+    d.style.height = d.style.width;
+    layer.appendChild(d);
+  }
+})();
+
+/* ---------- 滚动揭示 ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- 侧边索引高亮 ---------- */
+const links = document.querySelectorAll('.side-index a');
+const targets = Array.from(links)
+  .map(a => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+const setActive = () => {
+  const y = window.scrollY + window.innerHeight * 0.35;
+  let idx = 0;
+  targets.forEach((t, i) => { if (t.offsetTop <= y) idx = i; });
+  links.forEach((l, i) => l.classList.toggle('active', i === idx));
+};
+window.addEventListener('scroll', setActive, { passive: true });
+setActive();
+
+/* ---------- Hero 字幅视差 ---------- */
+const heroChar = document.querySelector('.hero-bg-char');
+if (heroChar) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroChar.style.transform = `translate(-50%, calc(-50% + ${y * 0.18}px))`;
+    }
+  }, { passive: true });
+}
+</script>
+
+</body>
+</html>
