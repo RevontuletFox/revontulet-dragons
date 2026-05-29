@@ -7,7 +7,7 @@ A six-volume meditation on dragons — written in HTML, read in browsers, addres
 >
 > *Dragons that get told die. Dragons that don't tell themselves don't.*
 
-🌐 **入门 / Enter**: [revontulet.github.io/revontulet-dragons](https://revontulet.github.io/revontulet-dragons/)
+🌐 **入门 / Enter**: [revontuletfox.github.io/revontulet-dragons](https://revontuletfox.github.io/revontulet-dragons/)
 
 ---
 
